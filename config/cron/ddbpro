@@ -1,0 +1,2 @@
+# Run every minute
+*/1 * * * * /var/www/html/vendor/bin/drush --root /var/www/html/web/ --quiet cron > /dev/stdout
