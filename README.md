@@ -21,6 +21,13 @@ docker run -d -p 8080:8080 -P \
   ghcr.io/Deutsche-Digitale-Bibliothek/ddbpro/ddbpro:latest
 ```
 
+There are four services running within the Docker container (see also [/config/supervisord/supervisord.conf](/config/supervisord/supervisord.conf)):
+
+1. [nginx](/config/nginx/) on port 8080 (HTTP with gzip and br) and port 4430 (HTTP2 with self-signed certificate, gzip and br)
+2. [PHP 8.0](/config/php/) (php-fpm)
+3. [Cron job](/config/cron) triggered every minute by supercronic
+4. Redis memory cache
+
 ### Environment variables
 
 Please also see [web/sites/default/settings.php](web/sites/default/settings.php) for additional information.
