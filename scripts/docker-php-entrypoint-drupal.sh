@@ -16,8 +16,14 @@ then
     echo "auth_basic_user_file /etc/nginx/.authpasswd;";
   } > /etc/nginx/auth.conf;
 else
-  rm -f /etc/nginx/auth.conf;
-  touch /etc/nginx/auth.conf;
+  echo "Removing HTTP Auth for nginx...";
+  {
+    echo "# do not delete";
+  } > /etc/nginx/.authpasswd;
+  {
+    echo "# configuration file /etc/nginx/auth.conf:";
+    echo "# do not delete";
+  } > /etc/nginx/auth.conf;
 fi;
 
 set -e;
