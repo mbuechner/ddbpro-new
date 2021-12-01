@@ -50,6 +50,7 @@ Please also see [web/sites/default/settings.php](web/sites/default/settings.php)
 | UPDATEDB_ON_STARTUP     | If set to `yes`, `drush updatedb` will be executed once on container start. Default: `no`      | `yes`or `no`                    |
 | CACHEREBUILD_ON_STARTUP | If set to `yes`, `drush cache-rebuild` will be executed once on container start. Default: `no` | `yes`or `no`                    |
 | USE_REDIS               | Use Redis as memory cache. Default: `no`                                                       | `yes`or `no`                    |
+| REDIS_MAXMEMORY         | Set a memory usage limit for Redis to the specified amount of bytes. Default: `1gb`            | `1gb` or `100mb`                |
 
 ### Build and start Docker container locally
 
