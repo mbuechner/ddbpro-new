@@ -1,4 +1,4 @@
-![PHP Composer](https://github.com/mbuechner/ddbpro-new/workflows/PHP%20Composer/badge.svg) ![Docker](https://github.com/buechner/ddbpro-new/workflows/Docker/badge.svg)
+![PHP Composer](https://github.com/mbuechner/ddbpro-new/workflows/PHP%20Composer/badge.svg) [![Docker](https://github.com/mbuechner/ddbpro-new/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/mbuechner/ddbpro-new/actions/workflows/docker-publish.yml)
 # DDBpro
 DDBpro ist das Portal für die professionelle Nutzung der Deutschen Digitalen Bibliothek.
 
