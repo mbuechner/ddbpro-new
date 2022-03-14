@@ -4,7 +4,7 @@ DDBpro ist das Portal für die professionelle Nutzung der Deutschen Digitalen Bi
 
 ## Docker
 
-This Drupal project is available as non-root Docker container from GitHub. See https://github.com/mbuechner?tab=packages&repo_name=ddbpro-new
+This Drupal project is available as non-root Docker container from GitHub. See https://github.com/mbuechner/ddbpro-new/pkgs/container/ddbpro-new%2Fddbpro
 
 To execute the pre-compiled Docker container, run the following command with the variables set for your environment.
 ```shell
