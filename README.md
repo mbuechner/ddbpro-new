@@ -1,15 +1,15 @@
-![PHP Composer](https://github.com/Deutsche-Digitale-Bibliothek/ddbpro/workflows/PHP%20Composer/badge.svg) ![Docker](https://github.com/Deutsche-Digitale-Bibliothek/ddbpro/workflows/Docker/badge.svg)
+![PHP Composer](https://github.com/mbuechner/ddbpro-new/workflows/PHP%20Composer/badge.svg) ![Docker](https://github.com/buechner/ddbpro-new/workflows/Docker/badge.svg)
 # DDBpro
 DDBpro ist das Portal für die professionelle Nutzung der Deutschen Digitalen Bibliothek.
 
 ## Docker
 
-This Dupal project is available as Docker container from GitHub: https://github.com/orgs/Deutsche-Digitale-Bibliothek/packages?repo_name=ddbpro
+This Drupal project is available as non-root Docker container from GitHub. See https://github.com/mbuechner?tab=packages&repo_name=ddbpro-new
 
-To execute the pre-compiled Docker container run the following command with the variables set for your environment.
+To execute the pre-compiled Docker container, run the following command with the variables set for your environment.
 ```shell
 docker run -d -p 8080:8080 -P \
-  --env "MYSQL_HOSTNAME=ddbpro.example.com" \
+  --env "MYSQL_HOSTNAME=sql.example.com" \
   --env "MYSQL_DATABASE=myddbprodatabase" \
   --env "MYSQL_USER=myddbprouser" \
   --env "MYSQL_PASSWORD=myddbpropassword" \
@@ -18,7 +18,7 @@ docker run -d -p 8080:8080 -P \
   --env "UPDATE_FREE_ACCESS=FALSE" \
   --env "FILE_PUBLIC_PATH=sites/default/files" \
   --env "TRUSTED_HOST_PATTERNS=\"^localhost\$, ^127.0.0.1\$\"" \
-  ghcr.io/Deutsche-Digitale-Bibliothek/ddbpro/ddbpro:latest
+  ghcr.io/mbuechner/ddbpro-new/ddbpro:latest
 ```
 
 There are four services running within the Docker container (see also [/config/supervisord/supervisord.conf](/config/supervisord/supervisord.conf)):
@@ -73,4 +73,3 @@ docker run -d -p 8080:8080 -P \
   --env "TRUSTED_HOST_PATTERNS=\"^localhost\$, ^127.0.0.1\$\"" \
   ddbpro
 ```
-

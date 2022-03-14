@@ -26,6 +26,13 @@ else
   } > /etc/nginx/auth.conf;
 fi;
 
+#set version to env
+if [ -f "/var/www/html/version" ]; then
+  VERSION=$(cat /var/www/html/version);
+  export VERSION;
+  echo "Version: $VERSION";
+fi
+
 set -e;
 
 docker-php-entrypoint;
