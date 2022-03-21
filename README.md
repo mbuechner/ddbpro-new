@@ -1,10 +1,10 @@
 ![PHP Composer](https://github.com/mbuechner/ddbpro-new/workflows/PHP%20Composer/badge.svg) [![Docker](https://github.com/mbuechner/ddbpro-new/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/mbuechner/ddbpro-new/actions/workflows/docker-publish.yml)
 # DDBpro
-DDBpro ist das Portal für die professionelle Nutzung der Deutschen Digitalen Bibliothek.
+DDBpro ist ein Informationsportal der Deutschen Digitalen Bibliothek (DDB). Es richtet sich an bestehende Datenpartner sowie an Kultur- und Wissenseinrichtungen, die Interesse daran haben, Datenpartner der DDB zu werden. Außerdem bietet es Informationen, welche Dienste die DDB bereitstellt und wie man sie nutzen kann. 
 
 ## Docker
 
-This Drupal project is available as non-root Docker container from GitHub. See https://github.com/mbuechner/ddbpro-new/pkgs/container/ddbpro-new%2Fddbpro
+This Drupal project is available as non-root Docker container from GitHub container repository. See https://github.com/mbuechner/ddbpro-new/pkgs/container/ddbpro-new%2Fddbpro
 
 To execute the pre-compiled Docker container, run the following command with the variables set for your environment.
 ```shell
@@ -54,7 +54,7 @@ Please also see [web/sites/default/settings.php](web/sites/default/settings.php)
 
 ### Build and start Docker container locally
 
-Run in the folder with `Dockerfile`:
+Run in the directory with `Dockerfile`:
 ```shell
 docker build -t ddbpro .
 ```
@@ -73,3 +73,10 @@ docker run -d -p 8080:8080 -P \
   --env "TRUSTED_HOST_PATTERNS=\"^localhost\$, ^127.0.0.1\$\"" \
   ddbpro
 ```
+
+### Start with Drush
+
+Runs PHP's built-in http server for development. See https://www.drush.org/latest/commands/runserver/
+
+1. Configure Environment in `.env` (see `.env.example`)
+2. Start with: `php vendor/bin/drush rs`
