@@ -74,9 +74,13 @@ docker run -d -p 8080:8080 -P \
   ddbpro
 ```
 
-### Start with Drush
+### Start with Drush (Developer's environment)
 
 Runs PHP's built-in http server for development. See https://www.drush.org/latest/commands/runserver/
 
-1. Configure Environment in `.env` (see `.env.example`)
-2. Start with: `php vendor/bin/drush rs`
+1. Make sure you have a working SQL-Database with proper login data. Configure environment, incl. DB connection in `.env` (see `.env.example`). Test with `php vendor/bin/drush status`.
+3. Install Drupal site: `php vendor/bin/drush si`
+4. Set site UUID with: `php vendor/bin/drush cset system.site uuid "22764ec3-86c6-4180-89da-5f788e8dd0b3"`
+5. Delete shortcuts: `php vendor/bin/drush entity:delete shortcut_set`
+6. Import configuration with: `php vendor/bin/drush cim`
+7. Start development server with: `php vendor/bin/drush rs` (http://127.0.0.1:8888/)
