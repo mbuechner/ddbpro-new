@@ -45,3 +45,4 @@
 /web.config
 /.editorconfig
 /.gitattributes
+/config/sync/phpmailer_smtp.settings.yml

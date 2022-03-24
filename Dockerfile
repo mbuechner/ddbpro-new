@@ -3,6 +3,12 @@ COPY / /tmp/ddbpro
 WORKDIR /tmp/ddbpro
 RUN composer install --no-dev
 
+# Add git tag version to PHP file
+RUN { \
+        echo -e "$(git describe --tags)"; \
+    } >> /tmp/cdv/version; \
+    rm -rf .git/;
+
 FROM php:8.0-fpm-alpine
 MAINTAINER Michael Büchner <m.buechner@dnb.de>
 
