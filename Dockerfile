@@ -6,7 +6,7 @@ RUN composer install --no-dev
 # Add git tag version to PHP file
 RUN { \
         echo -e "$(git describe --tags)"; \
-    } >> /tmp/cdv/version; \
+    } >> /tmp/ddbpro/version; \
     rm -rf .git/;
 
 FROM php:8.0-fpm-alpine
