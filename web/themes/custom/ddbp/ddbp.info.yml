@@ -1,0 +1,25 @@
+name: DDBP Theme
+description: DDBpro custom theme
+type: theme
+core_version_requirement: ^8.8 || ^9
+base theme: classy
+
+regions:
+  header: 'Header'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  sidebar_left: 'Left sidebar'
+  highlighted: 'Highlighted'
+  content: 'Content'
+  footer: 'Footer'
+  hidden: 'Hidden region'
+
+libraries:
+  - ddbp/global-styling
+  - ddbp/global-scripts
+
+libraries-override:
+  system/base: false
+  core/normalize: false
+  classy/base: false
+  classy/messages: false

@@ -1,0 +1,53 @@
+.paragraph--collage {
+    .row {
+        @include bp(l) {
+            align-items: center;
+        }
+    }
+
+    .row--image-left {
+        .paragraph-collage__image-wrapper {
+            @include spacing(margin, large, bottom);
+
+            @include bp(l) {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .row--image-right {
+        .paragraph-collage__image-wrapper {
+            order: 1;
+        }
+
+        .paragraph-collage__content-wrapper {
+            @include spacing(margin, large, bottom);
+
+            @include bp(l) {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.paragraph-collage__headline {
+    @include spacing(margin, very-small, bottom);
+}
+
+.paragraph-collage__text {
+    @include spacing(margin, small, bottom);
+
+    &::last-child {
+        margin-bottom: 0;
+    }
+}
+
+.paragraph-collage__links {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    a + a {
+        @include spacing(margin, very-small, top);
+    }
+}

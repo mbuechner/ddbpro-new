@@ -1,0 +1,23 @@
+uuid: 55a5b966-1b29-49bf-bbd9-dfdb24c88fbc
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_show_in_download_overview
+    - media.type.document
+id: media.document.field_show_in_download_overview
+field_name: field_show_in_download_overview
+entity_type: media
+bundle: document
+label: 'Zeige in der Download-Übersicht'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,56 @@
+uuid: 552789f2-7569-4561-95d7-b941de3e4d8b
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser_mini
+    - field.field.node.department.field_contact_persons
+    - field.field.node.department.field_faq_category
+    - field.field.node.department.field_icon
+    - field.field.node.department.field_image
+    - field.field.node.department.field_paragraphs
+    - field.field.node.department.field_teaser_text
+    - field.field.node.department.field_webform
+    - field.field.node.department.field_weight
+    - node.type.department
+  module:
+    - ddbp_responsive_image
+    - user
+id: node.department.teaser_mini
+targetEntityType: node
+bundle: department
+mode: teaser_mini
+content:
+  field_icon:
+    type: image_responsive_meta
+    label: hidden
+    settings:
+      image_style_0px: scale_small_xs
+      image_style_421px: scale_small_m
+      image_style_701px: scale_small_m
+      image_style_1181px: scale_small_xl
+      image_style_1481px: scale_small_xl
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image:
+    type: image_responsive_meta
+    label: hidden
+    settings:
+      image_style_0px: department_teaser_xs
+      image_style_421px: department_teaser_m
+      image_style_701px: department_teaser_m
+      image_style_1181px: department_teaser_xl
+      image_style_1481px: department_teaser_xl
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_contact_persons: true
+  field_faq_category: true
+  field_paragraphs: true
+  field_teaser_text: true
+  field_webform: true
+  field_weight: true
+  langcode: true
+  links: true

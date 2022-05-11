@@ -1,0 +1,50 @@
+{% set classes = [
+  'view',
+  'view-' ~ id|clean_class,
+  'view-id-' ~ id,
+  'view-display-id-' ~ display_id,
+  dom_id ? 'js-view-dom-id-' ~ dom_id,
+] %}
+
+{% set viewHeader = {
+  title: 'Veranstaltungsarchiv' | t,
+} %}
+
+{% set linkSecondary = {
+  url: path('view.latest_events.latest_events'),
+  text: 'Aktuelle Termine & Veranstaltungen',
+  type: 'secondary',
+  bg: 'light',
+} %}
+
+<div{{ attributes.addClass(classes) }}>
+
+  {# view header #}
+  {% include '@ddbp/partials/view-header.html.twig' with viewHeader %}
+
+  {% if exposed %}
+    <div class="view-filters">
+      {{ exposed }}
+    </div>
+  {% endif %}
+
+  {% if rows %}
+    <div class="container">
+      <div class="view-content">
+        {{ rows }}
+
+        <div class="view-content__link">
+          {% include '@ddbp/partials/link-button.html.twig' with { link: linkSecondary } %}
+        </div>
+      </div>
+    </div>
+  {% elseif empty %}
+    <div class="view-empty">
+      {{ empty }}
+    </div>
+  {% endif %}
+
+  {% if pager %}
+    {{ pager }}
+  {% endif %}
+</div>

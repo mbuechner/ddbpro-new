@@ -1,0 +1,8 @@
+uuid: 029950e4-3bad-4b5c-b5bf-ce34268a54d9
+langcode: de
+status: true
+dependencies: {  }
+name: 'Kulturelle Einrichtung'
+vid: cultural_sector
+description: ''
+weight: 0

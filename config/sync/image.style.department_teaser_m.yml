@@ -1,0 +1,23 @@
+uuid: aff07054-f394-4dfa-9c9b-69d5c6b9e4ca
+langcode: de
+status: true
+dependencies:
+  module:
+    - focal_point
+name: department_teaser_m
+label: department-teaser-M
+effects:
+  7cc1452e-0f62-4d2b-b058-899bfd179d9e:
+    uuid: 7cc1452e-0f62-4d2b-b058-899bfd179d9e
+    id: image_convert
+    weight: -9
+    data:
+      extension: webp
+  034e40f4-1d6f-44c1-bfde-dc172d150902:
+    uuid: 034e40f4-1d6f-44c1-bfde-dc172d150902
+    id: focal_point_scale_and_crop
+    weight: -10
+    data:
+      width: 500
+      height: 800
+      crop_type: focal_point

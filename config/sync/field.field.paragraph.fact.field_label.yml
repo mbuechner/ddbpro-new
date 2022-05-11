@@ -1,0 +1,19 @@
+uuid: 9f837903-a87e-4d8b-a1e6-9f0042f0d53a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_label
+    - paragraphs.paragraphs_type.fact
+id: paragraph.fact.field_label
+field_name: field_label
+entity_type: paragraph
+bundle: fact
+label: Beschriftung
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

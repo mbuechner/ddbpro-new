@@ -1,0 +1,24 @@
+{% set classes = [
+  'accordion',
+  'accordion--' ~ type,
+  image ? 'accordion--has-image',
+] %}
+
+<div class="{{ classes|join(' ') }}">
+  <button class="accordion__header"
+    aria-expanded="false"
+    aria-controls="{{ title|clean_class }}">
+    {% if image %}
+      <div class="accordion__header-image">
+        {% set responsiveImage = { images: image.images } %}
+        {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+      </div>
+    {% endif %}
+    <h4>{{- title -}}</h4>
+  </button>
+  <div id="{{ title|clean_class }}" class="accordion__content" aria-hidden="true">
+    <div class="accordion__content-wrapper text-formatted">
+      {{ text }}
+    </div>
+  </div>
+</div>

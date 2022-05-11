@@ -1,0 +1,29 @@
+uuid: daf7b886-0dcc-41c4-85e1-437bd03acdb4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_document_license
+    - media.type.document
+    - taxonomy.vocabulary.document_license
+id: media.document.field_document_license
+field_name: field_document_license
+entity_type: media
+bundle: document
+label: 'Dokument Lizenz'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      document_license: document_license
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

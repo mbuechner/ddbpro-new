@@ -1,0 +1,23 @@
+uuid: 9765bb67-e01d-4a1d-be9d-57359c450f2a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link_ddb_portal
+    - node.type.aggregator_portrait
+  module:
+    - link
+id: node.aggregator_portrait.field_link_ddb_portal
+field_name: field_link_ddb_portal
+entity_type: node
+bundle: aggregator_portrait
+label: 'Link zum DDB Portal'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

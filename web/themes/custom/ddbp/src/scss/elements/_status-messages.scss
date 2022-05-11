@@ -1,0 +1,51 @@
+.messages {
+    @include spacing(padding, tiny, top bottom);
+    @include spacing(padding, very-small, right left);
+    @include spacing(margin, small, bottom);
+    @include border-radius;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid;
+}
+
+.messages--error {
+    color: $color-error;
+    background-color: rgba($color-error, 0.2);
+}
+
+.messages--status {
+    color: $color-success;
+    background-color: rgba($color-success, 0.2);
+}
+
+.status-messages__icon {
+    @include rsa(height width, 35px, 40px);
+    @include spacing(margin, very-small, right);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: currentColor;
+
+    .fac {
+        @include rsa(height width, 15px, 18px);
+    }
+}
+
+.status-messages__text-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include bp(l) {
+        align-items: center;
+        flex-direction: row;
+    }
+}
+
+.status-messages__text {
+    @include text(p1);
+    width: 100%;
+}

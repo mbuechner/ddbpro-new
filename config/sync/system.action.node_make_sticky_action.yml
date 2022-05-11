@@ -1,4 +1,4 @@
-uuid: 20e363e8-0950-42b1-8ffe-c543b3f2cc49
+uuid: 13bccd10-e60c-4757-afb1-ee35a9af41c6
 langcode: de
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: sOb26JSy3fGpWkvR0WYN6_hMqj_6d1rvbvrkzp1yya0
 id: node_make_sticky_action
-label: 'Inhalt hervorheben'
+label: 'Make content sticky'
 type: node
 plugin: node_make_sticky_action
 configuration: {  }

@@ -1,0 +1,58 @@
+uuid: 7254325e-2e88-447a-9505-c648e3abc48d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_boxes_item.field_cta
+    - field.field.paragraph.content_boxes_item.field_description
+    - field.field.paragraph.content_boxes_item.field_headline
+    - field.field.paragraph.content_boxes_item.field_image
+    - paragraphs.paragraphs_type.content_boxes_item
+  module:
+    - ddbp_responsive_image
+    - link
+id: paragraph.content_boxes_item.default
+targetEntityType: paragraph
+bundle: content_boxes_item
+mode: default
+content:
+  field_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image:
+    type: image_responsive_meta
+    label: hidden
+    settings:
+      image_style_0px: content_box_xs
+      image_style_421px: content_box_m
+      image_style_701px: content_box_m
+      image_style_1181px: content_box_xl
+      image_style_1481px: content_box_xl
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

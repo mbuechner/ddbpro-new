@@ -1,0 +1,24 @@
+uuid: 3992cc10-c5ba-49d9-8a19-dc020a9cc404
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dont_show_in_overview
+  module:
+    - user
+id: user.user.field_dont_show_in_overview
+field_name: field_dont_show_in_overview
+entity_type: user
+bundle: user
+label: 'Zeige nicht in der Team-Übersicht'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

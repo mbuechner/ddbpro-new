@@ -1,0 +1,129 @@
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'event',
+] %}
+
+{% set startDateRaw = content.field_date[0].start_date['#markup'] %}
+{% set endDateRaw = content.field_date[0].end_date['#markup'] %}
+
+{% set ics_link = calendar_link(
+  'ics',
+  node.title,
+  node.field_date.0.start_date,
+  node.field_date.0.end_date,
+  false,
+  node.field_description,
+  node.field_location
+) %}
+
+{% set linkPrimary = {
+  url: ics_link,
+  text: 'Jetzt teilnehmen' | t,
+  aria_label: 'iCalendar Datei zu der Veranstaltung herunterladen',
+  target: true,
+  participate: true,
+  type: 'primary',
+} %}
+
+{% set linkSecondary = {
+  url: path('view.latest_events.latest_events'),
+  text: 'Zur Übersicht' | t,
+  type: 'secondary',
+  bg: 'light',
+} %}
+
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <div class="container">
+    {# Breadcrumbs block #}
+    {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+  </div>
+
+  <div class="node__content">
+    <div class="container">
+      <div class="row-grid row-grid--fixed">
+        <div class="row-grid__title">
+          <div class="row-grid__title-content">
+            <h1>{{ label[0]['#context'].value }}</h1>
+            <div class="event__date-time h4">
+              {% set startDate = startDateRaw|format_date('custom', 'l, d.m.Y - H:i') %}
+              {% set endDate = endDateRaw|format_date('custom', 'l, d.m.Y - H:i') %}
+
+              {% set startDateOnly = startDateRaw|format_date('custom', 'l, d.m.Y') %}
+              {% set endDateOnly = endDateRaw|format_date('custom', 'l, d.m.Y') %}
+
+              {% set startHourOnly = startDateRaw|format_date('custom', 'H:i') %}
+              {% set endHourOnly = endDateRaw|format_date('custom', 'H:i') %}
+
+              {% if startDateOnly == endDateOnly %}
+                {% if startHourOnly != '00:00' %}{{ startDate ~ ' ' ~ 'Uhr' | t }}{% else %}{{ startDateOnly }}{% endif %}
+                {% if endHourOnly != '00:00' %}{{ ' ' ~ 'bis' | t ~ ' ' ~ endHourOnly ~ ' ' ~ 'Uhr' | t }}{% endif %}
+
+              {% else %}
+                {% if startHourOnly != '00:00' %}{{ startDate ~ ' ' ~ 'Uhr' | t }}{% else %}{{ startDateOnly }}{% endif %}
+                {{ ' ' ~ 'bis' | t ~ ' ' }}
+                {% if endHourOnly != '00:00' %}{{ endDate ~ ' ' ~ 'Uhr' | t }}{% else %}{{ endDateOnly }}{% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="row-grid__sidebar">
+          <div class="sidebar__items">
+            {# event type #}
+            <div class="sidebar__item">
+              <span>{{ 'Typ' | t }}</span>
+              <div class="sidebar__item-items">
+                {% for key, item in content.field_event_type if key matches '/^\\d+$/' %}
+                  <div class="sidebar__item-items-item">
+                    <div class="text-formatted">
+                      <p>{{ item['#plain_text'] }}</p>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+            {# event location #}
+            <div class="sidebar__item">
+              <span>{{ 'Ort' | t }}</span>
+              <div class="text-formatted">
+                <p>{{ content.field_location[0]['#context'].value }}</p>
+              </div>
+            </div>
+            {# related links #}
+            {% if content.field_external_link[0] %}
+              <div class="sidebar__item">
+                <span>{{ 'Weiterführende Links' | t }}</span>
+                <div class="text-formatted">
+                  {{ content.field_external_link }}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="row-grid__content">
+          <div class="row-grid__content-content">
+            {% if content.field_description[0] %}
+              <div class="event__text text-formatted">
+                <p>{{ content.field_description[0]['#context'].value }}</p>
+              </div>
+            {% endif %}
+
+            {% if content.field_document[0] %}
+              <div class="event__media">
+                <h3>{{ 'Veranstaltungsdokumente' | t }}</h3>
+                {{ content.field_document }}
+              </div>
+            {% endif %}
+
+            <div class="event__links links-siblings">
+              {% if ('now'|date('U') < endDateRaw) %}
+                {% include '@ddbp/partials/link-button.html.twig' with { link: linkPrimary } %}
+              {% endif %}
+              {% include '@ddbp/partials/link-button.html.twig' with { link: linkSecondary } %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

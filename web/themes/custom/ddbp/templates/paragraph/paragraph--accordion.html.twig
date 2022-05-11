@@ -1,0 +1,8 @@
+{% set accordion = {
+  type: 'parargaph',
+  image: content.field_image[0],
+  title: content.field_headline[0]['#context'].value,
+  text: content.field_paragraphs,
+} %}
+
+{% include '@ddbp/partials/accordion.html.twig' with accordion %}

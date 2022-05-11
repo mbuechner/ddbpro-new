@@ -1,0 +1,21 @@
+uuid: 18763b71-0b6f-4d53-9acc-fb42ed84404b
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+id: config_pages.field_participation_headline
+field_name: field_participation_headline
+entity_type: config_pages
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

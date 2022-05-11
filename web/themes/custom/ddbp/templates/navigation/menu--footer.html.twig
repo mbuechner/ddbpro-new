@@ -1,0 +1,49 @@
+{% import _self as menus %}
+
+{{ menus.menu_links(items, attributes, 0, menu_name) }}
+
+{% macro menu_links(items, attributes, menu_level, menu_name, parent) %}
+  {% import _self as menus %}
+
+  {# menu classes #}
+  {% set ulCls = [
+    menu_name ~ '-menu__items',
+    menu_name ~ '-menu__items--level-' ~ menu_level
+  ] %}
+  {% set liCls = [
+    menu_name ~ '-menu__item',
+    menu_name ~ '-menu__item--level-' ~ menu_level
+  ] %}
+  {% set aCls = [
+    menu_name ~ '-menu__link',
+    menu_name ~ '-menu__link--level-' ~ menu_level
+  ] %}
+
+  {# <ul> condition #}
+  <ul class="{{ ulCls|join(' ') }}">
+
+    {# item iteration #}
+    {% for item in items %}
+      {# additional <a> class definitions #}
+      {% set anchorCls = aCls|merge([
+        item.in_active_trail ? menu_name ~ '-menu__link--active',
+        item.is_active ? menu_name ~ '-menu__link--active',
+        item.below.is_active ? menu_name ~ '-menu__link--active',
+        item.below ? menu_name ~ '-menu__link--has-children',
+      ]) %}
+
+      {# <li> #}
+      <li class="{{ liCls|join(' ') }}
+        {% if item.below %}{{ menu_name ~ '-menu__item--has-children' }}{% endif %}
+        {% if item.is_active %}{{ menu_name ~ '-menu__item--active' }}{% endif %}">
+
+        {{ link(item.title, item.url, { class: anchorCls }) }}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1, menu_name, item) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+
+  </ul>
+
+{% endmacro %}

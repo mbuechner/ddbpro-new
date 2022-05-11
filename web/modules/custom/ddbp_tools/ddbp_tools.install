@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the ddbp_tools module.
+ */
+
+/**
+ * Implements hook_update_N().
+ */
+function ddbp_tools_update_9001() {
+  $entities = \Drupal::entityTypeManager()->getStorage('media')->loadByProperties(['bundle' => 'document']);
+  foreach ($entities as $entity) {
+    $entity->set('field_show_in_download_overview', FALSE);
+    $entity->save();
+  }
+}

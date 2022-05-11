@@ -1,0 +1,265 @@
+// general
+.form-required {
+    // asterisk
+    &:after {
+        content: '\f069';
+        position: relative;
+        top: -0.5em;
+        display: inline-block;
+        margin-left: 4px;
+        color: $color-main;
+        font: var(--fa-font-solid);
+        font-size: 65%;
+        line-height: 0;
+    }
+}
+
+.form-item {
+    @include spacing(margin, small, bottom);
+
+    label {
+        @include spacing(margin, tiny, bottom);
+        @include text(p2);
+        display: inline-block;
+        color: $color-grey;
+        font-weight: font-weight(medium);
+    }
+}
+
+.form-textarea-wrapper {
+    @include spacing(margin, small, bottom);
+}
+
+input[type='email'],
+input[type='tel'],
+input[type='number'],
+input[type='text'],
+input[type='username'],
+input[type='password'],
+select {
+    @include rsa(height, 50px, 57px);
+}
+
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='username'],
+input[type='password'],
+textarea {
+    @include spacing(padding, very-small, right left);
+    @include text(p1);
+    width: 100%;
+    border: 1px solid $color-darken;
+    background-clip: padding-box;
+    background-color: $color-bg;
+    color: $color-grey;
+
+    &:focus {
+        background: $color-white;
+        box-shadow: none;
+        outline: none;
+    }
+
+    &:invalid {
+        box-shadow: none;
+    }
+
+    .form-item--error & {
+        border-color: $color-error;
+        background-color: rgba($color-error, 0.1);
+        color: $color-error;
+    }
+}
+
+textarea {
+    @include spacing(padding, very-small, top bottom);
+    min-height: 250px;
+    width: 100%;
+    resize: vertical;
+}
+
+// remove autofill styling
+@include autofill($color-white);
+
+// placeholder
+@include placeholder {
+    @include text(p1);
+    color: $color-grey-light;
+}
+
+.form-type-select-wrapper {
+    position: relative;
+}
+
+.select-additional {
+    @include spacing(position, very-small, right);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+
+    &:after {
+        content: '\f107';
+        display: inline-block;
+        color: $color-main;
+        font: var(--fa-font-solid);
+    }
+}
+
+select {
+    @include spacing(padding, very-small, right left);
+    @include text(p1);
+    appearance: none;
+    width: 100%;
+    border: 1px solid $color-darken;
+    background-color: $color-bg;
+    color: $color-grey;
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.5;
+
+        + .select-additional {
+            display: none;
+        }
+    }
+
+    &:focus {
+        border-color: $color-overlay;
+    }
+
+    &:invalid {
+        box-shadow: none;
+    }
+
+    .form-item--error & {
+        border-color: $color-error;
+        background-color: rgba($color-error, 0.1);
+        color: $color-error;
+    }
+}
+
+// title and description of the webform
+// should be h2 and p
+.form-type-processed-text {
+    h2 {
+        @include spacing(margin, small, bottom);
+    }
+
+    p {
+        @include text(h4);
+        color: $color-grey-dark;
+    }
+}
+
+.form-item-markup {
+    @include text(p2);
+    color: $color-grey-light;
+
+    // asterisk
+    &:before {
+        content: '\f069';
+        position: relative;
+        top: -0.5em;
+        display: inline-block;
+        margin-right: 4px;
+        color: $color-grey;
+        font: var(--fa-font-solid);
+        font-size: 65%;
+        line-height: 0;
+    }
+}
+
+.form-item-terms-and-conditions {
+    display: block;
+
+    input {
+        @include spacing(margin, tiny, right);
+        @include rsa(margin-top, 2px, 3px);
+    }
+
+    .description {
+        @include text(p2);
+        color: $color-grey-light;
+    }
+
+    a {
+        color: $color-main;
+
+        @include bp(l) {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .form-item-checkbox__label {
+        display: inline-flex;
+        align-items: flex-start;
+    }
+}
+
+.form-item--error-message {
+    @include spacing(margin, very-small, top);
+    @include text(p2);
+    color: $color-error;
+
+    strong {
+        font-weight: font-weight(regular);
+    }
+
+    // placeholder
+    @include placeholder {
+        @include text(p1);
+        color: $color-error;
+    }
+}
+
+[type='submit'] {
+    width: 100%;
+    cursor: pointer;
+
+    @include bp(l) {
+        width: auto;
+    }
+
+    &:after {
+        content: attr(value);
+    }
+}
+
+// user login form & password reset form
+form.user-login-form,
+form.user-pass,
+form.user-register-form {
+    @extend %container-default;
+    @include spacing(padding, huge, top bottom);
+    @include spacing(padding, very-large, right left);
+    margin-right: auto;
+    margin-left: auto;
+    background-color: $color-white;
+
+    .description {
+        @include spacing(margin, tiny, top);
+        @include text(p2);
+        color: $color-grey-light;
+    }
+
+    > p {
+        @include spacing(margin, very-small, bottom);
+    }
+
+    a {
+        padding: 3px 0;
+        color: $color-grey-dark;
+        transition: box-shadow $duration-fast $easing-default;
+
+        @include bp(m) {
+            padding: 4px 0;
+        }
+
+        @include bp(xl) {
+            padding: 5px 0;
+        }
+    }
+}

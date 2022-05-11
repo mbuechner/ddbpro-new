@@ -1,0 +1,23 @@
+uuid: e2a360a9-bf6c-4651-a378-5b956a426762
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link_website
+    - node.type.aggregator_portrait
+  module:
+    - link
+id: node.aggregator_portrait.field_link_website
+field_name: field_link_website
+entity_type: node
+bundle: aggregator_portrait
+label: 'Link zur Website'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

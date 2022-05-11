@@ -1,0 +1,10 @@
+uuid: 72b392d5-a3b2-442d-96ad-c3d132b0d5c3
+langcode: de
+status: true
+dependencies: {  }
+id: fact
+label: Fakt
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

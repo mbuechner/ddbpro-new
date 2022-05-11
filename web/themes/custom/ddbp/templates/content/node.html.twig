@@ -1,0 +1,16 @@
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+] %}
+
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <div class="container">
+
+    {# Breadcrumbs block #}
+    {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+
+    <div class="node__content">
+      {{ content }}
+    </div>
+  </div>
+</article>

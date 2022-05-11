@@ -1,0 +1,8 @@
+uuid: 9b4d1de3-12d7-4f39-b17c-f11951bb1266
+langcode: de
+status: true
+dependencies: {  }
+name: Bundesland
+vid: region
+description: ''
+weight: 0

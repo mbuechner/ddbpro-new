@@ -1,0 +1,11 @@
+uuid: d47f4372-e80d-47a3-aa03-75b2f7b75fae
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cultural_sector
+id: taxonomy_term.cultural_sector
+target_entity_type_id: taxonomy_term
+target_bundle: cultural_sector
+default_langcode: site_default
+language_alterable: false

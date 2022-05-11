@@ -1,0 +1,23 @@
+uuid: efb30dae-e628-40b6-a69b-ad10c3ed9cdb
+langcode: de
+status: true
+dependencies:
+  module:
+    - focal_point
+name: square_xs
+label: square-XS
+effects:
+  9072188f-354f-4ec4-b0f8-cd1463af9eaa:
+    uuid: 9072188f-354f-4ec4-b0f8-cd1463af9eaa
+    id: image_convert
+    weight: -9
+    data:
+      extension: webp
+  3c1c3769-65c2-4ae1-be30-4e1cfb0282c9:
+    uuid: 3c1c3769-65c2-4ae1-be30-4e1cfb0282c9
+    id: focal_point_scale_and_crop
+    weight: -10
+    data:
+      width: 70
+      height: 70
+      crop_type: focal_point

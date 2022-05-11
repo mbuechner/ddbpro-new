@@ -1,0 +1,23 @@
+uuid: 35366062-90a8-4ee7-bbce-5de2ef9632a7
+langcode: de
+status: true
+dependencies:
+  module:
+    - focal_point
+name: title_m
+label: title-M
+effects:
+  a98890c7-dcc0-4e2d-a1a2-eecb1269f1fd:
+    uuid: a98890c7-dcc0-4e2d-a1a2-eecb1269f1fd
+    id: image_convert
+    weight: -9
+    data:
+      extension: webp
+  8672eac4-e769-4b01-bff0-4a5c993a1400:
+    uuid: 8672eac4-e769-4b01-bff0-4a5c993a1400
+    id: focal_point_scale_and_crop
+    weight: -10
+    data:
+      width: 1200
+      height: 550
+      crop_type: focal_point

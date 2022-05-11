@@ -1,0 +1,32 @@
+id: ddbp_users
+label: DDBP users
+migration_tags:
+  - Drupal 7
+  - Content
+source:
+  plugin: d7_user
+process:
+  # Don't migrate superuser.
+  uid:
+    -
+      plugin: skip_on_value
+      equals: true
+      source: uid
+      method: row
+      value:
+        - 1
+  name: name
+  pass: pass
+  mail: mail
+  created: created
+  access: access
+  login: login
+  status: status
+  init: init
+  # Client requested all migrated users to be assigned the 'Editor' role.
+  roles:
+    plugin: default_value
+    default_value: content_editor
+destination:
+  plugin: entity:user
+  md5_passwords: true

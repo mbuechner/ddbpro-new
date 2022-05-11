@@ -1,0 +1,107 @@
+// fontawesome
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid'; // fas
+@import '~@fortawesome/fontawesome-free/scss/regular'; // far
+@import '~@fortawesome/fontawesome-free/scss/brands'; // fab
+
+// vars
+@import 'setup/variables';
+
+// trio FE assets
+@import '~trio-assets-css/src/scss/import';
+
+// setup
+@import 'setup/fonts';
+@import 'setup/base-styles';
+
+// mixins
+@import 'mixins/autofill';
+@import 'mixins/button-reset';
+@import 'mixins/faw-icon';
+@import 'mixins/focus';
+@import 'mixins/hyphens';
+@import 'mixins/placeholder';
+@import 'mixins/red-line';
+
+// layout
+@import 'layout/layout';
+@import 'layout/container';
+@import 'layout/footer';
+@import 'layout/header';
+@import 'layout/sidebar';
+
+// content
+@import 'content/node';
+@import 'content/teaser';
+@import 'content/aggregator';
+@import 'content/aggregator-teaser';
+@import 'content/article';
+@import 'content/basic-page';
+@import 'content/department-teaser';
+@import 'content/event';
+@import 'content/event-teaser';
+@import 'content/faq';
+@import 'content/front-page';
+@import 'content/glossary';
+@import 'content/overview-teaser';
+
+// user
+@import 'user/user';
+@import 'user/user-teaser';
+
+// media
+@import 'media/media';
+@import 'media/document';
+@import 'media/document-teaser';
+
+// blocks
+
+// elements
+@import 'elements/accordion';
+@import 'elements/button';
+@import 'elements/content-header';
+@import 'elements/faq';
+@import 'elements/footer-copy';
+@import 'elements/form';
+@import 'elements/icons';
+@import 'elements/latest-events';
+@import 'elements/link-cta';
+@import 'elements/links-siblings';
+@import 'elements/node-form';
+@import 'elements/node-table';
+@import 'elements/overlay';
+@import 'elements/related-links';
+@import 'elements/responsive-image';
+@import 'elements/sidebar-right';
+@import 'elements/stable-link';
+@import 'elements/status-messages';
+@import 'elements/tiny-label';
+@import 'elements/tooltip';
+
+// navigation
+@import 'navigation/breadcrumbs';
+@import 'navigation/footer-menu';
+@import 'navigation/main-menu';
+@import 'navigation/meta-menu';
+@import 'navigation/pagination';
+
+// paragraphs
+@import 'paragraphs/paragraph';
+@import 'paragraphs/collage';
+@import 'paragraphs/content-boxes';
+@import 'paragraphs/document';
+@import 'paragraphs/facts';
+@import 'paragraphs/image';
+@import 'paragraphs/link';
+@import 'paragraphs/poster';
+@import 'paragraphs/process';
+@import 'paragraphs/separator';
+@import 'paragraphs/text';
+
+// views
+@import 'views/view';
+@import 'views/view-header';
+@import 'views/view-documents';
+@import 'views/view-events';
+@import 'views/view-faq';

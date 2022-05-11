@@ -1,0 +1,51 @@
+.related-links {
+    // @todo: more specific?
+    @include spacing(margin, huge, top);
+
+    @include bp(xl) {
+        position: sticky;
+    }
+
+    @include target-bps(l xl) {
+        @include spacing(position, large, top);
+        @include spacing(margin, massive, bottom);
+    }
+
+    span {
+        @include text(p2);
+        display: inline-block;
+        color: $color-main;
+        font-weight: font-weight(medium);
+    }
+}
+
+.related-links__link {
+    @include spacing(margin, very-small, top);
+    @include text(p1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $color-grey;
+    font-weight: font-weight(medium);
+    transition: color $duration-fast $easing-default;
+
+    &:hover {
+        color: $color-grey-dark;
+
+        @include bp(l) {
+            &:after {
+                transform: translateX(10px);
+            }
+        }
+    }
+
+    // arrow to the right
+    @include faw-icon(\f061, after) {
+        @include spacing(margin, tiny, left);
+        @include rsa(font-size, 11px, 12px);
+        color: $color-main;
+        font-weight: font-weight(bold);
+        transform: translateX(0);
+        transition: transform $duration-fast $easing-default;
+    }
+}

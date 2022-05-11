@@ -1,0 +1,17 @@
+uuid: 74fc3984-5dff-48e4-809f-f99365125b52
+langcode: de
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Glossar
+type: glossary_term
+description: 'Daten für diesen Inhaltstyp werden aus <a href="http://xtree-ddb.digicult-verbund.de">http://xtree-ddb.digicult-verbund.de</a> importiert.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

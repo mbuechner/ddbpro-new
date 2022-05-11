@@ -1,0 +1,20 @@
+uuid: edc845bf-e8c5-40a5-bf41-84ca66f2e9f5
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_job_title
+  module:
+    - user
+id: user.user.field_job_title
+field_name: field_job_title
+entity_type: user
+bundle: user
+label: Funktionsbezeichnung
+description: "Funktion\_innerhalb der DDB, z. B. „Leiterin der Servicestelle“ oder „Fachstelle Archiv“"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

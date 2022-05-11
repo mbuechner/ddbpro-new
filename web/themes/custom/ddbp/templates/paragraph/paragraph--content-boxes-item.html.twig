@@ -1,0 +1,35 @@
+{% extends "paragraph.html.twig" %}
+
+{% set link = {
+  modifier: 'content-boxes',
+  url: content.field_cta[0]['#url'],
+  text: content.field_cta[0]['#title'],
+  target: content.field_cta[0]['#options']['attributes']['target'] == '_blank',
+} %}
+
+{% set responsiveImage = {
+  images: content.field_image[0].images,
+  lazy: true,
+} %}
+
+{% block paragraphContent %}
+  <div class="content-box">
+    <div class="content-box__image">
+      {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+    </div>
+    <div class="content-box__title">
+      <p class="h4">{{ content.field_headline[0]['#context'].value }}</p>
+    </div>
+    {% if content.field_description[0] %}
+      <div class="content-box__text">
+        <p>{{ content.field_description[0]['#context'].value }}</p>
+      </div>
+    {% endif %}
+    {% if content.field_cta[0] %}
+      <div class="content-box__link">
+        {# text link #}
+        {% include '@ddbp/partials/link.html.twig' with link %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

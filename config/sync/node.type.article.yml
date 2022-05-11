@@ -1,12 +1,12 @@
-uuid: 97025e85-474e-4191-a9a8-ff83f2b407a8
+uuid: b4e94c29-54e9-4f58-85a9-edaf7cd214f9
 langcode: de
 status: true
 dependencies: {  }
 _core:
   default_config_hash: AeW1SEDgb1OTQACAWGhzvMknMYAJlcZu0jljfeU3oso
-name: Artikel
+name: Article
 type: article
-description: 'Benutzen Sie <em>Artikel</em> für zeitkritische Inhalte wie Nachrichten, Pressemeldungen oder Blogeinträge.'
+description: 'Use <em>articles</em> for time-sensitive content like news, press releases or blog posts.'
 help: ''
 new_revision: true
 preview_mode: 1

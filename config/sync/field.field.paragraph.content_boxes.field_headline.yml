@@ -1,0 +1,19 @@
+uuid: f9fef464-e3ca-466b-8db3-a78310dcf4b2
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.content_boxes
+id: paragraph.content_boxes.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: content_boxes
+label: Überschrift
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

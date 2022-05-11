@@ -1,0 +1,55 @@
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'node--' ~ node.bundle|clean_class ~ '-full',
+  'department',
+] %}
+
+{% set image = content.field_image[0] %}
+
+{% set contentHeaderTop = {
+  titleImage: image ? true : false,
+  background: image.images,
+} %}
+
+{% set contentHeaderBottom = {
+  title: label[0]['#context'].value,
+  text: content.field_teaser_text|render|striptags|trim,
+  link: content.field_webform[0] ? true : false,
+} %}
+
+{% set faqId = content.field_faq_category[0]['#plain_text'] %}
+
+{% set formSection = {
+  form: content.field_webform,
+  people: content.field_contact_persons,
+} %}
+
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  {# content header top #}
+  {% include '@ddbp/partials/content-header-top.html.twig' with contentHeaderTop %}
+
+  <div class="row-grid row-grid--sticky">
+    <div class="row-grid__title">
+      <div class="container">
+        <div class="row-grid__title-content">
+          {# content header bottom #}
+          {% include '@ddbp/partials/content-header-bottom.html.twig' with contentHeaderBottom %}
+        </div>
+      </div>
+    </div>
+    <div class="row-grid__content">
+      <div class="node__content">
+        {{ content.field_paragraphs }}
+      </div>
+    </div>
+  </div>
+
+  {# webform section #}
+  {% if content.field_webform[0] %}
+    {% include '@ddbp/partials/node-form.html.twig' with formSection %}
+  {% endif %}
+
+  {# faq section #}
+  {% include '@ddbp/partials/faq.html.twig' with { id: faqId } %}
+</article>

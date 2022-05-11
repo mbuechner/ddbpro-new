@@ -1,0 +1,93 @@
+.copyright {
+    background: $color-main-dark;
+}
+
+.copyright__header {
+    @include spacing(padding, very-small, top bottom);
+    @include text(p1);
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: $color-white;
+    font-weight: font-weight(medium);
+    text-align: left;
+    cursor: pointer;
+
+    @include focus;
+
+    // arrow
+    @include faw-icon(\f078, after) {
+        @include spacing(margin, small, left);
+        @include rsa(font-size, 16px, 20px);
+        display: inline-block;
+        flex-shrink: 0;
+        margin-left: auto;
+        color: $color-white;
+        font-weight: font-weight(bold);
+        transition: transform $duration-fast $easing-default;
+        transform: scaleY(1);
+        pointer-events: none;
+    }
+}
+
+.copyright__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $duration-medium $easing-default;
+}
+
+.copyright__items {
+    @include spacing(padding, very-small, top);
+    @include spacing(padding, large, bottom);
+}
+
+.copyright__item {
+    color: $color-white;
+
+    &.responsive-image__copyright {
+        display: flex;
+        align-items: center;
+    }
+
+    & + & {
+        @include spacing(margin, very-small, top);
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        color: inherit;
+    }
+
+    .responsive-image__copyright-image {
+        @include rsa(height width, 50px, 80px);
+        @include spacing(margin, medium, right);
+        flex-shrink: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .responsive-image__copyright-text {
+        @include text(p1);
+        display: block;
+
+        span {
+            font-weight: font-weight(medium);
+        }
+    }
+}
+
+.copyright--open {
+    .copyright__header {
+        &:after {
+            transform: scaleY(-1);
+        }
+    }
+}

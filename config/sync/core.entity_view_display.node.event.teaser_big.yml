@@ -1,0 +1,68 @@
+uuid: 39f8473a-355a-4591-a961-a450acdf0973
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser_big
+    - field.field.node.event.field_date
+    - field.field.node.event.field_description
+    - field.field.node.event.field_division
+    - field.field.node.event.field_document
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_external_link
+    - field.field.node.event.field_location
+    - field.field.node.event.field_people
+    - node.type.event
+  module:
+    - datetime_range
+    - link
+    - user
+id: node.event.teaser_big
+targetEntityType: node
+bundle: event
+mode: teaser_big
+content:
+  field_date:
+    type: daterange_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: U
+      separator: '-'
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_external_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_location:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_division: true
+  field_document: true
+  field_event_type: true
+  field_people: true
+  langcode: true
+  links: true

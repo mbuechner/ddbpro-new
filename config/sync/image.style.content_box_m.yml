@@ -1,0 +1,23 @@
+uuid: 7b0d14f9-9024-4210-92b0-163448ca6cc0
+langcode: de
+status: true
+dependencies:
+  module:
+    - focal_point
+name: content_box_m
+label: content-box-M
+effects:
+  e5380e83-589b-4024-b898-08a112138495:
+    uuid: e5380e83-589b-4024-b898-08a112138495
+    id: image_convert
+    weight: -8
+    data:
+      extension: webp
+  ed4b3fb8-2768-4fb0-b829-7bf281e8a954:
+    uuid: ed4b3fb8-2768-4fb0-b829-7bf281e8a954
+    id: focal_point_scale_and_crop
+    weight: -9
+    data:
+      width: 350
+      height: 250
+      crop_type: focal_point

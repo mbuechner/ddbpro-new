@@ -1,0 +1,25 @@
+id: ddbp_taxonomy_document_license
+label: D7 TX Lizenzen to D9 TX Document license
+migration_tags:
+  - Drupal 7
+  - Content
+source:
+  plugin: d7_taxonomy_term
+  bundle: lizenzen
+process:
+  tid: tid
+  vid:
+    plugin: default_value
+    default_value: document_license
+  name: name
+  # D7 text field to D9 link field.
+  field_link:
+    plugin: sub_process
+    source: field_uri
+    process:
+      uri: value
+  weight: weight
+  parent: parent
+  langcode: de
+destination:
+  plugin: entity:taxonomy_term

@@ -1,0 +1,35 @@
+uuid: bf19ab3c-edc4-40be-aec4-0517d885285e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_boxes.field_content
+    - field.field.paragraph.content_boxes.field_headline
+    - field.field.paragraph.content_boxes.field_show_as_slider
+    - paragraphs.paragraphs_type.content_boxes
+  module:
+    - entity_reference_revisions
+id: paragraph.content_boxes.default
+targetEntityType: paragraph
+bundle: content_boxes
+mode: default
+content:
+  field_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_show_as_slider: true

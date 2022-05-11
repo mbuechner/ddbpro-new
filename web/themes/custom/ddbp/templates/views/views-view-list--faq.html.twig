@@ -1,0 +1,30 @@
+{% if attributes -%}
+  <div{{ attributes.addClass('accordion-wrapper').setAttribute('id', title|render|striptags|trim|clean_class) }}>
+{% endif %}
+  {% if title %}
+    <h2>{{ title }}</h2>
+    <div class="accordion__top">
+      <button class="accordion__open-all">
+        <span class="open">
+          {{ 'Alle aufklappen' | t }}
+        </span>
+        <span class="close">
+          {{ 'Alle einklappen' | t }}
+        </span>
+      </button>
+    </div>
+  {% endif %}
+
+  <{{ list.type }}{{ list.attributes }}>
+
+    {% for row in rows %}
+      <li{{ row.attributes }}>
+        {{- row.content -}}
+      </li>
+    {% endfor %}
+
+  </{{ list.type }}>
+
+{% if attributes -%}
+  </div>
+{% endif %}

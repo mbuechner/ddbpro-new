@@ -1,0 +1,50 @@
+// on CT Glossary detail
+[data-tooltip] {
+    position: relative;
+
+    &:hover {
+        &:before,
+        &:after {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &:before,
+    &:after {
+        position: absolute;
+        opacity: 0;
+        transition-duration: $duration-fast;
+        transition-property: opacity, visibility;
+        transition-timing-function: $easing-default;
+        visibility: hidden;
+    }
+
+    // text
+    &:before {
+        @include spacing(padding, very-small, top bottom);
+        @include spacing(padding, tiny, right left);
+        @include spacing(margin, tiny, bottom);
+        @include text(p2);
+        content: attr(data-tooltip);
+        bottom: 100%;
+        border-radius: 5px;
+        background: $color-grey;
+        color: $color-white;
+        text-align: center;
+    }
+
+    // arrow
+    &:after {
+        @include spacing(position, tiny, top, negative);
+        content: '';
+        left: 50%;
+        height: 0;
+        width: 0;
+        border: solid transparent;
+        border-top-color: $color-grey;
+        border-width: 5px;
+        margin-left: -5px;
+        pointer-events: none;
+    }
+}

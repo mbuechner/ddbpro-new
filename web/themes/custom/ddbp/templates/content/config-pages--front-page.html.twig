@@ -1,0 +1,224 @@
+{% set classes = [
+  'front-page',
+] %}
+
+{% set latestEvents = get_latest_events() %}
+
+<div{{ attributes.addClass(classes) }}>
+  {# {{ content }} #}
+
+  {# hero #}
+  <div class="hero">
+    <div class="hero__gallery">
+      <div class="gallery__row">
+        <div class="gallery__column">
+          {% set gallery = content.field_gallery_column_1 %}
+          {% for key, image in gallery if key matches '/^\\d+$/' %}
+            {% set responsiveImage = { images: image.images } %}
+            <div class="grid__column-image">
+              {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="gallery__column">
+          {% set gallery = content.field_gallery_column_2 %}
+          {% for key, image in gallery if key matches '/^\\d+$/' %}
+            {% set responsiveImage = { images: image.images } %}
+            <div class="grid__column-image">
+              {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="gallery__column">
+          {% set gallery = content.field_gallery_column_3 %}
+          {% for key, image in gallery if key matches '/^\\d+$/' %}
+            {% set responsiveImage = { images: image.images } %}
+            <div class="grid__column-image">
+              {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="gallery__column">
+          {% set gallery = content.field_gallery_column_4 %}
+          {% for key, image in gallery if key matches '/^\\d+$/' %}
+            {% set responsiveImage = { images: image.images } %}
+            <div class="grid__column-image">
+              {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      {# block on the top left #}
+      <div class="hero__content-top">
+        <div class="row">
+          <div class="column">
+            <h1>{{ content.field_headline[0]['#context'].value }}</h1>
+            <p class="h3">
+              {{ content.field_subheadline[0]['#context'].value }}
+            </p>
+            {% set linkTitle = {
+              url: content.field_title_cta[0]['#url'],
+              text: content.field_title_cta[0]['#title'],
+              type: 'primary',
+            } %}
+            {% include '@ddbp/partials/link-button.html.twig' with { link: linkTitle } %}
+          </div>
+        </div>
+      </div>
+
+      {# block on the bottom right #}
+      {# participation #}
+      {% set linkPrimary = {
+        url: content.field_participation_cta_left[0]['#url'],
+        text: content.field_participation_cta_left[0]['#title'],
+        type: 'primary',
+      } %}
+
+      {% set linkSecondary = {
+        url: content.field_participation_cta_right[0]['#url'],
+        text: content.field_participation_cta_right[0]['#title'],
+        type: 'secondary',
+        bg: 'light',
+      } %}
+
+      <div class="hero__content-bottom">
+        <div class="row">
+          <div class="column">
+            <div class="participation">
+              <div class="tiny-label">
+                {{ 'Teilnehmen' | t }}
+              </div>
+              <h2>{{ content.field_participation_headline[0]['#context'].value }}</h2>
+              {{ content.field_participation_description }}
+              <div class="participation__steps">
+                <ul>
+                  {% for key, step in content.field_participation_steps if key matches '/^\\d+$/' %}
+                    <li class="participation__step h4">
+                      <span class="participation__step-icon">
+                        {{ key + 1 }}
+                      </span>
+                      <span class="participation__step-text">
+                        {{ step['#context'].value }}
+                      </span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="participation__links links-siblings">
+                {% if content.field_participation_cta_left[0] %}
+                  {% include '@ddbp/partials/link-button.html.twig' with { link: linkPrimary } %}
+                {% endif %}
+                {% if content.field_participation_cta_right[0] %}
+                  {% include '@ddbp/partials/link-button.html.twig' with { link: linkSecondary } %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# ddb studio #}
+  {% set linkPrimary = {
+    url: content.field_studio_cta_left[0]['#url'],
+    text: content.field_studio_cta_left[0]['#title'],
+    type: 'primary',
+  } %}
+
+  {% set linkSecondary = {
+    url: content.field_studio_cta_right[0]['#url'],
+    text: content.field_studio_cta_right[0]['#title'],
+    type: 'secondary',
+    bg: 'dark',
+  } %}
+
+  <div class="ddb-studio">
+    {% set responsiveImage = { images: content.field_studio_image[0].images } %}
+    <div class="ddb-studio__background-image">
+      {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="column column--span-2">
+          <div class="tiny-label">
+            {{ 'DDBstudio' | t }}
+          </div>
+        </div>
+        <div class="column column--span-10">
+          <div class="ddb-studio__content">
+            <h2>{{ content.field_studio_headline[0]['#context'].value }}</h2>
+            <p class="h4">
+              {{ content.field_studio_description[0]['#context'].value }}
+            </p>
+            <div class="ddb-studio__links links-siblings">
+              {% if content.field_studio_cta_left[0] %}
+                {% include '@ddbp/partials/link-button.html.twig' with { link: linkPrimary } %}
+              {% endif %}
+              {% if content.field_studio_cta_right[0] %}
+                {% include '@ddbp/partials/link-button.html.twig' with { link: linkSecondary } %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# departments #}
+  {% set departments = get_nodes('department') %}
+  {% if departments|length %}
+    <div class="departments">
+      <div class="container">
+        <div class="row">
+          <div class="column">
+            <h2>{{ 'Fachstellen' | t }}</h2>
+            <p class="h4">
+              {{ 'Unsere Fachstellen unterstützen und beraten Sie von der ersten Kontaktaufnahme bis zur finalen Datenlieferung.' | t }}
+            </p>
+            <div class="departments__departments">
+              {{ departments }}
+            </div>
+          </div>
+          <div class="column column--image">
+            <div class="departments__images">
+              {{ departments }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {# latest events #}
+  {% set linkNews = {
+    url: path('view.latest_events.latest_events'),
+    text: 'Alle anzeigen' | t,
+    type: 'primary',
+  } %}
+
+  {% if latestEvents|length %}
+    <div class="container">
+      <div class="latest-events">
+        <div class="latest-events__title">
+          <h2>{{ 'Termine & Veranstalltungen' | t }}</h2>
+        </div>
+        <div class="latest-events__all">
+          {% include '@ddbp/partials/link-button.html.twig' with { link: linkNews } %}
+        </div>
+        <div class="latest-events__events">
+          <div class="row">
+            {% for event in latestEvents %}
+              <div>
+                {{ event }}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>

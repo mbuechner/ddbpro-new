@@ -1,0 +1,88 @@
+uuid: 1f4f94bd-1555-4db1-a5a9-747486dbb042
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.teaser_mini
+    - field.field.user.user.field_academic_degree
+    - field.field.user.user.field_address
+    - field.field.user.user.field_division
+    - field.field.user.user.field_dont_show_in_overview
+    - field.field.user.user.field_firstname
+    - field.field.user.user.field_institution
+    - field.field.user.user.field_job_title
+    - field.field.user.user.field_lastname
+    - field.field.user.user.field_name_suffix
+    - field.field.user.user.field_phone
+    - field.field.user.user.field_user_image
+  module:
+    - ddbp_responsive_image
+    - user
+_core:
+  default_config_hash: E1qmUI2SlozLlJ308jfMMFKT67l1p6PywE2LTRbeYS4
+id: user.user.teaser_mini
+targetEntityType: user
+bundle: user
+mode: teaser_mini
+content:
+  field_academic_degree:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_firstname:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_job_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_lastname:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_name_suffix:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_user_image:
+    type: image_responsive_meta
+    label: hidden
+    settings:
+      image_style_0px: scale_small_xs
+      image_style_421px: scale_small_m
+      image_style_701px: scale_small_m
+      image_style_1181px: scale_small_xl
+      image_style_1481px: scale_small_xl
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  field_address: true
+  field_division: true
+  field_dont_show_in_overview: true
+  field_institution: true
+  field_phone: true
+  langcode: true
+  masquerade: true
+  member_for: true

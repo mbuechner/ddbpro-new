@@ -1,0 +1,11 @@
+uuid: cd2f4255-b4f0-4528-b253-51588128615d
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.content_category
+id: taxonomy_term.content_category
+target_entity_type_id: taxonomy_term
+target_bundle: content_category
+default_langcode: site_default
+language_alterable: false

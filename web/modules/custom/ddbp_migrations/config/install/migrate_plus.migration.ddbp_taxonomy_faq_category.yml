@@ -1,0 +1,19 @@
+id: ddbp_taxonomy_faq_category
+label: D7 TX FAQ to D9 TX FAQ category
+migration_tags:
+  - Drupal 7
+  - Content
+source:
+  plugin: d7_taxonomy_term
+  bundle: faq
+process:
+  tid: tid
+  vid:
+    plugin: default_value
+    default_value: faq_category
+  name: name
+  weight: weight
+  parent: parent
+  langcode: de
+destination:
+  plugin: entity:taxonomy_term

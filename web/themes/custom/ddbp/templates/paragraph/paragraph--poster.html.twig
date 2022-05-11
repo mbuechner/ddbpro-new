@@ -1,0 +1,48 @@
+{% extends "paragraph.html.twig" %}
+
+{% block paragraphContent %}
+  {% set linkPrimary = {
+    url: content.field_main_cta[0]['#url'],
+    text: content.field_main_cta[0]['#title'],
+    target: content.field_main_cta[0]['#options']['attributes']['target'] == '_blank',
+    type: 'primary',
+  } %}
+
+  {% set linkSecondary = {
+    url: content.field_secondary_cta[0]['#url'],
+    text: content.field_secondary_cta[0]['#title'],
+    target: content.field_secondary_cta[0]['#options']['attributes']['target'] == '_blank',
+    type: 'secondary',
+    bg: 'dark',
+  } %}
+
+  <div class="poster__background">
+    {% set responsiveImage = {
+      images: content.field_image[0].images,
+      lazy: true,
+    } %}
+    {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+  </div>
+  <div class="container">
+    <div class="poster__content">
+      <h2 class="poster__headline">
+        {{ content.field_headline[0]['#context'].value }}
+      </h2>
+      <div class="poster__text">
+        <p class="h4">
+          {{ content.field_description|render|striptags('<br><strong>')|trim }}
+        </p>
+      </div>
+      {% if content.field_main_cta[0] or content.field_secondary_cta[0] %}
+        <div class="poster__links links-siblings">
+          {% if content.field_main_cta[0] %}
+            {% include '@ddbp/partials/link-button.html.twig' with { link: linkPrimary } %}
+          {% endif %}
+          {% if content.field_secondary_cta[0] %}
+            {% include '@ddbp/partials/link-button.html.twig' with { link: linkSecondary } %}
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

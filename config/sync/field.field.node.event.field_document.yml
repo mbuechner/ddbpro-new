@@ -1,0 +1,29 @@
+uuid: 26f4f7dc-bd49-406d-939e-52d5f0c0d2f6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_document
+    - media.type.document
+    - node.type.event
+id: node.event.field_document
+field_name: field_document
+entity_type: node
+bundle: event
+label: Mediendokument
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      document: document
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

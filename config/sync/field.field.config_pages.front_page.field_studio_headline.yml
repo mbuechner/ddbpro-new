@@ -1,0 +1,19 @@
+uuid: 40e50d99-de8d-44a7-aa7a-e1a8f664147b
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.front_page
+    - field.storage.config_pages.field_studio_headline
+id: config_pages.front_page.field_studio_headline
+field_name: field_studio_headline
+entity_type: config_pages
+bundle: front_page
+label: Überschrift
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,93 @@
+uuid: da7755d1-b30b-4e47-b5c2-3d170d4433e5
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.aggregator_portrait.field_cultural_sector
+    - field.field.node.aggregator_portrait.field_facts
+    - field.field.node.aggregator_portrait.field_image
+    - field.field.node.aggregator_portrait.field_link_ddb_portal
+    - field.field.node.aggregator_portrait.field_link_website
+    - field.field.node.aggregator_portrait.field_region
+    - field.field.node.aggregator_portrait.field_teaser_text
+    - field.field.node.aggregator_portrait.field_text
+    - node.type.aggregator_portrait
+  module:
+    - ddbp_tools
+    - link
+    - text
+    - user
+id: node.aggregator_portrait.default
+targetEntityType: node
+bundle: aggregator_portrait
+mode: default
+content:
+  field_cultural_sector:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_facts:
+    type: fact_item_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_link_ddb_portal:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_link_website:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_region:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_image: true
+  langcode: true

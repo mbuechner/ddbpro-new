@@ -1,0 +1,36 @@
+uuid: cf809fdc-2c6c-4872-8f1d-47cc0690f006
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.document_license.field_link
+    - taxonomy.vocabulary.document_license
+  module:
+    - link
+    - text
+id: taxonomy_term.document_license.default
+targetEntityType: taxonomy_term
+bundle: document_license
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,21 @@
+uuid: eb711179-1a1c-4bff-89cc-710a71f69d78
+langcode: de
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_academic_degree
+field_name: field_academic_degree
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

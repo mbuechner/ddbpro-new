@@ -1,0 +1,24 @@
+id: ddbp_media_logo
+migration_tags:
+  - Content
+  - 'Drupal 7'
+migration_group: ddbp_content
+label: 'Logo to MT media'
+source:
+  plugin: d7_node
+  node_type: aggregator
+process:
+  name: title
+  field_media_image/target_id:
+    plugin: migration_lookup
+    migration: ddbp_files
+    source: field_foto/0/fid
+  uid:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:media'
+  default_bundle: image
+migration_dependencies:
+  required:
+    - ddbp_files

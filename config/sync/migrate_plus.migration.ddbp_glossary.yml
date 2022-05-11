@@ -1,0 +1,78 @@
+uuid: 1c288faf-02ab-41ca-84c4-c9d38223fd0f
+langcode: de
+status: true
+dependencies: {  }
+id: ddbp_glossary
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Content
+migration_group: ddbp_content
+label: 'DDBP Glossary'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: xml
+  urls:
+    - 'http://xtree-ddb.digicult-verbund.de/scripts/getGlossarySimple.php?uriVoc=http://ddb.vocnet.org/glossar&format=xml&status=approved&processingStatus=closed'
+  item_selector: /vocItems/vocItem
+  constants:
+    uri_path: 'http://ddb.vocnet.org/glossar'
+  fields:
+    -
+      name: id
+      label: 'Source ID'
+      selector: '@id'
+    -
+      name: name
+      label: 'Source name'
+      selector: 'terms/term[@labelRole="pref" and @lang="de"]'
+    -
+      name: note
+      label: 'Source note'
+      selector: notes/note
+    -
+      name: alternatives
+      label: 'Source alternative names'
+      selector: 'terms/term[@labelRole="alt" and @lang="de"]'
+    -
+      name: last_modified
+      label: 'Source modification date'
+      selector: 'recordMetadataDate[@type="modification date"]'
+  ids:
+    id:
+      type: string
+process:
+  nid:
+    plugin: entity_lookup
+    source: name
+    entity_type: node
+    bundle_key: type
+    bundle: glossary_term
+    value_key: title
+    ignore_case: true
+    access_check: false
+  title: name
+  body/value:
+    plugin: transform_links
+    source: note
+  body/format:
+    plugin: default_value
+    default_value: basic_html
+  field_uri:
+    plugin: concat
+    delimiter: /
+    source:
+      - constants/uri_path
+      - id
+  field_alternatives: alternatives
+  field_last_modified: last_modified
+destination:
+  plugin: 'entity:node'
+  default_bundle: glossary_term
+  overwrite_properties:
+    - body/value
+    - field_alternatives
+    - field_last_modified
+migration_dependencies: null

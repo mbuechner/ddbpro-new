@@ -1,0 +1,20 @@
+uuid: fae771aa-49cd-4bf3-baa2-05d04f4d20cb
+langcode: de
+status: true
+dependencies:
+  module:
+    - ddbp_tools
+  theme:
+    - ddbp
+id: aggregatorportraitteasers
+theme: ddbp
+region: hidden
+weight: 0
+provider: null
+plugin: aggregators_block
+settings:
+  id: aggregators_block
+  label: 'Aggregator portrait teasers'
+  label_display: '0'
+  provider: ddbp_tools
+visibility: {  }

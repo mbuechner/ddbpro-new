@@ -1,13 +1,12 @@
-uuid: 5e501251-20a0-4ba8-9b6f-fb62cac00b2c
+uuid: aef3a74a-2619-48c4-9e3a-89c3d1e9b5e0
 langcode: de
 status: true
 dependencies:
   config:
     - filter.format.restricted_html
   module:
-    - comment
-    - contact
     - filter
+    - media
     - search
     - system
 _core:
@@ -17,8 +16,8 @@ label: Gast
 weight: 0
 is_admin: false
 permissions:
-  - 'access comments'
   - 'access content'
-  - 'access site-wide contact form'
+  - 'access user profiles'
   - 'search content'
   - 'use text format restricted_html'
+  - 'view media'

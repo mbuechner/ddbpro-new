@@ -1,0 +1,140 @@
+.overview-teaser {
+    a {
+        @include rsa(min-height, 240px, 400px);
+        @include border-radius();
+        height: 100%;
+        border: 1px solid $color-darken;
+        transition: box-shadow $duration-fast $easing-default;
+
+        @include bp(l) {
+            height: 100%;
+
+            &:hover {
+                .overview-teaser__text p {
+                    color: $color-grey;
+                }
+            }
+        }
+
+        @include target-bps(l xl) {
+            &:hover {
+                @include shadow(box-hover);
+            }
+        }
+    }
+}
+
+// if it has image
+.overview-teaser--image {
+    a {
+        @include bp(l) {
+            &:hover {
+                .overview-teaser__image {
+                    &:before {
+                        background: rgba($color-black, 0.4);
+                    }
+                }
+
+                .overview-teaser__text p {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+
+    .overview-teaser__title,
+    .overview-teaser__text {
+        &:before {
+            @include fit();
+            content: '';
+        }
+    }
+}
+
+.overview-teaser__image {
+    &:before {
+        background: rgba($color-black, 0.2);
+        transition: background $duration-fast $easing-default;
+    }
+}
+
+.overview-teaser__title {
+    @include spacing(padding, small);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-row: 1;
+
+    h3 {
+        position: relative;
+        color: $color-grey-dark;
+    }
+
+    // if it has image
+    .overview-teaser--image & {
+        &:before {
+            background: linear-gradient(
+                0deg,
+                rgba($color-black, 0) 0%,
+                rgba($color-black, 0.6) 100%
+            );
+        }
+    }
+}
+
+.overview-teaser__text {
+    @include spacing(padding, small);
+    position: relative;
+    align-self: end;
+    grid-column: 1;
+    grid-row: 2;
+
+    p {
+        position: relative;
+        color: $color-grey-light;
+        font-weight: font-weight(medium);
+        transition: color $duration-fast $easing-default;
+    }
+
+    // if it has image
+    .overview-teaser--image & {
+        &:before {
+            background: linear-gradient(
+                0deg,
+                rgba($color-black, 0.6) 0%,
+                rgba($color-black, 0) 100%
+            );
+        }
+
+        p {
+            color: $color-white;
+        }
+    }
+}
+
+// take care of numbering
+.view-provide-data,
+.view-use-data {
+    .view-content {
+        counter-reset: weight-counter;
+    }
+
+    .overview-teaser {
+        counter-increment: weight-counter;
+        background: $color-white;
+    }
+
+    .overview-teaser__title {
+        // number
+        &:after {
+            @include spacing(margin, very-small, left);
+            @include text(h4);
+            content: counters(weight-counter, '.');
+            position: relative;
+            flex-shrink: 0;
+            color: $color-main;
+            font-weight: font-weight(semi-bold);
+        }
+    }
+}

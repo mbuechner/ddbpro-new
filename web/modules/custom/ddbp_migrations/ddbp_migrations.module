@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Contains ddbp_migrations.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ddbp_migrations_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ddbp_migrations module.
+    case 'help.page.ddbp_migrations':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Migrates data from different sources into D9.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -1,4 +1,4 @@
-uuid: b17a8022-8144-4de2-91f8-784119b5df45
+uuid: b7d81a3d-b347-4f4b-a08a-130f99e13312
 langcode: de
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: DyypzTfThX10FFQw-399qPfEbLLyrhXgQrKPVsmAoJ4
 id: user_block_user_action
-label: 'Ausgewählte Benutzer sperren'
+label: 'Block the selected user(s)'
 type: user
 plugin: user_block_user_action
 configuration: {  }

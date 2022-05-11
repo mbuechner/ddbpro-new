@@ -1,0 +1,17 @@
+uuid: dd8d66b7-e18f-4f1c-a67f-a10ceb81515c
+langcode: en
+status: true
+dependencies: {  }
+id: front_page
+label: 'Front page'
+token: true
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/content/frontpage
+  weight: 0
+  description: ''

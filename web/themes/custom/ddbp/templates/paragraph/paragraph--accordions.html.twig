@@ -1,0 +1,17 @@
+{% extends "paragraph.html.twig" %}
+
+{% block paragraphContent %}
+  <div class="accordion-wrapper">
+    <div class="accordion__top">
+      <button class="accordion__open-all">
+        <span class="open">
+          {{ 'Alle aufklappen' | t }}
+        </span>
+        <span class="close">
+          {{ 'Alle einklappen' | t }}
+        </span>
+      </button>
+    </div>
+    {{ content }}
+  </div>
+{% endblock %}

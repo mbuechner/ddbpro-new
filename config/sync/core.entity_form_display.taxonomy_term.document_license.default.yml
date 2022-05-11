@@ -1,0 +1,41 @@
+uuid: b21c3e9a-a5e2-4294-b7df-e0e74f287d9d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.document_license.field_link
+    - taxonomy.vocabulary.document_license
+  module:
+    - link
+id: taxonomy_term.document_license.default
+targetEntityType: taxonomy_term
+bundle: document_license
+mode: default
+content:
+  field_link:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

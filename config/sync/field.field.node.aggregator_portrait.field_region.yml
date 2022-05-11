@@ -1,0 +1,29 @@
+uuid: 1adfa022-83a1-4f5c-9d5b-d99ac1c9e6eb
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_region
+    - node.type.aggregator_portrait
+    - taxonomy.vocabulary.region
+id: node.aggregator_portrait.field_region
+field_name: field_region
+entity_type: node
+bundle: aggregator_portrait
+label: Bundesland
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      region: region
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

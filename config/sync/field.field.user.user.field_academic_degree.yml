@@ -1,0 +1,20 @@
+uuid: 8ff57288-1e9a-41e9-8592-c15e42b72a0a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_academic_degree
+  module:
+    - user
+id: user.user.field_academic_degree
+field_name: field_academic_degree
+entity_type: user
+bundle: user
+label: 'Akademischer Titel'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,25 @@
+uuid: 4d11e41f-2929-4da8-9f99-0767c573c00c
+langcode: de
+status: true
+dependencies:
+  module:
+    - language
+    - user
+id: user
+label: User
+type: 'canonical_entities:user'
+pattern: 'ueber-uns/ansprechpartner-team/[user:field_firstname]-[user:field_lastname]'
+selection_criteria:
+  06b00bdb-0124-454c-93a3-e7de5f5ab40c:
+    id: language
+    negate: false
+    uuid: 06b00bdb-0124-454c-93a3-e7de5f5ab40c
+    context_mapping:
+      language: 'user:langcode:language'
+    langcodes:
+      de: de
+selection_logic: and
+weight: -5
+relationships:
+  'user:langcode:language':
+    label: Language

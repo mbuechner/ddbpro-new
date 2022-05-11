@@ -1,0 +1,19 @@
+uuid: f6346b21-a2c1-4b31-850e-67ecf4a37a0e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.process_step
+id: paragraph.process_step.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: process_step
+label: Text
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

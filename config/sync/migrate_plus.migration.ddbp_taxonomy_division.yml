@@ -1,0 +1,28 @@
+uuid: c4ceba18-1017-4cdc-b271-2922a7a89170
+langcode: de
+status: true
+dependencies: {  }
+id: ddbp_taxonomy_division
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: null
+label: 'D7 TX Abteilungen to D9 TX Division'
+source:
+  plugin: d7_taxonomy_term
+  bundle: abteilungen
+process:
+  tid: tid
+  vid:
+    plugin: default_value
+    default_value: division
+  name: name
+  weight: weight
+  parent: parent
+  langcode: de
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies: null

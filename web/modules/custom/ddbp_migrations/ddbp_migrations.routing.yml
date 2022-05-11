@@ -1,0 +1,8 @@
+ddbp_migrations.import_glossary:
+  path: '/admin/content/import-glossary'
+  defaults:
+    _controller: '\Drupal\ddbp_migrations\Controller\MigrationsController::importGlossary'
+    _title: 'Import DDB glossary'
+  requirements:
+    _permission: 'administer site configuration'
+    _csrf_token: 'TRUE'

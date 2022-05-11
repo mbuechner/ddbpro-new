@@ -1,0 +1,8 @@
+.paragraph--separator {
+    @include spacing(padding, large, top);
+
+    .paragraph-inner {
+        @include spacing(margin, massive, bottom);
+        border-top: 1px solid $color-darken;
+    }
+}

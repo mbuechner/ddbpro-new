@@ -1,0 +1,23 @@
+uuid: 675f787d-0a32-4b70-b981-60b18d0794f7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_on_about_us
+    - node.type.overview_teaser
+id: node.overview_teaser.field_show_on_about_us
+field_name: field_show_on_about_us
+entity_type: node
+bundle: overview_teaser
+label: 'Anzeigen unter "Über uns"'
+description: 'Dieser Teaser wird auf der Seite "Über uns" angezeigt'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

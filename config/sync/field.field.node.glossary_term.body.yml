@@ -1,0 +1,23 @@
+uuid: 64c3dcd8-4d44-4afa-a433-adbc94457e80
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.glossary_term
+  module:
+    - text
+id: node.glossary_term.body
+field_name: body
+entity_type: node
+bundle: glossary_term
+label: Begriffsdefinition
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

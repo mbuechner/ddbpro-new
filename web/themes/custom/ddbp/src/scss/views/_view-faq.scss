@@ -1,0 +1,73 @@
+.view-faq {
+    @include spacing(padding, large, bottom);
+
+    .view-content__item {
+        @include spacing(margin, very-large, bottom);
+        width: 100%;
+        max-width: 100%;
+
+        @include bp(xl) {
+            max-width: $column-fixed-content;
+            padding-right: 3.15vw;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// table of content
+.view-faq__toc {
+    @include spacing(margin, massive, bottom);
+
+    @include bp(l) {
+        position: sticky;
+    }
+
+    @include target-bps(l xl) {
+        @include spacing(position, large, top);
+        @include spacing(margin, massive, top);
+        @include spacing(margin, very-large, bottom);
+    }
+}
+
+.view-faq__toc-title {
+    @include spacing(margin, tiny, bottom);
+    @include text(p2);
+    color: $color-main;
+}
+
+.view-faq__toc-link {
+    @include spacing(padding, tiny, top bottom);
+    @include text(p1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: $color-grey-light;
+    transition: color $duration-fast $easing-default;
+
+    @include bp(l) {
+        &:hover {
+            color: $color-grey;
+        }
+    }
+
+    @include faw-icon(\f149, after) {
+        @include spacing(margin, tiny, left);
+        @include rsa(font-size, 11px, 12px);
+        font-weight: font-weight(bold);
+        color: $color-main;
+    }
+}
+
+.view-faq__toc-link--active {
+    color: $color-grey;
+    font-weight: font-weight(medium);
+
+    &:after {
+        @include rsa(font-size, 7px, 8px);
+        content: '\f111';
+    }
+}

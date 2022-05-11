@@ -1,4 +1,4 @@
-uuid: 250ff23f-1caa-4234-86bf-f1346db761d7
+uuid: a7875555-6f54-449b-8d1e-5d2c120e906a
 langcode: de
 status: false
 dependencies:
@@ -7,6 +7,6 @@ dependencies:
 _core:
   default_config_hash: 6GCOQ-jP2RbdbHA5YWQ6bT8CfGbqrBYKOSC_XY4E3ZM
 id: node.search_result
-label: 'Suchbegriff in den Suchergebnissen hervorheben.'
+label: 'Search result highlighting input'
 targetEntityType: node
 cache: true

@@ -1,0 +1,14 @@
+{% set classes = [
+  'paragraph',
+  'paragraph--' ~ paragraph.bundle|clean_class,
+] %}
+
+{% block paragraph %}
+  <div {{ attributes.addClass(classes) }}>
+    <div class="paragraph-inner">
+      {% block paragraphContent %}
+        {{ content }}
+      {% endblock %}
+    </div>
+  </div>
+{% endblock %}

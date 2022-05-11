@@ -1,0 +1,10 @@
+uuid: fe184d79-98de-403d-bceb-3a0eb6d76b0b
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+id: media.teaser_big
+label: 'Teaser big'
+targetEntityType: media
+cache: true

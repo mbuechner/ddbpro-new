@@ -1,0 +1,61 @@
+uuid: d4e79a1f-5c3b-4303-8827-fca2ebbad2ed
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.overview_teaser.field_image
+    - field.field.node.overview_teaser.field_link
+    - field.field.node.overview_teaser.field_show_on_about_us
+    - field.field.node.overview_teaser.field_show_on_provide_data
+    - field.field.node.overview_teaser.field_show_on_use_data
+    - field.field.node.overview_teaser.field_teaser_text
+    - field.field.node.overview_teaser.field_weight
+    - node.type.overview_teaser
+  module:
+    - ddbp_responsive_image
+    - link
+    - user
+id: node.overview_teaser.teaser
+targetEntityType: node
+bundle: overview_teaser
+mode: teaser
+content:
+  field_image:
+    type: image_responsive_meta
+    label: hidden
+    settings:
+      image_style_0px: overview_teaser_xs
+      image_style_421px: overview_teaser_m
+      image_style_701px: overview_teaser_m
+      image_style_1181px: overview_teaser_xl
+      image_style_1481px: overview_teaser_xl
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_show_on_about_us: true
+  field_show_on_provide_data: true
+  field_show_on_use_data: true
+  field_weight: true
+  langcode: true
+  links: true

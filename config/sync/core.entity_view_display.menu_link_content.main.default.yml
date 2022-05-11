@@ -1,0 +1,33 @@
+uuid: af7e08e3-b66a-4c4f-aa04-fd0fba92224c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.main.field_icon
+    - system.menu.main
+  module:
+    - ddbp_responsive_image
+id: menu_link_content.main.default
+targetEntityType: menu_link_content
+bundle: main
+mode: default
+content:
+  children:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_icon:
+    type: image_responsive_meta
+    label: hidden
+    settings:
+      image_style_0px: square_xs
+      image_style_421px: square_m
+      image_style_701px: square_m
+      image_style_1181px: square_xl
+      image_style_1481px: square_xl
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true

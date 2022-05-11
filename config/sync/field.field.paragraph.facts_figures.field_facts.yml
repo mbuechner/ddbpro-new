@@ -1,0 +1,70 @@
+uuid: fff2d76e-c363-41fe-899e-9662d191f39d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_facts
+    - paragraphs.paragraphs_type.fact
+    - paragraphs.paragraphs_type.facts_figures
+  module:
+    - entity_reference_revisions
+id: paragraph.facts_figures.field_facts
+field_name: field_facts
+entity_type: paragraph
+bundle: facts_figures
+label: Fakten
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      fact: fact
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 15
+        enabled: false
+      accordions:
+        weight: 16
+        enabled: false
+      block_reference:
+        weight: 17
+        enabled: false
+      collage:
+        weight: 18
+        enabled: false
+      content_boxes:
+        weight: 19
+        enabled: false
+      content_boxes_item:
+        weight: 20
+        enabled: false
+      document:
+        weight: 21
+        enabled: false
+      fact:
+        weight: 22
+        enabled: true
+      facts_figures:
+        weight: 23
+        enabled: false
+      image:
+        weight: 24
+        enabled: false
+      link:
+        weight: 25
+        enabled: false
+      poster:
+        weight: 26
+        enabled: false
+      separator:
+        weight: 27
+        enabled: false
+      text:
+        weight: 28
+        enabled: false
+field_type: entity_reference_revisions

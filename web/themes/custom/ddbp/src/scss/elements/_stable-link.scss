@@ -1,0 +1,191 @@
+.stable-link {
+    @include spacing(margin, small, left);
+    flex-shrink: 0;
+    cursor: pointer;
+
+    @include bp(l) {
+        position: relative;
+    }
+
+    .content-header--light & {
+        .stable-link__toggle {
+            color: $color-white;
+        }
+    }
+}
+
+.stable-link__toggle {
+    @include spacing(padding, very-small);
+    @include translate(x, very-small);
+    color: $color-grey-light;
+
+    span {
+        color: inherit;
+        font-size: 12px;
+    }
+}
+
+.stable-link__tooltip {
+    position: absolute;
+    top: 100%;
+    right: -18px;
+    left: 0;
+    display: flex;
+    opacity: 0;
+    transition-duration: $duration-medium;
+    transition-property: opacity, visibility;
+    transition-timing-function: $easing-default;
+    visibility: hidden;
+
+    @include bp(l) {
+        right: -22px;
+        left: auto;
+        width: max-content;
+    }
+
+    input[type='text'] {
+        border-right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+}
+
+.stable-link__tooltip-content-wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    flex: 1;
+    border-radius: 3px 0 0 3px;
+    background: $color-bg;
+
+    &:after,
+    input {
+        grid-area: 1 / 2;
+        grid-column: 1 / -1;
+        height: 100%;
+        width: auto;
+        resize: none;
+    }
+
+    // mimic the input styling
+    // we need it for width
+    &:after {
+        @include rsa(height, 50px, 57px);
+        @include spacing(padding, very-small, right left);
+        @include text(p1);
+        content: attr(data-value) ' ';
+        visibility: hidden;
+        white-space: pre-wrap;
+    }
+}
+
+.stable-link__tooltip-content {
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.stable-link__tooltip-copy {
+    @include rsa(width, 50px, 60px);
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border: 1px solid $color-darken;
+    border-radius: 0 3px 3px 0;
+    background: $color-bg;
+
+    // arrow
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        height: 0;
+        width: 0;
+        border: solid transparent;
+        pointer-events: none;
+    }
+
+    // arrow border
+    &:before {
+        border-bottom-color: $color-darken;
+        border-width: 7px;
+        margin-left: -7px;
+    }
+
+    // arrow background
+    &:after {
+        border-bottom-color: $color-bg;
+        border-width: 5px;
+        margin-left: -5px;
+    }
+
+    i {
+        @include rsa(font-size, 12px, 14px);
+        color: $color-main;
+    }
+
+    // 'copied' tooltip
+    span {
+        @include spacing(padding, tiny);
+        @include spacing(margin, tiny, top);
+        @include text(p2);
+        position: absolute;
+        top: 100%;
+        display: inline-block;
+        width: max-content;
+        border-radius: 5px;
+        background: $color-grey;
+        color: $color-white;
+        opacity: 0;
+        transition-duration: $duration-fast;
+        transition-property: opacity, visibility;
+        transition-timing-function: $easing-default;
+        visibility: hidden;
+        text-align: center;
+
+        // arrow
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            height: 0;
+            width: 0;
+            border: solid transparent;
+            border-bottom-color: $color-grey;
+            border-width: 5px;
+            margin-left: -5px;
+            pointer-events: none;
+        }
+    }
+}
+
+// when open
+.stable-link--show {
+    .stable-link__tooltip {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .stable-link__toggle {
+        color: $color-grey;
+    }
+
+    .content-header--light & {
+        .stable-link__toggle {
+            color: $color-white;
+        }
+    }
+}
+
+// when copied
+.stable-link__tooltip-copy--copied {
+    span {
+        opacity: 1;
+        visibility: visible;
+    }
+}

@@ -1,0 +1,67 @@
+.node {
+    // bc of the stable link
+    > .container {
+        position: relative;
+    }
+
+    // add container wrapping
+    .paragraph--accordions,
+    .paragraph--block-reference,
+    .paragraph--collage,
+    .paragraph--content-boxes,
+    .paragraph--document,
+    .paragraph--facts-figures,
+    .paragraph--image,
+    .paragraph--link,
+    .paragraph--process,
+    .paragraph--separator,
+    .paragraph--text {
+        @extend %container-default;
+        max-width: $container-max-width;
+        margin-right: auto;
+        margin-left: auto;
+
+        .paragraph-inner {
+            width: 100%;
+            max-width: 100%;
+
+            @include bp(xl) {
+                max-width: $column-fixed-content;
+                padding-right: 3.15vw;
+            }
+        }
+    }
+
+    // reset paragraph's width if inside another paragraph
+    .paragraph--accordions,
+    .paragraph--content-boxes,
+    .paragraph--facts-figures,
+    .paragraph--process {
+        .paragraph--content-boxes-item,
+        .paragraph--document,
+        .paragraph--fact,
+        .paragraph--image,
+        .paragraph--link,
+        .paragraph--process-step,
+        .paragraph--text {
+            width: 100%;
+
+            .paragraph-inner {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+.node__content {
+    @include spacing(padding, massive, top bottom);
+}
+
+.field__item {
+    &:last-child {
+        > div {
+            margin-bottom: 0;
+        }
+    }
+}

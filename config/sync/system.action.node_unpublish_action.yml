@@ -1,4 +1,4 @@
-uuid: 82263642-5d01-4f2d-b13f-3b902c3ff087
+uuid: 296425f2-cef2-4b60-8bf1-029b71497a11
 langcode: de
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: C7X8h9FWlwkQ9y5mnU2JzgaZICAdc6HFbPVbhvjlAYE
 id: node_unpublish_action
-label: 'Inhalt archivieren'
+label: 'Unpublish content'
 type: node
 plugin: 'entity:unpublish_action:node'
 configuration: {  }

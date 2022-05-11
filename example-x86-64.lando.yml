@@ -1,0 +1,55 @@
+name: ddb-pro
+recipe: drupal9
+config:
+  webroot: web
+  via: nginx
+  xdebug: false
+  drush: ^10
+  composer_version: '2.0.12'
+proxy:
+  appserver_nginx:
+    - ddb-pro.lndo.site
+services:
+  appserver_nginx:
+    ssl: true
+    sslExpose: true
+    config:
+      param: .lando.fastcgi.conf
+  database:
+    type: mariadb:10.5
+  appserver:
+    type: php:8.0
+    overrides:
+      platform: linux/amd64
+      image: php:8.0-fpm
+    xdebug: false
+    build_as_root:
+      - apt-get update -y && apt-get install -y libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev libfreetype6-dev zlib1g-dev libzip-dev mariadb-server
+      - docker-php-ext-install zip pdo_mysql
+      - docker-php-ext-enable zip pdo_mysql
+      - docker-php-ext-configure gd --enable-gd --with-webp --with-jpeg --with-xpm --with-freetype
+      - docker-php-ext-install gd
+      - docker-php-ext-enable gd
+      - docker-php-ext-install opcache
+      - docker-php-ext-enable opcache
+      - echo "Updating PHP-FPM settings ..."
+      - sed -i 's/;clear_env\s*=\s*no/clear_env = no/g' /usr/local/etc/php-fpm.d/www.conf
+      - sed -i 's/pm.max_children = 5/pm.max_children = 10/g' /usr/local/etc/php-fpm.d/www.conf
+      - sed -i 's/pm.min_spare_servers = 1/pm.min_spare_servers = 3/g' /usr/local/etc/php-fpm.d/www.conf
+      - sed -i 's/pm.max_spare_servers = 3/pm.max_spare_servers = 5/g' /usr/local/etc/php-fpm.d/www.conf
+      - sed -i 's/pm.start_servers = 2/pm.start_servers = 3/g' /usr/local/etc/php-fpm.d/www.conf
+      - sed -i 's/;pm.max_requests = 500/pm.max_requests = 1500/g' /usr/local/etc/php-fpm.d/www.conf
+tooling:
+  xdebug-on:
+    service: appserver
+    description: Enable xdebug for nginx.
+    cmd: docker-php-ext-enable xdebug && pkill -o -USR2 php-fpm
+    user: root
+  xdebug-off:
+    service: appserver
+    description: Disable xdebug for nginx.
+    cmd: rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm
+    user: root
+excludes:
+  - vendor
+  - node_modules

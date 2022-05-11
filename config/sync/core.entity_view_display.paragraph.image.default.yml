@@ -1,0 +1,36 @@
+uuid: 974d3760-039a-4522-af5e-49b32496352b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image.field_display
+    - field.field.paragraph.image.field_image
+    - paragraphs.paragraphs_type.image
+  module:
+    - ddbp_responsive_image
+    - options
+id: paragraph.image.default
+targetEntityType: paragraph
+bundle: image
+mode: default
+content:
+  field_display:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image:
+    type: image_responsive_meta
+    label: hidden
+    settings:
+      image_style_0px: poster_xs
+      image_style_421px: poster_m
+      image_style_701px: poster_m
+      image_style_1181px: poster_xl
+      image_style_1481px: poster_xl
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

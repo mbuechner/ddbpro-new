@@ -1,0 +1,10 @@
+uuid: 787a973d-e4cf-4041-b4e4-fbbc799e72e5
+langcode: de
+status: true
+dependencies: {  }
+id: facts_figures
+label: 'Fakten & Businesskennzahlen'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,68 @@
+uuid: 8ede5bb6-82cf-45fb-a123-7b26796b8d43
+langcode: de
+status: true
+dependencies: {  }
+id: ddbp_events
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: ddbp_content
+label: 'D7 CT Events to D9 CT Events'
+source:
+  plugin: d7_node
+  node_type: termine
+process:
+  nid: nid
+  uid: node_uid
+  status: status
+  created: created
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: de
+  title: title
+  field_description:
+    plugin: strip_tags
+    source: body
+  field_location: field_ort
+  field_people: field_ansprechpartner
+  field_event_type:
+    plugin: migration_lookup
+    source: field_terminkategorie
+    migration: ddbp_taxonomy_event_type
+  field_division:
+    plugin: migration_lookup
+    source: field_abteilung
+    migration: ddbp_taxonomy_division
+  field_document:
+    plugin: sub_process
+    source: field_downloadsblock
+    process:
+      target_id:
+        plugin: migration_lookup
+        source: target_id
+        migration: ddbp_media_document
+  field_date:
+    plugin: sub_process
+    source: field_datum
+    process:
+      value:
+        plugin: format_date
+        source: value
+        from_format: 'Y-m-d H:i:s'
+        to_format: 'Y-m-d\TH:i:s'
+      end_value:
+        plugin: format_date
+        source: value2
+        from_format: 'Y-m-d H:i:s'
+        to_format: 'Y-m-d\TH:i:s'
+destination:
+  plugin: 'entity:node'
+  default_bundle: event
+migration_dependencies:
+  required:
+    - ddbp_taxonomy_division
+    - ddbp_taxonomy_event_type

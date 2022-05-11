@@ -1,10 +1,10 @@
-uuid: a9c68f80-6ab2-4044-babf-1a98252f919d
+uuid: b0507659-4123-495c-b2b6-18980b7ed2be
 langcode: de
 status: true
 dependencies: {  }
 _core:
   default_config_hash: 5VpawMrKPEPCkoO4YpPa0TDFO2dgiIHfTziJtwlmUxc
 id: html_yearless_date
-label: 'Datum ohne Jahr (HTML)'
+label: 'HTML Yearless date'
 locked: true
 pattern: m-d

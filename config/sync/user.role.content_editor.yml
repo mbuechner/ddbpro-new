@@ -1,21 +1,37 @@
-uuid: 9d658b72-cdfd-4806-94d9-ce177df4e7b8
+uuid: ebe975fc-2378-4008-bb48-c150f5219943
 langcode: de
 status: true
 dependencies:
   config:
+    - media.type.document
+    - media.type.image
+    - node.type.aggregator_portrait
     - node.type.article
+    - node.type.department
+    - node.type.event
+    - node.type.faq
+    - node.type.glossary_term
+    - node.type.overview_teaser
     - node.type.page
+    - taxonomy.vocabulary.content_category
+    - taxonomy.vocabulary.cultural_sector
+    - taxonomy.vocabulary.division
+    - taxonomy.vocabulary.document_category
+    - taxonomy.vocabulary.document_license
+    - taxonomy.vocabulary.event_type
+    - taxonomy.vocabulary.faq_category
+    - taxonomy.vocabulary.region
     - taxonomy.vocabulary.tags
   module:
-    - comment
-    - contextual
     - file
+    - media
     - node
     - path
+    - pathauto
     - system
     - taxonomy
     - toolbar
-    - tour
+    - webform
 _core:
   default_config_hash: Wur9kcEOwY1Jal81NssKnz3RhVJxAvBwyWQBGcA_1Go
 id: content_editor
@@ -25,24 +41,111 @@ is_admin: false
 permissions:
   - 'access administration pages'
   - 'access content overview'
-  - 'access contextual links'
   - 'access files overview'
+  - 'access media overview'
+  - 'access taxonomy overview'
   - 'access toolbar'
-  - 'access tour'
+  - 'access webform overview'
+  - 'access webform submission user'
+  - 'administer menu'
+  - 'administer nodes'
+  - 'administer pathauto'
   - 'administer url aliases'
+  - 'create aggregator_portrait content'
   - 'create article content'
+  - 'create department content'
+  - 'create document media'
+  - 'create event content'
+  - 'create faq content'
+  - 'create glossary_term content'
+  - 'create image media'
+  - 'create media'
+  - 'create overview_teaser content'
   - 'create page content'
+  - 'create terms in content_category'
+  - 'create terms in cultural_sector'
+  - 'create terms in division'
+  - 'create terms in document_category'
+  - 'create terms in document_license'
+  - 'create terms in event_type'
+  - 'create terms in faq_category'
+  - 'create terms in region'
   - 'create terms in tags'
   - 'create url aliases'
+  - 'delete aggregator_portrait revisions'
+  - 'delete any aggregator_portrait content'
+  - 'delete any article content'
+  - 'delete any department content'
+  - 'delete any document media'
+  - 'delete any event content'
+  - 'delete any faq content'
+  - 'delete any glossary_term content'
+  - 'delete any image media'
+  - 'delete any media'
+  - 'delete any overview_teaser content'
+  - 'delete any page content'
   - 'delete article revisions'
+  - 'delete department revisions'
+  - 'delete event revisions'
+  - 'delete faq revisions'
+  - 'delete glossary_term revisions'
+  - 'delete media'
+  - 'delete overview_teaser revisions'
+  - 'delete own aggregator_portrait content'
   - 'delete own article content'
+  - 'delete own department content'
+  - 'delete own document media'
+  - 'delete own event content'
+  - 'delete own faq content'
+  - 'delete own glossary_term content'
+  - 'delete own image media'
+  - 'delete own overview_teaser content'
   - 'delete own page content'
   - 'delete page revisions'
+  - 'delete terms in content_category'
+  - 'delete terms in cultural_sector'
+  - 'delete terms in division'
+  - 'delete terms in document_category'
+  - 'delete terms in document_license'
+  - 'delete terms in event_type'
+  - 'delete terms in faq_category'
+  - 'delete terms in region'
+  - 'delete terms in tags'
+  - 'edit any aggregator_portrait content'
+  - 'edit any article content'
+  - 'edit any department content'
+  - 'edit any document media'
+  - 'edit any event content'
+  - 'edit any faq content'
+  - 'edit any glossary_term content'
+  - 'edit any image media'
+  - 'edit any overview_teaser content'
+  - 'edit any page content'
+  - 'edit own aggregator_portrait content'
   - 'edit own article content'
-  - 'edit own comments'
+  - 'edit own department content'
+  - 'edit own document media'
+  - 'edit own event content'
+  - 'edit own faq content'
+  - 'edit own glossary_term content'
+  - 'edit own image media'
+  - 'edit own overview_teaser content'
   - 'edit own page content'
+  - 'edit terms in content_category'
+  - 'edit terms in cultural_sector'
+  - 'edit terms in division'
+  - 'edit terms in document_category'
+  - 'edit terms in document_license'
+  - 'edit terms in event_type'
+  - 'edit terms in faq_category'
+  - 'edit terms in region'
   - 'edit terms in tags'
+  - 'notify of path changes'
   - 'revert all revisions'
+  - 'update any media'
+  - 'update media'
   - 'view all revisions'
+  - 'view any webform submission'
   - 'view own unpublished content'
+  - 'view own webform submission'
   - 'view the administration theme'

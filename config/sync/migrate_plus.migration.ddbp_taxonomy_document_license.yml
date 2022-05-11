@@ -1,0 +1,33 @@
+uuid: 42d1f740-4bd4-4311-b7d1-fc20c12083b6
+langcode: de
+status: true
+dependencies: {  }
+id: ddbp_taxonomy_document_license
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: null
+label: 'D7 TX Lizenzen to D9 TX Document license'
+source:
+  plugin: d7_taxonomy_term
+  bundle: lizenzen
+process:
+  tid: tid
+  vid:
+    plugin: default_value
+    default_value: document_license
+  name: name
+  field_link:
+    plugin: sub_process
+    source: field_uri
+    process:
+      uri: value
+  weight: weight
+  parent: parent
+  langcode: de
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies: null

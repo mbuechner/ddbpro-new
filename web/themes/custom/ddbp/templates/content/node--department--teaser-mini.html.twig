@@ -1,0 +1,24 @@
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'department-teaser-mini',
+] %}
+
+{# @todo: Can he handle the displaying of images without display: none? #}
+
+{% set responsiveImage = { images: content.field_icon[0].images } %}
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <a href="{{ url }}" data-id="{{ node.id }}">
+    <div class="department-teaser-mini__icon">
+      {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+    </div>
+    <div class="department-teaser-mini__title h3">
+      {{ label[0]['#context'].value }}
+    </div>
+  </a>
+</article>
+
+<div class="department-teaser-mini__image" data-id="{{ node.id }}">
+  {% set responsiveImage = { images: content.field_image[0].images, alt: false } %}
+  {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+</div>

@@ -1,0 +1,9 @@
+.document {
+    h1 {
+        @include spacing(margin, huge, bottom);
+    }
+}
+
+.document__links {
+    @include spacing(margin, very-small, top);
+}

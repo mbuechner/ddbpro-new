@@ -1,0 +1,195 @@
+// on Team overview page
+.user-teaser {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(3, auto);
+    width: 100%;
+
+    @include bp(l) {
+        align-content: start;
+        align-items: start;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(4, auto);
+    }
+
+    a {
+        @include hyphens;
+        transition: color $duration-fast $easing-default;
+    }
+}
+
+.user-teaser__image {
+    @include spacing(margin, medium, right);
+    grid-row: 1 / -1;
+    max-width: max-content;
+
+    @include bp(l) {
+        grid-row: 1;
+        margin-right: 0;
+    }
+
+    @include target-bps(l xl) {
+        @include spacing(margin, very-small, bottom);
+    }
+
+    img {
+        @include rsa(height, 100px, 200px);
+        @include rsa(width, 80px, 160px);
+    }
+}
+
+.user-teaser__name,
+.user-teaser__job-title,
+.user-teaser__info {
+    grid-column: 2;
+    max-width: max-content;
+
+    @include bp(l) {
+        grid-column: 1;
+    }
+}
+
+.user-teaser__name {
+    @include spacing(margin, tiny, bottom);
+
+    @include bp(l) {
+        grid-row: 2;
+        margin-bottom: 0;
+    }
+
+    a {
+        width: 100%;
+        color: $color-grey-dark;
+
+        @include bp(l) {
+            &:hover {
+                color: $color-main;
+            }
+        }
+    }
+
+    span {
+        display: block;
+        line-height: 35px;
+    }
+}
+
+.user-teaser__job-title {
+    @include spacing(margin, very-small, bottom);
+    grid-row: 2;
+
+    @include bp(l) {
+        grid-row: 3;
+    }
+
+    a {
+        @include text(p2);
+        color: $color-grey-light;
+        font-weight: font-weight(medium);
+    }
+}
+
+// hover
+.user-teaser__image,
+.user-teaser__job-title {
+    @include bp(l) {
+        &:hover {
+            ~ .user-teaser__name a {
+                color: $color-main;
+            }
+        }
+    }
+}
+
+.user-teaser__info {
+    display: flex;
+    flex-direction: column;
+
+    @include bp(l) {
+        grid-row: 4;
+    }
+
+    a {
+        @include text(a1);
+        display: inline-flex;
+        color: $color-grey;
+        font-weight: font-weight(bold);
+
+        @include bp(l) {
+            &:hover {
+                color: $color-grey-dark;
+            }
+        }
+
+        &:before {
+            @include spacing(margin, tiny, right);
+        }
+
+        + a {
+            @include spacing(margin, tiny, top);
+        }
+    }
+}
+
+.user-teaser__email {
+    text-transform: uppercase;
+
+    @include faw-icon(\f0e0) {
+        color: $color-main;
+        font-weight: font-weight(regular);
+    }
+}
+
+.user-teaser__phone {
+    &:before {
+        @include rsa(height width, 10px, 13px);
+        content: '';
+        display: inline-block;
+        margin-top: 3px;
+        background-image: url('../images/icons/phone-regular-main.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+// on contact section of CT Article & CT Department
+.user-teaser-mini {
+    a {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(2, auto);
+        align-items: end;
+
+        @include focus;
+    }
+}
+
+.user-teaser-mini__image {
+    @include spacing(margin, small, right);
+    grid-column: 1;
+    grid-row: 1 / -1;
+
+    img {
+        @include rsa(height, 85px, 110px);
+        @include rsa(width, 70px, 90px);
+    }
+}
+
+.user-teaser-mini__name {
+    @include text(p1);
+    grid-column: 2;
+    grid-row: 1;
+    color: $color-grey-dark;
+    font-weight: font-weight(semi-bold);
+}
+
+.user-teaser-mini__job-title {
+    @include text(p2);
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin-bottom: 0;
+    color: $color-grey-light;
+    font-weight: font-weight(medium);
+}

@@ -1,0 +1,23 @@
+{% extends "paragraph.html.twig" %}
+
+{% set link = {
+  modifier: 'process',
+  url: content.field_cta[0]['#url'],
+  text: content.field_cta[0]['#title'],
+  target: content.field_cta[0]['#options']['attributes']['target'] == '_blank',
+} %}
+
+{% block paragraphContent %}
+  <div class="process__title">
+    <h3>{{ content.field_headline[0]['#context'].value }}</h3>
+  </div>
+  <div class="process_text text-formatted">
+    <p>{{ content.field_description[0]['#context'].value }}</p>
+  </div>
+  {% if content.field_cta[0] %}
+    <div class="process__link">
+      {# text link #}
+      {% include '@ddbp/partials/link.html.twig' with link %}
+    </div>
+  {% endif %}
+{% endblock %}

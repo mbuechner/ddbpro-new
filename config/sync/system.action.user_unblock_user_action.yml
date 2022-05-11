@@ -1,4 +1,4 @@
-uuid: bd71a216-695f-4d8e-8d23-a734cc32e3f1
+uuid: 7d75351a-f6c6-4525-b42f-0aab07dc8175
 langcode: de
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: SPsUXsR3Rc8d1y3gewzaAKWa1ncea_ywXX3f7LTn7k0
 id: user_unblock_user_action
-label: 'Ausgewählte Benutzer entsperren'
+label: 'Unblock the selected user(s)'
 type: user
 plugin: user_unblock_user_action
 configuration: {  }

@@ -1,0 +1,10 @@
+uuid: 387c9b12-ca53-44c0-bb3e-092ca8ce01de
+langcode: de
+status: true
+dependencies: {  }
+id: process
+label: Prozess
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

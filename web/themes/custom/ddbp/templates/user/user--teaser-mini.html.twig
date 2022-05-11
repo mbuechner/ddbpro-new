@@ -1,0 +1,30 @@
+{% set url = path('entity.user.canonical', { 'user': user.id }) %}
+
+{# used next to webform on CTs #}
+<article{{ attributes.addClass('user-teaser-mini') }}>
+  <a href="{{ url }}">
+    <div class="user-teaser-mini__image">
+      {% if content.field_user_image[0] %}
+        {% set responsiveImage = { images: content.field_user_image[0].images } %}
+        {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+      {% else %}
+        <img src="/{{ directory }}/src/images/ddbp-platzhalter-team.webp" role="presentational" />
+      {% endif %}
+    </div>
+
+    <div class="user-teaser-mini__name">
+      {% if content.field_academic_degree[0] %}
+        {{ content.field_academic_degree[0]['#context'].value }}
+      {% endif %}
+      {{ content.field_firstname[0]['#context'].value ~ ' ' }}
+      {{ content.field_lastname[0]['#context'].value }}
+      {% if content.field_name_suffix[0] %}
+        {{ content.field_name_suffix[0]['#context'].value }}
+      {% endif %}
+    </div>
+
+    <div class="user-teaser-mini__job-title">
+      {{ content.field_job_title[0]['#context'].value }}
+    </div>
+  </a>
+</article>

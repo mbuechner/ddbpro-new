@@ -1,0 +1,23 @@
+uuid: 92bdfc84-69d6-465d-ae34-198ce2a6ed7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.front_page
+    - field.storage.config_pages.field_participation_cta_right
+  module:
+    - link
+id: config_pages.front_page.field_participation_cta_right
+field_name: field_participation_cta_right
+entity_type: config_pages
+bundle: front_page
+label: 'CTA rechts'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 1
+field_type: link

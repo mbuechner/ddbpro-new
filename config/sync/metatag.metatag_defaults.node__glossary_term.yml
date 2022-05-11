@@ -1,0 +1,10 @@
+uuid: 4b74cf83-0f05-4e83-b0f4-d922c1ed1570
+langcode: de
+status: true
+dependencies: {  }
+id: node__glossary_term
+label: 'Content: Glossar'
+tags:
+  description: '[node:body]'
+  og_description: '[node:body]'
+  twitter_cards_description: '[node:body]'

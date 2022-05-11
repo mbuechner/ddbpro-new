@@ -1,0 +1,29 @@
+{% set image = content.field_image[0] %}
+
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'teaser',
+  'aggregator-teaser',
+] %}
+
+{% set responsiveImage = { images: image.images } %}
+
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <a href="{{ url }}">
+    {% if image %}
+      <div class="teaser__image aggregator-teaser__image">
+        {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+      </div>
+    {% endif %}
+    <div class="teaser__title aggregator-teaser__title">
+      <h3>{{ label[0]['#context'].value }}</h3>
+    </div>
+    <div class="teaser__text aggregator-teaser__text">
+      <p>{{ content.field_teaser_text[0]['#context'].value }}</p>
+    </div>
+    <div class="aggregator-teaser__more" role="presentational">
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
+  </a>
+</article>

@@ -1,0 +1,19 @@
+uuid: db247bde-8369-4bd2-ac9e-5576dc9e5138
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.content_boxes_item
+id: paragraph.content_boxes_item.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: content_boxes_item
+label: Überschrift
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,22 @@
+uuid: cebdad47-7124-4275-9a85-32b187df7da7
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ddbp
+_core:
+  default_config_hash: kigu8pTxXt1qGR2NJ5HHdC4G2G1wsDrIjLPKBT5wUBc
+id: ddbp_content
+theme: ddbp
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: Haupt-Seiteninhalt
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,21 @@
+uuid: ac0ac32b-caff-4b7a-b3b6-09ba80291416
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.front_page
+    - field.storage.config_pages.field_meta_tags
+  module:
+    - metatag
+id: config_pages.front_page.field_meta_tags
+field_name: field_meta_tags
+entity_type: config_pages
+bundle: front_page
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

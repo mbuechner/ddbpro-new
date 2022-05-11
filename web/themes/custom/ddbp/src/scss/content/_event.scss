@@ -1,0 +1,23 @@
+.event {
+    h1 {
+        @include spacing(margin, small, bottom);
+    }
+}
+
+.event__date-time {
+    @include spacing(margin, huge, bottom);
+    color: $color-grey;
+}
+
+.event__text {
+    @include spacing(margin, very-large, bottom);
+    color: $color-grey;
+}
+
+.event__media {
+    @include spacing(margin, medium, bottom);
+
+    h3 {
+        @include spacing(margin, medium, bottom);
+    }
+}

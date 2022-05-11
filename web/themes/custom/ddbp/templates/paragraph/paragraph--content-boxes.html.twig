@@ -1,0 +1,10 @@
+{% extends "paragraph.html.twig" %}
+
+{% block paragraphContent %}
+  <div class="content-boxes">
+    <h2>
+      {{ content.field_headline[0]['#context'].value }}
+    </h2>
+    {{ content.field_content }}
+  </div>
+{% endblock %}

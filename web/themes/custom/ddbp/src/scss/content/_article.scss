@@ -1,0 +1,10 @@
+.article {
+    .content-header__content {
+        @include rsa(max-width, 100%, 46%);
+        width: 100%;
+
+        @include bp(xl) {
+            max-width: 100%;
+        }
+    }
+}

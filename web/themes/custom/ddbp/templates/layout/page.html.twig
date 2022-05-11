@@ -1,0 +1,29 @@
+<div id="app" data-off-canvas-main-canvas>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="content-main">
+    <header id="header" class="header header--on-top">
+      {{ page.header }}
+      {# todo: in the header we can't access the sidebar so we place the branding block here #}
+      <div class="header__content-bottom">
+        <div class="container">
+          {{ page.sidebar_left.ddbp_branding }}
+          <button id="" aria-label="{{ 'Suchen'|t }}"></button>
+        </div>
+      </div>
+    </header>
+
+    <aside id="sidebar-left" class="sidebar sidebar--left">
+      {{ page.sidebar_left }}
+    </aside>
+
+    <main class="main-content" role="main">
+      <a id="main-content" tabindex="-1" class="visually-hidden"></a>
+      {{ page.content }}
+    </main>
+
+    <footer id="footer" class="footer">
+      {{ page.footer }}
+    </footer>
+  </div>
+</div>

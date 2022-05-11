@@ -1,0 +1,12 @@
+{% extends "paragraph.html.twig" %}
+
+{% set link = {
+  url: content.field_link[0]['#url'],
+  text: content.field_link[0]['#title'],
+  target: content.field_link[0]['#options']['attributes']['target'] == '_blank',
+  type: 'primary',
+} %}
+
+{% block paragraphContent %}
+  {% include '@ddbp/partials/link-button.html.twig' with link %}
+{% endblock paragraphContent %}

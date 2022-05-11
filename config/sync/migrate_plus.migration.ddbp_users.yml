@@ -1,0 +1,39 @@
+uuid: d7eabd7a-7ca1-43ba-9a9c-e12ef523245f
+langcode: de
+status: true
+dependencies: {  }
+id: ddbp_users
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: null
+label: 'DDBP users'
+source:
+  plugin: d7_user
+process:
+  uid:
+    -
+      plugin: skip_on_value
+      equals: true
+      source: uid
+      method: row
+      value:
+        - 1
+  name: name
+  pass: pass
+  mail: mail
+  created: created
+  access: access
+  login: login
+  status: status
+  init: init
+  roles:
+    plugin: default_value
+    default_value: content_editor
+destination:
+  plugin: 'entity:user'
+  md5_passwords: true
+migration_dependencies: null

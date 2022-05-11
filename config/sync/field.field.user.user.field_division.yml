@@ -1,0 +1,30 @@
+uuid: aacfa07d-fe14-493c-9bba-5098c52ac6e1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_division
+    - taxonomy.vocabulary.division
+  module:
+    - user
+id: user.user.field_division
+field_name: field_division
+entity_type: user
+bundle: user
+label: Abteilung
+description: "Abteilungen\_der DDB, in der der Benutzer tätig ist, z. B. Servicestelle, Koordination"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      division: division
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

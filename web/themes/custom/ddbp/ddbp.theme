@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function ddbp_theme_suggestions_user_alter(array &$suggestions, array $variables) {
+  // define the view mode
+  $mode = $variables['elements']['#view_mode'];
+  // create a theme hook suggestion which has the view mode name in it
+  $suggestions[] = 'user__' . $mode;
+}

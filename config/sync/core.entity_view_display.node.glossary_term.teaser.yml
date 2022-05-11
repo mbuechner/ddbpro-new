@@ -1,0 +1,37 @@
+uuid: d23e1ff3-7824-4fe7-8ec5-f78961458b63
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.glossary_term.body
+    - field.field.node.glossary_term.field_alternatives
+    - field.field.node.glossary_term.field_last_modified
+    - field.field.node.glossary_term.field_uri
+    - node.type.glossary_term
+  module:
+    - text
+    - user
+id: node.glossary_term.teaser
+targetEntityType: node
+bundle: glossary_term
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_alternatives: true
+  field_last_modified: true
+  field_uri: true
+  langcode: true

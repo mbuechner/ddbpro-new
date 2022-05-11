@@ -1,0 +1,18 @@
+uuid: 929e5b80-16c1-499f-b23e-e5923330ebe3
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_show_in_download_overview
+field_name: field_show_in_download_overview
+entity_type: media
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

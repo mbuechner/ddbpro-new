@@ -1,0 +1,23 @@
+uuid: 51f0f325-de6c-4812-bb05-21b9b5cf519f
+langcode: de
+status: true
+dependencies:
+  module:
+    - focal_point
+name: poster_m
+label: poster-M
+effects:
+  76778d58-5686-4c61-baf7-100447a6a77f:
+    uuid: 76778d58-5686-4c61-baf7-100447a6a77f
+    id: image_convert
+    weight: -9
+    data:
+      extension: webp
+  63f11274-31da-44fa-b3e9-ceafd78fbc26:
+    uuid: 63f11274-31da-44fa-b3e9-ceafd78fbc26
+    id: focal_point_scale_and_crop
+    weight: -10
+    data:
+      width: 1200
+      height: 1000
+      crop_type: focal_point

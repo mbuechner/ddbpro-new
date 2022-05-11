@@ -1,0 +1,42 @@
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'event-teaser',
+] %}
+
+{% set startDate = content.field_date[0].start_date['#markup'] %}
+{% set endDate = content.field_date[0].end_date['#markup'] %}
+
+{% set ics_link = calendar_link(
+  'ics',
+  node.title,
+  node.field_date.0.start_date,
+  node.field_date.0.end_date,
+  false,
+  node.field_description,
+  node.field_location
+) %}
+
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <div class="event-teaser__ical">
+    <a href="{{ ics_link }}" aria-label="{{ 'iCalendar Datei zu der Veranstaltung herunterladen' | t }}">
+      <i aria-hidden="true" class="fa-regular fa-calendar-plus"></i>
+    </a>
+  </div>
+  <h3>
+    <a href="{{ url }}">
+      {{ label[0]['#context'].value }}
+    </a>
+  </h3>
+  <div class="event-teaser__date">
+    <a href="{{ url }}">
+    {% if startDate %}
+      {{ startDate|format_date('custom', 'd.m.Y') }}
+    {% endif %}
+    {% if endDate and (endDate is not same as(startDate)) %}
+      {{ ' ' ~ 'bis' | t ~ ' ' }}
+      {{ endDate|format_date('custom', 'd.m.Y') }}
+    {% endif %}
+    </a>
+  </div>
+</article>

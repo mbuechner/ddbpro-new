@@ -1,0 +1,20 @@
+uuid: 07026b39-558a-47ee-9c6b-020bc08bfb92
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_name_suffix
+  module:
+    - user
+id: user.user.field_name_suffix
+field_name: field_name_suffix
+entity_type: user
+bundle: user
+label: Namenssuffix
+description: "Ein\_Suffix\_der dem\_Namen\_angehängt wird.\_Vorsicht:\_Der Namenssuffix wird ohne Leerzeichen o.ä. an den Nachnamen angehängt. (z. B. wird „, LL.M.“ zu „Euler, LL.M.“)"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

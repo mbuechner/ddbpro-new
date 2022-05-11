@@ -1,0 +1,73 @@
+{% set join_link = '/' %}
+{% import _self as menus %}
+
+{# We call a macro which calls itself to render the full tree. #}
+
+<div class="main-menu" id="main-menu">
+  {{ menus.menu_links(items, attributes, 0, null) }}
+  {# static buttons #}
+  <a href="{{ join_link }}" class="main-menu__join-button button button--secondary button--light">
+    {{ 'Teilnehmen' | t }}
+  </a>
+</div>
+
+{% macro menu_links(items, attributes, menu_level, submenu_parent) %}
+  {% import _self as menus %}
+  {% if items %}
+    <ul role="menubar" class="menu-items" aria-label="{{ 'Hauptmenü' | t }}">
+      {% if menu_level != 0 %}
+        <li class="menu-item" role="menuitem">
+          <a href="{{ submenu_parent.url }}" class="menu-item__link">
+            <span>{{ 'Zur Übersicht' | t }}</span>
+          </a>
+        </li>
+      {% endif %}
+      {% for key, item in items %}
+        {% set classes = [
+          'menu-item',
+          item.is_expanded ? 'menu-item--expandable',
+          item.in_active_trail ? 'menu-item--active-trail',
+        ] %}
+        <li{{ item.attributes.addClass(classes) }} role="menuitem" id="li-{{ key }}">
+          {% if not item.below %}
+            <a href="{{ item.url }}" class="menu-item__link">
+              {% if item.content.field_icon[0] %}
+                {% set responsiveImage = { images: item.content.field_icon[0].images } %}
+                {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+              {% endif %}
+              <span>{{ item.title }}</span>
+            </a>
+          {% else %}
+            <button class="menu-item__link"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-controls="subMenu-{{ key }}">
+              {% if item.content.field_icon[0] %}
+                {% set responsiveImage = { images: item.content.field_icon[0].images } %}
+                {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+              {% endif %}
+              <span>{{ item.title }}</span>
+            </button>
+          {% endif %}
+
+          {% if item.below %}
+            <div class="sub-menu-items" role="menu" id="subMenu-{{ key }}">
+              <button class="sub-menu-items__close-button"></button>
+              {{ menus.menu_links(item.below, attributes, menu_level + 1, item) }}
+              <a href="{{ join_link }}" class="main-menu__join-button button button--secondary button--light">
+                {{ 'Teilnehmen' | t }}
+              </a>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+      {% if menu_level == 0 %}
+        <li role="menuitem" id="li-search">
+          <button class="main-menu__search-button menu-item">
+            {{ 'Suchen ...' | t }}
+          </button>
+        </li>
+      {% endif %}
+    </ul>
+  {% endif %}
+{% endmacro %}

@@ -1,0 +1,89 @@
+<div id="footer-copyright" class="footer__copyright" style="display: none;">
+  <div class="copyright">
+    <div class="container">
+      <button class="copyright__header"
+        aria-expanded="false"
+        aria-controls="copyright-items">
+        {{ 'Copyright Informationen der auf dieser Seite verwendeten Bilder anzeigen' | t }}
+      </button>
+      <div id="copyright-items" class="copyright__content" aria-hidden="true">
+        <div class="copyright__items"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer__top">
+  <div class="container">
+    <div class="row">
+      <div class="footer__menu">
+        {{ drupal_menu('footer') }}
+      </div>
+      <div class="footer__info">
+        <span class="h3">
+          {{- 'Wir sind das Portal für Datengeber und -partner der Deutschen Digitalen Bibliothek.' | t -}}
+        </span>
+        <div class="footer__socials">
+          <p>{{- 'Folgen Sie uns:' | t -}}</p>
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/ddbkultur/" target="_blank">
+                <i class="fa-brands fa-facebook-f"></i>
+                <span class="visually-hidden">{{ 'Facebook' | t }}</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/ddbkultur/" target="_blank">
+                <i class="fa-brands fa-twitter"></i>
+                <span class="visually-hidden">{{ 'Twitter' | t }}</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/ddbkultur/" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+                <span class="visually-hidden">{{ 'Instagram' | t }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer__bottom">
+  <div class="container">
+    <ul class="footer__logos">
+      <li class="footer__logo">
+        <a href="https://www.deutsche-digitale-bibliothek.de/" target="_blank">
+          <img src="/{{ directory }}/src/images/logos/logo-ddb.webp"
+            alt="{{ 'DDB logo' | t }}" />
+        </a>
+      </li>
+      <li class="footer__logo">
+        <a href="https://www.deutsche-digitale-bibliothek.de/newspaper" target="_blank">
+          <img src="/{{ directory }}/src/images/logos/logo-zeitungsportal.webp"
+            alt="{{ 'Zeitungsportal logo' | t }}" />
+        </a>
+      </li>
+      <li class="footer__logo">
+        <a href="https://codingdavinci.de/" target="_blank">
+          <img src="/{{ directory }}/src/images/logos/logo-coding-da-vinci.webp"
+            alt="{{ 'Coding da vinci logo' | t }}" />
+        </a>
+      </li>
+      <li class="footer__logo">
+        <a href="https://www.archivportal-d.de/" target="_blank">
+          <img src="/{{ directory }}/src/images/logos/logo-archivportal.webp"
+            alt="{{ 'Archivportal logo' | t }}" />
+        </a>
+      </li>
+      <li class="footer__logo">
+        <a href="https://ccc.deutsche-digitale-bibliothek.de/" target="_blank">
+          <img src="/{{ directory }}/src/images/logos/logo-sammlungsgut-kolonialen-kontexten.webp"
+            alt="{{ 'Sammlungsgut kolonialen kontexten logo' | t }}" />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

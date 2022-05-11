@@ -1,0 +1,7 @@
+{% set accordion = {
+  type: 'faq',
+  title: label[0]['#context'].value,
+  text: content.field_answer|raw,
+} %}
+
+{% include '@ddbp/partials/accordion.html.twig' with accordion %}

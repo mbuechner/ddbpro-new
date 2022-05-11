@@ -1,0 +1,33 @@
+uuid: eedb31c1-7a36-401b-9e45-15a08fd241e2
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.meta-navigation.field_icon
+    - system.menu.meta-navigation
+  module:
+    - ddbp_responsive_image
+id: menu_link_content.meta-navigation.default
+targetEntityType: menu_link_content
+bundle: meta-navigation
+mode: default
+content:
+  children:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_icon:
+    type: image_responsive_meta
+    label: hidden
+    settings:
+      image_style_0px: square_xs
+      image_style_421px: square_m
+      image_style_701px: square_m
+      image_style_1181px: square_xl
+      image_style_1481px: square_xl
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true

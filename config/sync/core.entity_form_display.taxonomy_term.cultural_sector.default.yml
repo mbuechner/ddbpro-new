@@ -1,0 +1,30 @@
+uuid: f0edc667-65cc-45c4-8724-0f8ec658a64e
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cultural_sector
+id: taxonomy_term.cultural_sector.default
+targetEntityType: taxonomy_term
+bundle: cultural_sector
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

@@ -1,0 +1,57 @@
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'event-teaser-big',
+] %}
+
+{% set startDateRaw = content.field_date[0].start_date['#markup'] %}
+{% set endDateRaw = content.field_date[0].end_date['#markup'] %}
+
+{% set ics_link = calendar_link(
+  'ics',
+  node.title,
+  node.field_date.0.start_date,
+  node.field_date.0.end_date,
+  false,
+  node.field_description,
+  node.field_location
+) %}
+
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <a href="{{ url }}">
+    <h3>{{ label[0]['#context'].value ~ ', ' ~ content.field_location[0]['#context'].value }}</h3>
+    <div class="event-teaser-big__date">
+      {% if startDateRaw and endDateRaw %} {# @todo: can remove once the content is there #}
+        {% set startDate = startDateRaw|format_date('custom', 'l, d.m.Y - H:i') %}
+        {% set endDate = endDateRaw|format_date('custom', 'l, d.m.Y - H:i') %}
+
+        {% set startDateOnly = startDateRaw|format_date('custom', 'l, d.m.Y') %}
+        {% set endDateOnly = endDateRaw|format_date('custom', 'l, d.m.Y') %}
+
+        {% set startHourOnly = startDateRaw|format_date('custom', 'H:i') %}
+        {% set endHourOnly = endDateRaw|format_date('custom', 'H:i') %}
+
+        {% if startDateOnly == endDateOnly %}
+          {% if startHourOnly != '00:00' %}{{ startDate ~ ' ' ~ 'Uhr' | t }}{% else %}{{ startDateOnly }}{% endif %}
+          {% if endHourOnly != '00:00' %}{{ ' ' ~ 'bis' | t ~ ' ' ~ endHourOnly ~ ' ' ~ 'Uhr' | t }}{% endif %}
+
+        {% else %}
+          {% if startHourOnly != '00:00' %}{{ startDate ~ ' ' ~ 'Uhr' | t }}{% else %}{{ startDateOnly }}{% endif %}
+          {{ ' ' ~ 'bis' | t ~ ' ' }}
+          {% if endHourOnly != '00:00' %}{{ endDate ~ ' ' ~ 'Uhr' | t }}{% else %}{{ endDateOnly }}{% endif %}
+        {% endif %}
+      {% endif %}
+    </div>
+    {% if content.field_description[0] %}
+      <div class="event-teaser-big__text text-formatted">
+        <p>{{ content.field_description[0]['#context'].value }}</p>
+      </div>
+    {% endif %}
+  </a>
+
+  <div class="event-teaser-big__ical">
+    <a href="{{ ics_link }}" aria-label="{{ 'iCalendar Datei zu der Veranstaltung herunterladen' | t }}">
+      <i aria-hidden="true" class="fa-regular fa-calendar-plus"></i>
+    </a>
+  </div>
+</article>

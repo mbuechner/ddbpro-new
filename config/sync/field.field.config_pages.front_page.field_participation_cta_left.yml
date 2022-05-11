@@ -1,0 +1,23 @@
+uuid: 175a9b77-193a-406f-84fe-3ddcf2554ba9
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.front_page
+    - field.storage.config_pages.field_participation_cta_left
+  module:
+    - link
+id: config_pages.front_page.field_participation_cta_left
+field_name: field_participation_cta_left
+entity_type: config_pages
+bundle: front_page
+label: 'CTA links'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 1
+field_type: link

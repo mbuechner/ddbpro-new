@@ -1,0 +1,33 @@
+uuid: 8fddbd9b-e739-4f41-8a28-2fe79f7e1ec0
+langcode: de
+status: true
+dependencies:
+  module:
+    - language
+    - media
+id: document
+label: Dokumente
+type: 'canonical_entities:media'
+pattern: 'dokumente-links/[media:name]'
+selection_criteria:
+  93517cc3-2198-4f87-8477-b2c59947f7cf:
+    id: 'entity_bundle:media'
+    negate: false
+    uuid: 93517cc3-2198-4f87-8477-b2c59947f7cf
+    context_mapping:
+      media: media
+    bundles:
+      document: document
+  25bf4bc0-9463-40c4-9e63-5e86f1fd5327:
+    id: language
+    negate: false
+    uuid: 25bf4bc0-9463-40c4-9e63-5e86f1fd5327
+    context_mapping:
+      language: 'media:langcode:language'
+    langcodes:
+      de: de
+selection_logic: and
+weight: -10
+relationships:
+  'media:langcode:language':
+    label: Language

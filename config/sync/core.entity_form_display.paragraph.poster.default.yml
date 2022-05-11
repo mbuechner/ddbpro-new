@@ -1,0 +1,79 @@
+uuid: 73ec8280-5eea-4735-88ad-58a8c353b78d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.poster.field_description
+    - field.field.paragraph.poster.field_headline
+    - field.field.paragraph.poster.field_image
+    - field.field.paragraph.poster.field_main_cta
+    - field.field.paragraph.poster.field_secondary_cta
+    - paragraphs.paragraphs_type.poster
+  module:
+    - link_attributes
+    - media_library
+id: paragraph.poster.default
+targetEntityType: paragraph
+bundle: poster
+mode: default
+content:
+  field_description:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_headline:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_main_cta:
+    type: link_attributes
+    weight: 4
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      enabled_attributes:
+        target: true
+        id: false
+        name: false
+        rel: false
+        class: false
+        accesskey: false
+        aria-label: false
+        title: false
+    third_party_settings: {  }
+  field_secondary_cta:
+    type: link_attributes
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      enabled_attributes:
+        target: true
+        id: false
+        name: false
+        rel: false
+        class: false
+        accesskey: false
+        aria-label: false
+        title: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

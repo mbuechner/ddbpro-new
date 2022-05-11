@@ -1,0 +1,57 @@
+{% set termName = get_faq(id).term %}
+{% set answers = get_faq(id).items %}
+
+{% if answers|length %}
+  <div class="faq-section">
+    <div class="container">
+      <div class="row">
+        <div class="column column--span-2">
+          <div class="tiny-label">
+            {{ 'Faq' | t }}
+          </div>
+        </div>
+        <div class="column column--span-10">
+          <div class="faq-section__content">
+            <div class="faq-section__headline">
+              <h2>
+                {{ 'Häufig gestellte Fragen' }}</br>
+                {{ termName }}
+              </h2>
+            </div>
+            <div class="faq-section__accordions">
+              <div class="accordion-wrapper">
+                <div class="accordion__top">
+                  <button class="accordion__open-all">
+                    <span class="open">
+                      {{ 'Alle aufklappen' | t }}
+                    </span>
+                    <span class="close">
+                      {{ 'Alle einklappen' | t }}
+                    </span>
+                  </button>
+                </div>
+
+                {% for answer in answers %}
+                  {% set accordion = {
+                    type: 'faq',
+                    title: answer.title,
+                    text: answer.content,
+                  } %}
+
+                  {% include '@ddbp/partials/accordion.html.twig' with accordion %}
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="faq-section__all">
+              <a href="{{ path('view.faq.faq') }}"
+                class="button button--primary faq-section__all-link">
+                <span>{{ 'Alle Fragen & Antworten' | t }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

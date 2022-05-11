@@ -1,0 +1,38 @@
+<div class="view-header">
+  {% if container is not defined and not container %}
+    <div class="container">
+  {% endif %}
+      {% if breadcrumbs is not defined and not breadcrumbs %}
+        {# Breadcrumbs block #}
+        {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+      {% endif %}
+
+      <div class="view-header__header-wrapper">
+        <h1>
+          {{ title }}
+          {# custom select for Data provide/use views #}
+          {% if linkUrl %}
+            <div class="view-header__link-wrapper">
+              <div class="view-header__link">
+                <button aria-expanded="false" aria-controls="{{ linkUrlText|clean_class }}">
+                  {{ linkText }}
+                </button>
+                <div id="{{ linkUrlText|clean_class }}"
+                  class="view-header__link-select"
+                  aria-hidden="true">
+                  <a href="{{ linkUrl }}">
+                    {{ linkUrlText }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </h1>
+        {% if text %}
+          <p class="h4">{{ text }}</p>
+        {% endif %}
+      </div>
+  {% if container is not defined and not container %}
+    </div>
+  {% endif %}
+</div>

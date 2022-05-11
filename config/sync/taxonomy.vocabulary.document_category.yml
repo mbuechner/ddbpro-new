@@ -1,0 +1,8 @@
+uuid: 34ebf8ef-4bfb-45f1-b303-4c17bc87612f
+langcode: de
+status: true
+dependencies: {  }
+name: Dokumentenkategorie
+vid: document_category
+description: ''
+weight: 0

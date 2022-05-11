@@ -1,4 +1,4 @@
-uuid: c7ee9a8d-e59a-4f97-b7e6-ca612219d14a
+uuid: 834b4887-efba-43f8-b149-94410229874d
 langcode: de
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: z2sNRM3ECa7FPCGnSNje_9SmZJQgwhD_6fG_L4Mr8zI
 id: taxonomy_term_unpublish_action
-label: 'Veröffentlichung des Taxonomiebegriffs zurücknehmen'
+label: 'Unpublish taxonomy term'
 type: taxonomy_term
 plugin: 'entity:unpublish_action:taxonomy_term'
 configuration: {  }

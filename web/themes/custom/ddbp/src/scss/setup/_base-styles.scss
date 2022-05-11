@@ -1,0 +1,138 @@
+::selection {
+    color: $color-white;
+    background: $color-main;
+}
+
+*:focus {
+    outline: none;
+    box-shadow: 0 0 20px $color-focus;
+}
+
+*:focus:not(:focus-visible) {
+    box-shadow: 0 0 0 transparent;
+}
+
+html,
+#app {
+    height: 100%;
+}
+
+body {
+    background: $color-white;
+    color: $color-black;
+    font-family: $font-family-main;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+    color: $color-grey-dark;
+    font-weight: font-weight(semi-bold);
+}
+
+h1,
+.h1 {
+    @include text(h1);
+}
+
+h2,
+.h2 {
+    @include text(h2);
+}
+
+h3,
+.h3 {
+    @include text(h3);
+}
+
+h4,
+.h4 {
+    @include text(h4);
+}
+
+h5,
+h6,
+p {
+    @include text(p1);
+}
+
+p {
+    color: $color-grey;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+img,
+video {
+    display: inline-block;
+    height: auto;
+    width: 100%;
+    vertical-align: middle;
+}
+
+strong,
+b {
+    font-weight: font-weight(bold);
+}
+
+em {
+    font-style: italic;
+}
+
+sub,
+sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+// skip to main content link
+a[href='#main-content'] {
+    @include text(p1);
+    color: $color-main;
+    font-weight: font-weight(bold);
+
+    &:focus {
+        @include spacing(margin, tiny, top bottom);
+        @include spacing(margin, very-small, right left);
+        box-shadow: 0 0 20px $color-focus;
+    }
+}
+
+// Class visually-hidden must be styled manually because system CSS is disabled in theme.info.yml
+// Styles copied from Drupal's hidden.module.css
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    word-wrap: normal;
+
+    // Also for focusable class (for accessibility reasons)
+    &.focusable {
+        &:focus {
+            position: static !important;
+            clip: auto;
+            overflow: visible;
+            height: auto;
+            width: auto;
+        }
+    }
+}

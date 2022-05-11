@@ -1,0 +1,77 @@
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'aggregator',
+] %}
+
+{% set title = label[0]['#context'].value %}
+
+{% set linkPrimary = {
+  url: content.field_link_ddb_portal[0]['#url'],
+  text: title ~ ' ' ~ 'im DDB Portal' | t,
+  target: true,
+  type: 'primary',
+} %}
+
+{% set linkSecondary = {
+  url: content.field_link_website[0]['#url'],
+  text: 'Webseite besuchen' | t,
+  target: true,
+  type: 'secondary',
+  bg: 'light',
+} %}
+
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <div class="container">
+    {# Breadcrumbs block #}
+    {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+  </div>
+
+  <div class="node__content">
+    <div class="container">
+      <div class="aggregator__teasers">
+        {{ get_nodes('aggregator_portrait', node.id) }}
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row-grid row-grid--fixed">
+        <div class="row-grid__title">
+          <div class="row-grid__title-content">
+            <h1>{{ title }}</h1>
+            <div class="aggregator__text-teaser h4">
+              {{ content.field_teaser_text[0]['#context'].value }}
+            </div>
+          </div>
+        </div>
+        <div class="row-grid__sidebar">
+          <div class="sidebar__items">
+            {% for key, fact in content.field_facts if key matches '/^\\d+$/' %}
+              <div class="sidebar__item">
+                <span>{{ fact.label }}</span>
+                <div class="text-formatted">
+                  {{ fact.value }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="row-grid__content">
+          <div class="row-grid__content-content">
+            <div class="aggregator__text">
+              {{ content.field_text }}
+            </div>
+            <div class="aggregator__links links-siblings">
+              {% if content.field_link_ddb_portal[0] %}
+                {% include '@ddbp/partials/link-button.html.twig' with { link: linkPrimary } %}
+              {% endif %}
+              {% if content.field_link_website[0] %}
+                {% include '@ddbp/partials/link-button.html.twig' with { link: linkSecondary } %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

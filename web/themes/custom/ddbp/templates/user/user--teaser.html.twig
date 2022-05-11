@@ -1,0 +1,55 @@
+{% set email = user.mail.value %}
+{% set phone = content.field_phone[0]['#context'].value %}
+{% set url = path('entity.user.canonical', { 'user': user.id }) %}
+
+{# used on Team overview #}
+<article{{ attributes.addClass('user-teaser') }}>
+  <div class="user-teaser__image">
+    <a href="{{ url }}">
+      {% if content.field_user_image[0] %}
+        {% set responsiveImage = { images: content.field_user_image[0].images } %}
+        {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+      {% else %}
+        <img src="/{{ directory }}/src/images/ddbp-platzhalter-team.webp" role="presentational" />
+      {% endif %}
+    </a>
+  </div>
+
+  <div class="user-teaser__job-title">
+    <a href="{{ url }}">
+      {{ content.field_job_title[0]['#context'].value }}
+    </a>
+  </div>
+
+  <div class="user-teaser__name h4">
+    <a href="{{ url }}">
+      <span>
+        {% if content.field_academic_degree[0] %}
+          {{ content.field_academic_degree[0]['#context'].value }}
+        {% endif %}
+        {{ content.field_firstname[0]['#context'].value }}
+      </span>
+      <span>
+        {{ content.field_lastname[0]['#context'].value }}
+        {% if content.field_name_suffix[0] %}
+          {{ content.field_name_suffix[0]['#context'].value }}
+        {% endif %}
+      </span>
+    </a>
+  </div>
+
+  {% if email or phone %}
+    <div class="user-teaser__info">
+      {% if email %}
+        <a href="mailto:{{ email }}" class="user-teaser__email" target="_blank">
+          {{ email }}
+        </a>
+      {% endif %}
+      {% if phone %}
+        <a href="tel:{{ phone }}" class="user-teaser__phone" target="_blank">
+          {{ phone }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+</article>

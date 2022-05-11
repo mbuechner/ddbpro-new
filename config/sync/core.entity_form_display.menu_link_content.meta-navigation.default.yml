@@ -1,0 +1,39 @@
+uuid: 30338efa-7866-44e1-b73e-7c33165fe569
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.meta-navigation.field_icon
+    - system.menu.meta-navigation
+  module:
+    - link
+    - media_library
+    - menu_item_extras
+id: menu_link_content.meta-navigation.default
+targetEntityType: menu_link_content
+bundle: meta-navigation
+mode: default
+content:
+  field_icon:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  view_mode:
+    type: menu_item_extras_view_mode_selector_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

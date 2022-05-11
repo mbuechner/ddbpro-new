@@ -1,0 +1,44 @@
+.teaser {
+    width: 100%;
+    max-width: 100%;
+
+    a,
+    .department-teaser__content-wrapper {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    &.teaser--image {
+        border-color: transparent;
+    }
+}
+
+.teaser__image {
+    position: relative;
+
+    .department-teaser &,
+    .overview-teaser & {
+        grid-column: 1;
+        grid-row: 1 / -1;
+
+        &:before {
+            @include fit();
+            content: '';
+        }
+    }
+}
+
+.teaser__title {
+    @include hyphens;
+    position: relative;
+    grid-column: 1;
+
+    .teaser--image & {
+        h2,
+        h3 {
+            color: $color-white;
+        }
+    }
+}

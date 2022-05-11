@@ -1,0 +1,25 @@
+uuid: cb9baab5-7ed4-4ab3-94e8-2c5db057727c
+langcode: de
+status: true
+dependencies:
+  config:
+    - system.menu.meta-navigation
+  module:
+    - system
+  theme:
+    - ddbp
+id: meta_navigation
+theme: ddbp
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:meta-navigation'
+settings:
+  id: 'system_menu_block:meta-navigation'
+  label: Meta-Navigation
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

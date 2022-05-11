@@ -1,0 +1,23 @@
+uuid: 13b70c60-ee3e-41d1-8b2e-03a83017e3a2
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_secondary_cta
+    - paragraphs.paragraphs_type.poster
+  module:
+    - link
+id: paragraph.poster.field_secondary_cta
+field_name: field_secondary_cta
+entity_type: paragraph
+bundle: poster
+label: 'Sekundäre Nutzeraktivierung'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

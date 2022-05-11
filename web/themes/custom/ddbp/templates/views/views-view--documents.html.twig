@@ -1,0 +1,57 @@
+{% set classes = [
+  'view',
+  'view-' ~ id|clean_class,
+  'view-id-' ~ id,
+  'view-display-id-' ~ display_id,
+  dom_id ? 'js-view-dom-id-' ~ dom_id,
+] %}
+
+{% set viewHeader = {
+  title: 'Dokumente & Links' | t,
+  text: 'Finden Sie hier alle Downloads und externe Links rund um die  Deutschen Digitalen Bibliothek.' | t
+} %}
+
+<div{{ attributes.addClass(classes) }}>
+
+  {# view header #}
+  {% include '@ddbp/partials/view-header.html.twig' with viewHeader %}
+
+  {% if exposed %}
+    <div class="view-filters">
+      {{ exposed }}
+    </div>
+  {% endif %}
+
+  {% if rows %}
+    <div class="container">
+      <div class="view-content">
+        <div class="documents__header">
+          <div class="documents__header-title">
+            {{ 'Titel' | t }}
+          </div>
+          <div class="documents__header-type">
+            {{ 'Dokumententyp' | t }}
+          </div>
+          <div class="documents__header-size">
+            {{ 'Dateigröße' | t }}
+          </div>
+          <div class="documents__header-update">
+            {{ 'Letzte Aktualisierung' | t }}
+          </div>
+          <div class="documents__header-download"></div>
+        </div>
+        <div class="documents__content">
+          {{ rows }}
+        </div>
+      </div>
+    </div>
+  {% elseif empty %}
+    <div class="view-empty">
+      {{ empty }}
+    </div>
+  {% endif %}
+
+  {% if pager %}
+    {{ pager }}
+  {% endif %}
+</div>
