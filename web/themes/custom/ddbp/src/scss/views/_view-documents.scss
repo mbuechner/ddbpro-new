@@ -1,0 +1,38 @@
+@mixin grid() {
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    grid-template-rows: 100%;
+
+    @include bp(l) {
+        grid-template-columns: 0.4fr repeat(4, 0.15fr);
+        grid-template-rows: 100%;
+    }
+
+    @include target-bps(l xl) {
+        @include rsa(column-gap, 7px, 10px);
+    }
+}
+
+.view-documents {
+    .document-teaser-big {
+        @include grid;
+    }
+}
+
+.documents__header {
+    @include grid;
+    @include spacing(padding, medium, right left);
+    @include spacing(padding, tiny, top bottom);
+    display: none;
+    background: $color-bg;
+
+    @include bp(l) {
+        display: grid;
+    }
+
+    > div {
+        @include text(p2);
+        color: $color-grey;
+        font-weight: font-weight(medium);
+    }
+}

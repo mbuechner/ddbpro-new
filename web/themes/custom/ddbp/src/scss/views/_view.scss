@@ -1,0 +1,69 @@
+.view-filters {
+    @include spacing(margin, huge, bottom);
+}
+
+.view-content {
+    @include spacing(margin, very-large, bottom);
+
+    .view-about-us &,
+    .view-aggregators &,
+    .view-departments &,
+    .view-team & {
+        @include row();
+    }
+
+    .view-provide-data &,
+    .view-use-data & {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        @include bp(m) {
+            column-gap: 3.4vw;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: 1fr;
+        }
+
+        @include bp(xl) {
+            column-gap: 3.15vw;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+.views-row {
+    @include columns(1);
+    @include spacing(margin, large, bottom);
+
+    .view-aggregators &,
+    .view-team & {
+        @include bp(m) {
+            @include columns(2);
+        }
+    }
+
+    .view-departments & {
+        @include bp(l) {
+            @include columns(2);
+        }
+    }
+
+    .view-about-us &,
+    .view-aggregators &,
+    .view-team & {
+        @include bp(l) {
+            @include columns(3);
+        }
+    }
+
+    .view-team & {
+        @include bp(xl) {
+            @include columns(4);
+        }
+    }
+
+    .view-documents &,
+    .view-latest-events &,
+    .view-past-events & {
+        margin-bottom: 0;
+    }
+}

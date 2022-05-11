@@ -1,0 +1,59 @@
+.paragraph--content-boxes {
+    .field--name-field-content {
+        @include row();
+    }
+
+    .field__item {
+        @include columns(1);
+
+        @include bp(m) {
+            @include columns(3);
+        }
+    }
+}
+
+.content-boxes {
+    h2 {
+        @include spacing(margin, large, bottom);
+    }
+}
+
+.paragraph--content-boxes-item {
+    @include spacing(margin, very-large, bottom);
+
+    .paragraph-inner {
+        height: 100%;
+    }
+}
+
+.content-box {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+}
+
+.content-box__image {
+    @include spacing(margin, small, bottom);
+    height: 195px;
+}
+
+.content-box__title {
+    @include spacing(margin, tiny, bottom);
+}
+
+.content-box__text {
+    @include spacing(margin, small, bottom);
+
+    p {
+        color: $color-grey-light;
+    }
+}
+
+.content-box__link {
+    margin-top: auto;
+
+    a {
+        justify-content: space-between;
+        width: 100%;
+    }
+}

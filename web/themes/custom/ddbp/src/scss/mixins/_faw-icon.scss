@@ -1,0 +1,35 @@
+// Wrapper for the trio-assets-css font-awesome mixin
+// With that we don't need to overwrite the font-family in every usage of the mixin
+// (the trio fa mixin uses the font awesome Pro font-family, which we don't have here
+@mixin faw-icon(
+    $unicode: \f26e,
+    $pseudo: before,
+    $font: 'Font Awesome 6 Free'
+) {
+    @include font-awesome($unicode, $pseudo, $font) {
+        @content;
+    }
+}
+
+// @todo needs work?
+// I'm not happy with how this works yet.
+@mixin fac-icon($icon, $flex: false) {
+    @if $flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &:after {
+        content: '';
+        display: inline-block;
+        height: inherit;
+        width: inherit;
+        background-image: url('../images/icons/#{$icon}.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        @content;
+    }
+}

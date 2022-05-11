@@ -1,0 +1,27 @@
+id: ddbp_faq
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: ddbp_content
+label: 'D7 CT FAQ to D9 CT FAQ'
+source:
+  plugin: d7_node
+  node_type: faq
+process:
+  nid: nid
+  uid: node_uid
+  status: status
+  created: created
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: de
+  title: title
+  field_answer: body
+  field_faq_category:
+    plugin: migration_lookup
+    source: field_kategorie
+    migration: ddbp_taxonomy_faq_category
+destination:
+  plugin: 'entity:node'
+  default_bundle: faq

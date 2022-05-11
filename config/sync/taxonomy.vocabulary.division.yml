@@ -1,0 +1,8 @@
+uuid: a442b9d9-c647-4555-a330-2ca35135e323
+langcode: de
+status: true
+dependencies: {  }
+name: Abteilung
+vid: division
+description: "Abteilungen\_der DDB, in der der Benutzer tätig ist, z. B. Servicestelle, Koordination"
+weight: 0

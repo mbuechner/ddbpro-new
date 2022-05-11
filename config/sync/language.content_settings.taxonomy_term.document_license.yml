@@ -1,0 +1,11 @@
+uuid: ba79a68a-0246-47b8-aa7b-632c70110be6
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.document_license
+id: taxonomy_term.document_license
+target_entity_type_id: taxonomy_term
+target_bundle: document_license
+default_langcode: site_default
+language_alterable: false

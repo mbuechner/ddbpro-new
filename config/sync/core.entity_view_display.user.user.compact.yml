@@ -1,13 +1,21 @@
-uuid: 2945a816-2b7b-4b4f-b4df-b94b96bacb4e
+uuid: 06ca7a4d-35cf-495a-a2ba-dc45497590d6
 langcode: de
 status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
-    - field.field.user.user.user_picture
-    - image.style.thumbnail
+    - field.field.user.user.field_academic_degree
+    - field.field.user.user.field_address
+    - field.field.user.user.field_division
+    - field.field.user.user.field_dont_show_in_overview
+    - field.field.user.user.field_firstname
+    - field.field.user.user.field_institution
+    - field.field.user.user.field_job_title
+    - field.field.user.user.field_lastname
+    - field.field.user.user.field_name_suffix
+    - field.field.user.user.field_phone
+    - field.field.user.user.field_user_image
   module:
-    - image
     - user
 _core:
   default_config_hash: kD2TjItfNDKFw2CFJQfuv4Ys6qg3uYa4hCJYN2jreec
@@ -16,15 +24,22 @@ targetEntityType: user
 bundle: user
 mode: compact
 content:
-  user_picture:
-    type: image
-    label: hidden
-    settings:
-      image_link: content
-      image_style: thumbnail
+  masquerade:
+    settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 50
     region: content
 hidden:
+  field_academic_degree: true
+  field_address: true
+  field_division: true
+  field_dont_show_in_overview: true
+  field_firstname: true
+  field_institution: true
+  field_job_title: true
+  field_lastname: true
+  field_name_suffix: true
+  field_phone: true
+  field_user_image: true
   langcode: true
   member_for: true

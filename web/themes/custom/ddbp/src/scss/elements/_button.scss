@@ -1,0 +1,124 @@
+.button {
+    @include rsa(height, 46px, 60px);
+    @include spacing(padding, medium, right left);
+    @include text(a1);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 50vw;
+    background: transparent;
+    font-weight: font-weight(bold);
+    text-align: center;
+    text-transform: uppercase;
+    transform: scale(1);
+    transition-duration: $duration-fast;
+    transition-timing-function: $easing-default;
+    transition-property: border-color, transform;
+    cursor: pointer;
+    z-index: 1;
+
+    i {
+        flex-shrink: 0;
+
+        &:first-child {
+            @include spacing(margin, tiny, right);
+        }
+
+        &:last-child {
+            @include spacing(margin, tiny, left);
+        }
+
+        &:not(.fac) {
+            @include rsa(font-size, 11px, 15px);
+        }
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &[disabled] {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+}
+
+.button--primary {
+    background: $color-main;
+    color: $color-white;
+    overflow: hidden;
+
+    @include bp(l) {
+        &:hover {
+            &:before {
+                width: 100%;
+                transform: scale(1);
+                transition: transform $duration-fast,
+                    width $duration-fast $duration-fast - 0.05s;
+            }
+        }
+    }
+
+    // hover background
+    &:before {
+        @include fit();
+        @include rsa(height width, 46px, 60px);
+        content: '';
+        display: block;
+        border-radius: inherit;
+        margin: auto;
+        transform: scale(0);
+        background: $color-main-dark;
+        transform-origin: center;
+        transition: transform $duration-fast $duration-fast - 0.05s,
+            width $duration-fast;
+        transition-timing-function: $easing-default;
+        z-index: -1;
+    }
+
+    i {
+        color: $color-white;
+    }
+}
+
+.button--secondary {
+    border: 1px solid transparent;
+
+    // on dark background
+    &.button--dark {
+        border-color: $color-lighten;
+        color: $color-white;
+
+        @include bp(l) {
+            &:hover {
+                border-color: rgba($color-white, 0.4);
+            }
+        }
+
+        i {
+            color: $color-white;
+        }
+    }
+
+    // on light background
+    &.button--light {
+        border-color: $color-darken;
+        color: $color-main;
+
+        @include bp(l) {
+            &:hover {
+                border-color: rgba($color-black, 0.2);
+            }
+        }
+
+        i {
+            color: $color-main;
+        }
+    }
+}

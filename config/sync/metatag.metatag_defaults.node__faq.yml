@@ -1,0 +1,10 @@
+uuid: 06c18579-3e02-42d0-a6c5-53b4004313c0
+langcode: de
+status: true
+dependencies: {  }
+id: node__faq
+label: 'Content: FAQ'
+tags:
+  description: '[node:field_answer]'
+  og_description: '[node:field_answer]'
+  twitter_cards_description: '[node:field_answer]'

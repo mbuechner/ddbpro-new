@@ -1,0 +1,31 @@
+.menu--meta-navigation {
+    margin-left: auto;
+}
+
+.menu--meta-navigation__items {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+.menu--meta-navigation__item {
+    & + & {
+        @include spacing(margin, very-small, left);
+    }
+}
+
+.menu--meta-navigation__item-link {
+    @include spacing(padding, tiny, right left);
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    color: $color-grey;
+}
+
+.menu--meta-navigation__item-icon {
+    @include rsa(margin-right, 7px, 10px);
+
+    img {
+        @include rsa(max-width, 10px, 12px);
+    }
+}

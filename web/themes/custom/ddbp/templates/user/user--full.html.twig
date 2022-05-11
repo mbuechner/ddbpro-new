@@ -1,0 +1,92 @@
+{% set email = user.mail.value %}
+{% set phone = content.field_phone[0]['#context'].value %}
+
+{% set linkPrimary = {
+  url: 'mailto:' ~ email,
+  text: email,
+  target: true,
+  mail: true,
+  type: 'primary',
+} %}
+
+{% set linkSecondary = {
+  url: path('view.team.team'),
+  text: 'Zur Übersicht' | t,
+  type: 'secondary',
+  bg: 'light',
+} %}
+
+<article{{ attributes.addClass('user') }}>
+  <div class="container">
+    {# Breadcrumbs block #}
+    {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+  </div>
+
+  <div class="node__content">
+    <div class="container">
+      <div class="row-grid row-grid--fixed">
+        <div class="row-grid__title">
+          <div class="row-grid__title-content">
+            <div class="user__name h1">
+              {% if content.field_academic_degree[0] %}
+                {{ content.field_academic_degree[0]['#context'].value }}
+              {% endif %}
+              {{ content.field_firstname[0]['#context'].value }}</br>
+              {{ content.field_lastname[0]['#context'].value }}
+              {% if content.field_name_suffix[0] %}
+                {{ content.field_name_suffix[0]['#context'].value }}
+              {% endif %}
+            </div>
+
+            {% if content.field_job_title[0] %}
+              <div class="user__job-title h4">
+                {{ content.field_job_title[0]['#context'].value }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="row-grid__sidebar">
+          <div class="user__image">
+            {% if content.field_user_image[0] %}
+              {% set responsiveImage = { images: content.field_user_image[0].images } %}
+              {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+            {% else %}
+              <img src="/{{ directory }}/src/images/ddbp-platzhalter-team.webp" role="presentational" />
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="row-grid__content">
+          <div class="row-grid__content-content">
+            <div class="user__info">
+              {% if content.field_institution[0] %}
+                <div class="user__info-institution">
+                  {{ content.field_institution[0]['#context'].value }}
+                </div>
+              {% endif %}
+              <div class="user__info-address">
+                {{ content.field_address }}
+              </div>
+              <div class="user__info-phone">
+                {{ 'Tel.:' | t }}
+                <a href="tel:{{ phone }}" class="user__phone" target="_blank">
+                  {{ phone }}
+                </a>
+              </div>
+            </div>
+
+            <div class="user__links links-siblings">
+              {# email #}
+              {% if email %}
+                {% include '@ddbp/partials/link-button.html.twig' with { link: linkPrimary } %}
+              {% endif %}
+              {# link to overview #}
+              {% include '@ddbp/partials/link-button.html.twig' with { link: linkSecondary } %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

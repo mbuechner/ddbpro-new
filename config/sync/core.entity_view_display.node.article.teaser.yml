@@ -1,18 +1,20 @@
-uuid: 7374def7-635d-419b-8006-ca7ac1dc65e1
+uuid: 2f493399-7fb1-4e58-9b88-86152ea73d5d
 langcode: de
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.article.body
-    - field.field.node.article.comment
+    - field.field.node.article.field_contact_persons
+    - field.field.node.article.field_faq_category
     - field.field.node.article.field_image
-    - field.field.node.article.field_tags
-    - image.style.medium
+    - field.field.node.article.field_paragraphs
+    - field.field.node.article.field_sub_pages
+    - field.field.node.article.field_teaser_text
+    - field.field.node.article.field_webform
+    - field.field.node.article.field_weight
     - node.type.article
   module:
-    - image
-    - text
+    - ddbp_responsive_image
     - user
 _core:
   default_config_hash: 0ur5-yZyR8pJ3lugC_Micbr6V_tpMWz-yHFhtuLcZo8
@@ -21,36 +23,31 @@ targetEntityType: node
 bundle: article
 mode: teaser
 content:
-  body:
-    type: text_summary_or_trimmed
+  field_image:
+    type: image_responsive_meta
     label: hidden
     settings:
-      trim_length: 600
+      image_style_0px: default
+      image_style_421px: default
+      image_style_701px: default
+      image_style_1001px: default
+      image_style_1301px: default
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
-  field_image:
-    type: image
-    label: hidden
-    settings:
-      image_link: content
-      image_style: medium
-    third_party_settings: {  }
-    weight: -1
-    region: content
-  field_tags:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 10
-    region: content
-  links:
-    weight: 100
-    region: content
 hidden:
-  comment: true
-  field_image: true
-  field_tags: true
+  field_contact_persons: true
+  field_faq_category: true
+  field_paragraphs: true
+  field_sub_pages: true
+  field_webform: true
+  field_weight: true
   langcode: true
+  links: true

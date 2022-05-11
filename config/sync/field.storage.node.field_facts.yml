@@ -1,0 +1,19 @@
+uuid: 377b8beb-5a6a-487e-b83e-9d019a610a14
+langcode: de
+status: true
+dependencies:
+  module:
+    - ddbp_tools
+    - node
+id: node.field_facts
+field_name: field_facts
+entity_type: node
+type: fact_item
+settings: {  }
+module: ddbp_tools
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

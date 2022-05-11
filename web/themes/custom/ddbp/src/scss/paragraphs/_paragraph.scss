@@ -1,0 +1,30 @@
+.paragraph--text {
+    @include spacing(margin, medium, bottom);
+}
+
+.paragraph--accordions,
+.paragraph--collage,
+.paragraph--content-boxes,
+.paragraph--document,
+.paragraph--facts-figures {
+    @include spacing(margin, very-large, bottom);
+}
+
+.paragraph--poster {
+    @include spacing(padding, large, top);
+
+    .paragraph-inner {
+        @include spacing(margin, massive, bottom);
+    }
+}
+
+.paragraph--process {
+    @include spacing(margin, huge, bottom);
+}
+
+// @todo
+.paragraph--block-reference,
+.paragraph--image,
+.paragraph--link {
+    @include spacing(margin, very-large, bottom);
+}

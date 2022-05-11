@@ -1,0 +1,19 @@
+uuid: 048defbf-0a66-4026-8e78-ae90a70264b3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alternatives
+    - node.type.glossary_term
+id: node.glossary_term.field_alternatives
+field_name: field_alternatives
+entity_type: node
+bundle: glossary_term
+label: 'Alternative Begriffe'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

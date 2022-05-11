@@ -1,0 +1,19 @@
+<div class="content-header__bottom">
+  <div class="content-header__content">
+    <div class="content-header__title">
+      <h1>{{ title }}</h1>
+    </div>
+
+    <div class="content-header__text">
+      <p class="h4">{{ text }}</p>
+    </div>
+
+    {% if link %}
+      <div class="content-header__link">
+        <a href="#node-form" class="button button--primary">
+          {{ 'Kontakt aufnehmen' | t }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

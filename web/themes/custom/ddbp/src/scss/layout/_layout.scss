@@ -1,0 +1,224 @@
+.content-main {
+    @include rsa(padding-bottom, 70px, 160px);
+    position: relative;
+    display: grid;
+    min-height: 100vh;
+
+    @include bp(l) {
+        padding-bottom: 0;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+}
+
+header {
+    @include bp(l) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
+aside {
+    &.sidebar--left {
+        @include bp(l) {
+            grid-column: 1;
+            grid-row: 1 / -1;
+        }
+    }
+}
+
+.main-content {
+    @include bp(l) {
+        grid-column: 2;
+        grid-row: 2 / 3;
+    }
+}
+
+footer {
+    @include bp(l) {
+        grid-column: 2;
+        grid-row: 3;
+    }
+}
+
+.row {
+    @include row();
+}
+
+.row-grid {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+
+    @include bp(l) {
+        grid-template-rows: repeat(2, auto);
+    }
+
+    .row-grid__title {
+        grid-row: 1;
+    }
+
+    .row-grid__sidebar {
+        grid-row: 2;
+
+        @include bp(l) {
+            grid-row: 1 / -1;
+        }
+    }
+
+    .row-grid__content {
+        grid-row: 3;
+
+        @include bp(l) {
+            grid-row: 2;
+        }
+    }
+}
+
+// with content in sidebar + sticky
+// CT Article & CT Department
+// View FAQ
+.row-grid--sticky {
+    grid-template-columns: 100%;
+
+    @include bp(l) {
+        grid-template-columns: 75% 25%;
+    }
+
+    > * {
+        @include bp(l) {
+            grid-column: 1 / -1;
+        }
+    }
+
+    .row-grid__title-content {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+
+        @include bp(xl) {
+            max-width: $column-fixed-content;
+        }
+    }
+
+    .row-grid__sidebar-content {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+
+        @include bp(l) {
+            max-width: $column-fixed-sidebar;
+            margin-left: auto;
+        }
+    }
+}
+
+// with content in sidebar + not sticky
+// CT Aggregator profile & CT Event & CT User
+.row-grid--fixed {
+    grid-template-columns: 100%;
+
+    @include bp(l) {
+        grid-template-columns: 75% 25%;
+    }
+
+    @include bp(xl) {
+        grid-template-columns: 66% 9% 25%;
+    }
+
+    .row-grid__title,
+    .row-grid__content {
+        grid-column: 1;
+    }
+
+    .row-grid__sidebar {
+        grid-column: 1;
+
+        @include bp(l) {
+            grid-column: 2;
+        }
+
+        @include bp(xl) {
+            grid-column: 3;
+        }
+    }
+
+    // special case bc sidebar doesn't go under title on XS - M
+    .user & {
+        grid-template-columns: 1fr auto;
+
+        @include bp(l) {
+            grid-template-columns: 75% 25%;
+        }
+
+        @include bp(xl) {
+            grid-template-columns: 66% 9% 25%;
+        }
+
+        .row-grid__sidebar {
+            grid-column: 2;
+            grid-row: 1;
+
+            @include bp(l) {
+                grid-row: 1 / -1;
+            }
+
+            @include bp(xl) {
+                grid-column: 3;
+            }
+        }
+
+        .row-grid__content {
+            grid-column: 1 / -1;
+
+            @include bp(l) {
+                grid-column: 1;
+            }
+        }
+    }
+}
+
+.row-grid__title-content,
+.row-grid__content-content {
+    @include bp(l) {
+        padding-right: 3.4vw;
+    }
+
+    @include bp(xl) {
+        padding-right: 3.15vw;
+    }
+}
+
+.row-grid__sidebar {
+    .container {
+        height: 100%;
+    }
+}
+
+.column {
+    @include columns(1);
+    display: block; // override mixin
+
+    @include bp(l) {
+        @include columns();
+        display: block; // override mixin
+    }
+}
+
+[class*='column--span'] {
+    flex-basis: 100%;
+    max-width: 100%;
+}
+
+.column--span-2 {
+    @include bp(xl) {
+        flex-basis: 16.666%;
+        max-width: 16.666%;
+    }
+}
+
+.column--span-10 {
+    @include bp(xl) {
+        flex-basis: 83.333%;
+        max-width: 83.333%;
+    }
+}

@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * @file
+ * Contains responsive image hook implementations and functions.
+ */
+
+use Drupal\file\Entity\File;
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ *
+ * Make sure all image derivatives of the given styles are generated, when updating an image.
+ *
+ * @param $image
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function ddbp_responsive_image_image_update($image) {
+  _ddbp_responsive_image_recreate_image_styles($image);
+}
+
+/**
+ * Implements hook_preprocess_field__FIELD_TYPE().
+ *
+ * Ensure all image derivatives of the given styles are generated, when rendering image data via field_media_image.
+ *
+ * @param $variables
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function ddbp_responsive_image_preprocess_field__field_media_image(&$variables) {
+  if(!empty($variables['items'][0]['content']['media'])) {
+    $mediaEntities = $variables['items'][0]['content']['media'];
+
+    foreach ($mediaEntities as $media) {
+      if ($media->bundle() === 'image') {
+        if (!empty($media->get('field_media_image')->first())) {
+          $imageData = $media->get('field_media_image')->first()->getValue();
+          if (is_numeric($imageData['target_id'])) {
+            $file = File::load($imageData['target_id']);
+            if ($file) {
+              $fileUri = $file->getFileUri();
+              $image = \Drupal::service('image.factory')->get($fileUri);
+
+              _ddbp_responsive_image_recreate_image_styles($image);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * A helper function for refreshing the styles of an image set via the Responsive Formatter.
+ *
+ * @param $image
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function _ddbp_responsive_image_recreate_image_styles($image) {
+  $assignedStyles = \Drupal::config('ddbp_responsive_image.settings')->get('image_styles');
+  $styleEntities = \Drupal::entityTypeManager()->getStorage('image_style')->loadMultiple($assignedStyles);
+  $imageSrc = $image->getSource();
+
+  foreach ($styleEntities as $style) {
+    $imageUri = $style->buildUri($imageSrc);
+
+    // Generate image style file if it doesn't exist
+    if (!file_exists($imageUri)) {
+      $style->createDerivative($imageSrc, $imageUri);
+    }
+  }
+}

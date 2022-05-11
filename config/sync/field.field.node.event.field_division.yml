@@ -1,0 +1,29 @@
+uuid: 8ffce863-1f3c-4554-937a-9dd5b1165c69
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_division
+    - node.type.event
+    - taxonomy.vocabulary.division
+id: node.event.field_division
+field_name: field_division
+entity_type: node
+bundle: event
+label: Abteilung
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      division: division
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

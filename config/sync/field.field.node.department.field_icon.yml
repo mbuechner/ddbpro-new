@@ -1,0 +1,29 @@
+uuid: 1b8f6bc0-56e0-4f72-8986-8a4afbc31cdd
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_icon
+    - media.type.image
+    - node.type.department
+id: node.department.field_icon
+field_name: field_icon
+entity_type: node
+bundle: department
+label: Icon
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

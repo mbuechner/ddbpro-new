@@ -1,0 +1,11 @@
+uuid: cf01252c-042f-4122-ae4f-831684e1fa39
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.department
+id: node.department
+target_entity_type_id: node
+target_bundle: department
+default_langcode: site_default
+language_alterable: false

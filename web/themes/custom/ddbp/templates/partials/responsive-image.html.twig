@@ -1,0 +1,54 @@
+<picture class="responsive-image">
+  {% for img in responsiveImage.images if img.media %}
+    <source media="{{ img.media }}"
+            srcset="{{ img.src }}"/>
+  {% endfor %}
+  {% for defaultImage in responsiveImage.images if defaultImage.media is not defined %}
+    {% if defaultImage|length > 1 %}
+
+      {% if responsiveImage.parallax is defined %}
+        <img src="{{ defaultImage.src }}"
+          alt="{{ defaultImage.alt }}"
+          {% if lazy is not defined %}loading="lazy"{% endif %}
+          class="responsive-image__img js-parallax"
+          data-auto="ttb"
+          data-mode="image"/>
+      {% else %}
+        <img
+          src="{{ defaultImage.src }}"
+          {% if alt is not defined and not breadcrumbs %}
+            alt="{{ defaultImage.alt|render|striptags|trim }}"
+          {% endif %}
+          {% if lazy is not defined %}loading="lazy"{% endif %}
+          class="responsive-image__img"/>
+      {% endif %}
+
+    {% endif %}
+  {% endfor %}
+</picture>
+
+{# copyright info for footer #}
+{% for defaultImage in responsiveImage.images if defaultImage.media is not defined %}
+  {% if defaultImage|length > 1 %}
+    {% set copy = defaultImage.copyright %}
+    {# link must be added with JS otherwise the markup breakes if the image is inside the <a> #}
+    <div class="responsive-image__copyright"
+      {% if copy.link %}data-link={{ copy.link }}{% endif %}>
+      <div class="responsive-image__copyright-image"
+        style="background-image: url('{{ copy.image }}')">
+      </div>
+      <span class="responsive-image__copyright-text">
+        <span>{{- copy.title -}}</span>{% if copy.text %}{{- ', © ' ~ copy.text }}{% endif %}
+      </span>
+    </div>
+  {% endif %}
+{% endfor %}
+
+{# description #}
+{% if responsiveImage.description %}
+  {% for img in responsiveImage.images if img.description['#markup'] %}
+    <div class="responsive-image__desc text-formatted">
+      <p>{{- img.description['#markup']|raw -}}</p>
+    </div>
+  {% endfor %}
+{% endif %}

@@ -1,0 +1,10 @@
+uuid: 7bae99ad-78db-4430-9def-4fef2e64b2d7
+langcode: de
+status: true
+dependencies: {  }
+id: collage
+label: Collage
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

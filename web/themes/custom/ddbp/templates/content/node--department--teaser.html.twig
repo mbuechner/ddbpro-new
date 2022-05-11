@@ -1,0 +1,31 @@
+{% set image = content.field_image[0] %}
+
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'teaser',
+  image ? 'teaser--image',
+  'department-teaser',
+  image ? 'department-teaser--image'
+] %}
+
+
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <a href="{{ url }}">
+    <div class="department-teaser__content-wrapper">
+      {% if image %}
+        {% set responsiveImage = { images: image.images } %}
+        <div class="teaser__image department-teaser__image">
+          {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+        </div>
+      {% endif %}
+      <div class="teaser__title department-teaser__title">
+        <h2>{{ label[0]['#context'].value }}</h2>
+      </div>
+    </div>
+    <div class="teaser__icon department-teaser__icon">
+      {% set responsiveImage = { images: content.field_icon[0].images } %}
+      {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+    </div>
+  </a>
+</article>

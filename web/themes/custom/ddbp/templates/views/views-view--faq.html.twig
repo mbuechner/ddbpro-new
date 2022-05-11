@@ -1,0 +1,64 @@
+{% set classes = [
+  'view',
+  'view-' ~ id|clean_class,
+  'view-id-' ~ id,
+  'view-display-id-' ~ display_id,
+  dom_id ? 'js-view-dom-id-' ~ dom_id,
+  'container',
+] %}
+
+{% set viewHeader = {
+  title: 'FAQ' | t,
+  text: 'Sie haben Fragen zu den verschiedenen Bereich der Deutschen Digitalen Bibliothek? Hier wird Ihnen geholfen!' | t,
+  breadcrumbs: false,
+  container: false,
+} %}
+
+{% set faq_categories = _context['attachment_after'] %}
+
+{# Breadcrumbs block #}
+{# moving this outside of view bc of the sidebar on the right #}
+<div class="container">
+  {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+</div>
+
+<div{{ attributes.addClass(classes) }}>
+
+  <div class="row-grid row-grid--sticky">
+    <div class="row-grid__title">
+      <div class="row-grid__title-content">
+        {# view header #}
+        {% include '@ddbp/partials/view-header.html.twig' with viewHeader %}
+      </div>
+    </div>
+
+    <aside id="sidebar-right" class="row-grid__sidebar sidebar sidebar--right">
+      <div class="row-grid__sidebar-content">
+        <div class="view-faq__toc">
+          <p class="view-faq__toc-title">
+            {{ 'Springen zu:' | t }}
+          </p>
+          <ul class="view-faq__toc-items">
+            {% for category in faq_categories %}
+              {% set anchor = category|render|striptags|trim %}
+              <li class="view-faq__toc-item">
+                <a href="#{{ anchor|clean_class }}"
+                  class="view-faq__toc-link">
+                  {{- anchor -}}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <div class="row-grid__content view-content">
+      <div class="row-grid__content-content">
+        {{ rows }}
+      </div>
+    </div>
+  </div>
+
+</div>
+

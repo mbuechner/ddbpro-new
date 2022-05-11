@@ -1,0 +1,22 @@
+{% set link = {
+  url: path('view.aggregators.aggregators'),
+  text: 'Zur Übersicht' | t,
+  type: 'primary',
+} %}
+
+<div class="block-aggregators">
+  <div class="tiny-label">
+    {{ 'Aggregatoren Portraits' | t }}
+  </div>
+  <h2>{{ 'Über 30 Aggregatoren sind bereits ein Teil der DDB' | t }}</h2>
+  {% include '@ddbp/partials/link-button.html.twig' with link %}
+  <div class="block-aggregators__teasers">
+    <div class="row">
+      {% for teaser in content.aggregators %}
+        <div class="block-aggregators__teaser">
+          {{ teaser }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

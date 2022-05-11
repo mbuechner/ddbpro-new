@@ -1,0 +1,29 @@
+uuid: 4de64621-c32d-4eea-99a6-72490890fad3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_persons
+    - node.type.department
+id: node.department.field_contact_persons
+field_name: field_contact_persons
+entity_type: node
+bundle: department
+label: Kontaktpersonen
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: false
+field_type: entity_reference

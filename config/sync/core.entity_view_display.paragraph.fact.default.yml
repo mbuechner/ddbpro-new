@@ -1,0 +1,30 @@
+uuid: 934be6ad-b753-4409-89d6-1ac03de8a2af
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.fact.field_figure
+    - field.field.paragraph.fact.field_label
+    - paragraphs.paragraphs_type.fact
+id: paragraph.fact.default
+targetEntityType: paragraph
+bundle: fact
+mode: default
+content:
+  field_figure:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

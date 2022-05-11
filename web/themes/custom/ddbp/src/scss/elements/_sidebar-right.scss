@@ -1,0 +1,44 @@
+.sidebar__items {
+    @include spacing(margin, very-large, bottom);
+
+    @include bp(l) {
+        margin-bottom: 0;
+    }
+}
+
+.sidebar__item {
+    @include spacing(margin, very-small, bottom);
+    @include text(p1);
+    color: $color-grey;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    span {
+        @include text(p2);
+        display: block;
+        color: $color-grey-light;
+        font-weight: font-weight(medium);
+    }
+}
+
+.sidebar__item-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sidebar__item-items-item {
+    display: inline-flex;
+    margin-right: 3px;
+
+    &:after {
+        content: ',';
+    }
+
+    &:last-child {
+        &:after {
+            display: none;
+        }
+    }
+}

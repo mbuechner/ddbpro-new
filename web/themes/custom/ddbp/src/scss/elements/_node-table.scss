@@ -1,0 +1,44 @@
+// for content that appears to be displayed as table
+// Document full & Glossary full
+.node-table__items {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include bp(l) {
+        grid-template-columns: auto 1fr;
+    }
+
+    @include target-bps(l xl) {
+        @include rsa(column-gap, 30px, 60px);
+    }
+}
+
+.node-table__item-label,
+.node-table__item-value {
+    @include text(p1);
+}
+
+.node-table__item-label {
+    color: $color-grey-light;
+    white-space: nowrap;
+}
+
+.node-table__item-value {
+    @include spacing(margin, small, bottom);
+    color: $color-grey;
+    font-weight: font-weight(medium);
+
+    span {
+        font-weight: font-weight(semi-bold);
+    }
+
+    p {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.node-table__item-value--doc-type {
+    text-transform: uppercase;
+}

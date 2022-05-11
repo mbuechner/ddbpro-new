@@ -1,0 +1,164 @@
+.pager {
+    display: flex;
+    justify-content: center;
+}
+
+.pager__items-wrapper {
+    @include spacing(padding, huge, top);
+    @include spacing(padding, massive, bottom);
+    display: inline-grid;
+    align-items: center;
+    grid-template: repeat(2, auto) / repeat(2, auto);
+
+    @include bp(m) {
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: 1fr;
+    }
+}
+
+.pager__items {
+    display: flex;
+    align-items: center;
+    grid-column: 1 / -1;
+
+    @include bp(m) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    @include target-bps(m l xl) {
+        @include spacing(margin, medium, right left);
+    }
+}
+
+.pager__item--back,
+.pager__item--forward {
+    @include spacing(margin, very-small, top right left);
+    position: relative;
+    grid-row: 2;
+
+    @include bp(m) {
+        grid-row: 1;
+        margin: 0;
+    }
+
+    .pager__item-link {
+        @include rsa(height width, 48px, 60px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: $color-bg;
+        padding: 0;
+
+        @include bp(l) {
+            &:hover {
+                &:before {
+                    width: 100%;
+                    transform: scale(1);
+                }
+
+                &:after {
+                    color: $color-white;
+                }
+            }
+        }
+
+        // background for hover
+        &:before {
+            @include fit();
+            @include rsa(height width, 48px, 60px);
+            content: '';
+            display: block;
+            border-radius: inherit;
+            margin: auto;
+            transform: scale(0);
+            background: $color-main;
+            transform-origin: center;
+            transition: transform $duration-fast $easing-default;
+        }
+
+        // icon
+        &:after {
+            @include rsa(font-size, 14px, 16px);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $color-grey;
+            font-weight: font-weight(bold);
+            transition: color $duration-fast $easing-default;
+            z-index: 1;
+        }
+    }
+
+    .pager__item-link--disabled {
+        pointer-events: none;
+        cursor: default;
+
+        &:after {
+            opacity: 0.4;
+        }
+    }
+}
+
+.pager__item--back {
+    justify-self: end;
+
+    @include bp(l) {
+        justify-self: unset;
+    }
+
+    .pager__item-link {
+        @include faw-icon(\f104, after);
+    }
+}
+
+.pager__item--forward {
+    .pager__item-link {
+        @include faw-icon(\f105, after);
+    }
+}
+
+.pager__item--active {
+    .pager__item-link {
+        color: $color-main;
+        pointer-events: none;
+        cursor: default;
+
+        // just a line
+        &:after {
+            content: '';
+            display: inline-block;
+            height: 1px;
+            width: 30px;
+            background: $color-grey-light;
+        }
+
+        span {
+            @include spacing(margin, medium, right);
+        }
+    }
+}
+
+.pager__item-link {
+    @include spacing(padding, very-small);
+    @include text(h4);
+    display: inline-flex;
+    align-items: center;
+    color: $color-grey-light;
+    transition: color $duration-fast $easing-default;
+    cursor: pointer;
+
+    @include focus;
+
+    @include bp(l) {
+        &:hover {
+            color: $color-grey;
+        }
+    }
+
+    span {
+        display: inline-block;
+    }
+}

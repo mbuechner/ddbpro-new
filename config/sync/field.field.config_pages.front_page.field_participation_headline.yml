@@ -1,0 +1,19 @@
+uuid: c8278300-5f32-4b96-950b-84b78a624bb9
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.front_page
+    - field.storage.config_pages.field_participation_headline
+id: config_pages.front_page.field_participation_headline
+field_name: field_participation_headline
+entity_type: config_pages
+bundle: front_page
+label: Überschrift
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

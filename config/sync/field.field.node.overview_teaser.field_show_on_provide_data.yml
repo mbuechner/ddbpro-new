@@ -1,0 +1,23 @@
+uuid: 8f3a8549-e9f9-487c-9efc-e74b43e074d0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_on_provide_data
+    - node.type.overview_teaser
+id: node.overview_teaser.field_show_on_provide_data
+field_name: field_show_on_provide_data
+entity_type: node
+bundle: overview_teaser
+label: 'Anzeigen unter "Daten liefern"'
+description: 'Dieser Teaser wird auf der Seite "Daten liefern" angezeigt'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

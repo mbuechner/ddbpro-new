@@ -1,7 +1,7 @@
 FROM composer:2 AS COMPOSER_CHAIN
 COPY / /tmp/ddbpro
 WORKDIR /tmp/ddbpro
-RUN composer install --no-dev
+RUN composer install --no-dev --ignore-platform-req=ext-gd
 
 # Add git tag version to PHP file
 RUN { \
@@ -9,7 +9,7 @@ RUN { \
     } >> /tmp/ddbpro/version; \
     rm -rf .git/;
 
-FROM php:8.0-fpm-alpine
+FROM php:7.4-fpm-alpine
 MAINTAINER Michael Büchner <m.buechner@dnb.de>
 
 # Install packages
@@ -96,8 +96,8 @@ COPY --chown=${RUN_USER}:${RUN_GROUP} --from=COMPOSER_CHAIN /tmp/ddbpro/ .
 ENV PATH=${PATH}:/var/www/html/vendor/bin
 
 RUN \
-    # Create symlink for php8
-    ln -s /usr/bin/php8 /usr/bin/php; \
+    # Create symlink for php7
+    ln -s /usr/bin/php7 /usr/bin/php; \
     # Use the default PHP production configuration
     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"; \
     # Move entrypoint script in place

@@ -1,4 +1,4 @@
-uuid: 4f6d2ab9-9f74-4a07-9157-c8f590dbd49f
+uuid: a91b8231-3ca7-4115-926d-b9be0ea4dc8f
 langcode: de
 status: false
 dependencies:
@@ -10,20 +10,20 @@ dependencies:
 _core:
   default_config_hash: ko9GznzNBXHkuz09OCaBQ1YOSJYYjTY0TBpNV3WKnog
 id: archive
-label: Archiv
+label: Archive
 module: node
-description: 'Gesamter Inhalt, nach Monaten'
+description: 'All content, by month.'
 tag: default
 base_table: node_field_data
 base_field: nid
 display:
   default:
     id: default
-    display_title: Standard
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
-      title: 'Monatliches Archiv'
+      title: 'Monthly archive'
       fields: {  }
       pager:
         type: mini
@@ -37,22 +37,22 @@ display:
             previous: ‹‹
           expose:
             items_per_page: false
-            items_per_page_label: 'Elemente pro Seite'
+            items_per_page_label: 'Items per page'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- Alle -'
+            items_per_page_options_all_label: '- All -'
             offset: false
-            offset_label: Versatz
+            offset_label: Offset
       exposed_form:
         type: basic
         options:
-          submit_button: Anwenden
+          submit_button: Apply
           reset_button: false
-          reset_button_label: Zurücksetzen
-          exposed_sorts_label: 'Sortieren nach'
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
           expose_sort_order: true
-          sort_asc_label: Aufsteigend
-          sort_desc_label: Absteigend
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       access:
         type: perm
         options:
@@ -227,7 +227,7 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: Seite
+    display_title: Page
     display_plugin: page
     position: 2
     display_options:

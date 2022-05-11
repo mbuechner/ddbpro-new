@@ -1,0 +1,21 @@
+@mixin autofill($color-bg, $color: $color-white, $color-border: $color-black) {
+    input:autofill,
+    input:autofill:hover,
+    input:autofill:focus,
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus {
+        -webkit-text-fill-color: $color;
+        -webkit-box-shadow: 0 0 0px 1000px $color-bg inset;
+        box-shadow: 0 0 0px 1000px $color-bg inset;
+        border: none;
+        border-bottom: 1px solid $color-border;
+        background-color: $color-bg;
+        filter: none;
+
+        @content;
+    }
+}

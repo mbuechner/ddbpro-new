@@ -1,0 +1,19 @@
+uuid: 6d40a5d8-1a6e-462a-8123-7878112cc3b0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.poster
+id: paragraph.poster.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: poster
+label: Überschrift
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

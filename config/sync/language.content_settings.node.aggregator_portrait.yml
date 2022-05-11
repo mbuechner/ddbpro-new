@@ -1,0 +1,11 @@
+uuid: 41f9c549-921f-4265-9c3c-71aad20f7ca3
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.aggregator_portrait
+id: node.aggregator_portrait
+target_entity_type_id: node
+target_bundle: aggregator_portrait
+default_langcode: site_default
+language_alterable: false

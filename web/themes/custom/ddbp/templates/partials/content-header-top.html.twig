@@ -1,0 +1,25 @@
+{% set classes = [
+  'content-header',
+  titleImage ? 'content-header--light' : 'content-header--dark',
+  titleImage ? 'content-header--has-image',
+] %}
+
+<div class="{{ classes|join(' ') }}">
+  <div class="content-header__top">
+    {% if titleImage %}
+      <div class="content-header__background">
+        {% set responsiveImage = { images: background, lazy: false } %}
+        {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+      </div>
+      <div class="container">
+        {# Breadcrumbs block #}
+        {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+      </div>
+    {% else %}
+      <div class="container">
+        {# Breadcrumbs block #}
+        {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+      </div>
+    {% endif %}
+  </div>
+</div>

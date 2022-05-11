@@ -1,0 +1,35 @@
+uuid: 697175aa-dcb5-4ad7-a8b0-909930d769b3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.facts_figures.field_facts
+    - paragraphs.paragraphs_type.facts_figures
+  module:
+    - paragraphs
+id: paragraph.facts_figures.default
+targetEntityType: paragraph
+bundle: facts_figures
+mode: default
+content:
+  field_facts:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Seitenabschnitt
+      title_plural: Seitenabschnitte
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

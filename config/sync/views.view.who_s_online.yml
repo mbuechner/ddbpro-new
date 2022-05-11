@@ -1,4 +1,4 @@
-uuid: 73ff8111-e91e-4088-b465-328fcc62872d
+uuid: 3a6b3664-ab20-439c-8c88-d46fa5e1e494
 langcode: de
 status: true
 dependencies:
@@ -7,20 +7,20 @@ dependencies:
 _core:
   default_config_hash: suDsVMgawXoQt4rfmdfpr05EVX3z3KyfDDTYgeSM898
 id: who_s_online
-label: 'Wer ist online Block'
+label: 'Who''s online block'
 module: user
-description: 'Zeigt die Benutzernamen der zuletzt aktiven Benutzer und die Gesamtzahl der aktiven Benutzer.'
+description: 'Shows the user names of the most recently active users, and the total number of active users.'
 tag: default
 base_table: users_field_data
 base_field: uid
 display:
   default:
     id: default
-    display_title: Standard
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
-      title: 'Wer ist online'
+      title: 'Who''s online'
       fields:
         name:
           id: name
@@ -64,13 +64,13 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Anwenden
+          submit_button: Apply
           reset_button: false
-          reset_button_label: Zurücksetzen
-          exposed_sorts_label: 'Sortieren nach'
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
           expose_sort_order: true
-          sort_asc_label: Aufsteigend
-          sort_desc_label: Absteigend
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       access:
         type: perm
         options:
@@ -88,7 +88,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'Momentan sind keine Benutzer online.'
+          content: 'There are currently 0 users online.'
           tokenize: false
       sorts:
         access:
@@ -142,8 +142,8 @@ display:
           exposed: false
           expose:
             operator_id: access_op
-            label: 'Letzter Zugriff'
-            description: 'Ein Benutzer gilt für diesen Zeitraum als „online“, nachdem er das letzte Mal eine Seite betrachtet hat.'
+            label: 'Last access'
+            description: 'A user is considered online for this long after they have last viewed a page.'
             use_operator: false
             operator: access_op
             operator_limit_selection: false
@@ -198,7 +198,7 @@ display:
           admin_label: ''
           plugin_id: result
           empty: false
-          content: 'Momentan sind @total Benutzer online.'
+          content: 'There are currently @total users online.'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -210,13 +210,13 @@ display:
       tags: {  }
   who_s_online_block:
     id: who_s_online_block
-    display_title: 'Wer ist online'
+    display_title: 'Who''s online'
     display_plugin: block
     position: 1
     display_options:
-      display_description: 'Eine Liste der derzeit angemeldeten Benutzer.'
+      display_description: 'A list of users that are currently logged in.'
       display_extenders: {  }
-      block_description: 'Wer ist online'
+      block_description: 'Who''s online'
     cache_metadata:
       max-age: -1
       contexts:

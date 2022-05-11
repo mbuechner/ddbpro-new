@@ -1,0 +1,19 @@
+uuid: f43756f9-5a0d-47b9-bb75-50decdb989ec
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_last_modified
+    - node.type.glossary_term
+id: node.glossary_term.field_last_modified
+field_name: field_last_modified
+entity_type: node
+bundle: glossary_term
+label: 'Letzte Aktualisierung'
+description: 'Datum des Glossareintrags (Format: JJJJ-MM-TT).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

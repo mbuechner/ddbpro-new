@@ -1,0 +1,19 @@
+uuid: 9cc635c9-39fb-42f0-8491-63da178e5628
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.process_step
+id: paragraph.process_step.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: process_step
+label: Titel
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

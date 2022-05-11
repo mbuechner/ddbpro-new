@@ -1,0 +1,49 @@
+.link-cta {
+    display: inline-flex;
+    align-items: center;
+    color: $color-main;
+
+    @include faw-icon(\f061, after);
+}
+
+.link-cta--content-boxes,
+.link-cta--process {
+    @include text(a1);
+    font-weight: font-weight(bold);
+    text-transform: uppercase;
+
+    i,
+    &:after {
+        @include spacing(margin, tiny, left);
+    }
+
+    &:after {
+        font-size: 12px;
+    }
+}
+
+.link-cta--node-table {
+    @include text(p1);
+    display: inline;
+    box-shadow: 0 0 0 $color-main inset;
+
+    @include focus;
+
+    @include bp(l) {
+        &:hover {
+            color: $color-main-dark;
+            box-shadow: 0 -1px 0 $color-main inset;
+        }
+    }
+
+    i {
+        @include rsa(margin-left, 4px, 7px);
+        display: inline-block;
+    }
+}
+
+.link-cta--external {
+    &:after {
+        display: none;
+    }
+}

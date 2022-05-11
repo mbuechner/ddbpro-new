@@ -1,10 +1,10 @@
-uuid: f1667e2e-804b-4689-a1f3-4c54a5b36e73
+uuid: 945e0429-bac4-4331-8967-66e918253f39
 langcode: de
 status: true
 dependencies: {  }
 _core:
   default_config_hash: NIKBt6kw_uPhNI0qtR2DnRf7mSOgAQdx7Q94SKMjXbQ
-name: Klartext
+name: 'Plain text'
 format: plain_text
 weight: 10
 filters:

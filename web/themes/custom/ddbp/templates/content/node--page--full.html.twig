@@ -1,0 +1,25 @@
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'basic-page',
+] %}
+
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <div class="container">
+    {# Breadcrumbs block #}
+    {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+  </div>
+
+  <div class="node__content">
+    <div class="container">
+      <div class="row-grid row-grid--fixed">
+        <div class="row-grid__title">
+          <h1>{{ label[0]['#context'].value }}</h1>
+        </div>
+        <div class="row-grid__content">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

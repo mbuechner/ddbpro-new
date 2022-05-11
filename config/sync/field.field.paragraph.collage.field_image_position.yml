@@ -1,0 +1,23 @@
+uuid: 6140ffe7-a2db-4820-8e10-88e12f0f0cf6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_position
+    - paragraphs.paragraphs_type.collage
+  module:
+    - options
+id: paragraph.collage.field_image_position
+field_name: field_image_position
+entity_type: paragraph
+bundle: collage
+label: Bildposition
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: Links
+default_value_callback: ''
+settings: {  }
+field_type: list_string

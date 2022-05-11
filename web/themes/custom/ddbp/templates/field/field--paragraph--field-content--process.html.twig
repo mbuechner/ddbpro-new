@@ -1,0 +1,20 @@
+{% set classes = [
+  'field',
+  'field--name-' ~ field_name|clean_class,
+  'field--type-' ~ field_type|clean_class,
+  'field--label-' ~ label_display,
+  label_display == 'inline' ? 'clearfix',
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <ul class="process__items">
+    {% for key, item in items %}
+      <li{{ item.attributes.addClass('process__item') }}>
+        <span class="h4">{{ key + 1 }}</span>
+        <div class="process__item-content">
+          {{ item.content }}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

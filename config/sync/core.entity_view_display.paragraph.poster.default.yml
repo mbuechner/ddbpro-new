@@ -1,0 +1,71 @@
+uuid: 2f9aa217-c188-4cac-96bb-e83eecb4674d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.poster.field_description
+    - field.field.paragraph.poster.field_headline
+    - field.field.paragraph.poster.field_image
+    - field.field.paragraph.poster.field_main_cta
+    - field.field.paragraph.poster.field_secondary_cta
+    - paragraphs.paragraphs_type.poster
+  module:
+    - ddbp_responsive_image
+    - link
+id: paragraph.poster.default
+targetEntityType: paragraph
+bundle: poster
+mode: default
+content:
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image:
+    type: image_responsive_meta
+    label: hidden
+    settings:
+      image_style_0px: poster_xs
+      image_style_421px: poster_m
+      image_style_701px: poster_m
+      image_style_1181px: poster_xl
+      image_style_1481px: poster_xl
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_main_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_secondary_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

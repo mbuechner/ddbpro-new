@@ -1,4 +1,4 @@
-uuid: 1ce0b75b-42cc-48d6-869e-96c15367bca1
+uuid: 8a625c5d-d765-4b2a-a9f9-f1ecd22ef9ed
 langcode: de
 status: true
 dependencies:
@@ -8,20 +8,20 @@ dependencies:
 _core:
   default_config_hash: YqZN5rc7XDQcFcInc8wkzuaHJmC5YvirhTmDcrarT6M
 id: content_recent
-label: 'Neuester Inhalt'
+label: 'Recent content'
 module: node
-description: 'Neuer Inhalt.'
+description: 'Recent content.'
 tag: default
 base_table: node_field_data
 base_field: nid
 display:
   default:
     id: default
-    display_title: Standard
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
-      title: 'Neuester Inhalt'
+      title: 'Recent content'
       fields:
         title:
           id: title
@@ -131,13 +131,13 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Anwenden
+          submit_button: Apply
           reset_button: false
-          reset_button_label: Zurücksetzen
-          exposed_sorts_label: 'Sortieren nach'
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
           expose_sort_order: true
-          sort_asc_label: Aufsteigend
-          sort_desc_label: Absteigend
+          sort_asc_label: Asc
+          sort_desc_label: Desc
       access:
         type: perm
         options:
@@ -155,7 +155,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'Kein Inhalt verfügbar.'
+          content: 'No content available.'
           tokenize: false
       sorts:
         changed:
@@ -290,7 +290,7 @@ display:
           required: true
       use_more: false
       use_more_always: false
-      use_more_text: Zusätzlich
+      use_more_text: More
       link_display: '0'
       link_url: ''
       header: {  }

@@ -1,0 +1,58 @@
+{% extends "paragraph.html.twig" %}
+
+{% block paragraphContent %}
+  {% set position = content.field_image_position[0]['#markup'] == 'Links' ? 'left' : 'right' %}
+
+  {% set rowClasses = [
+    'row',
+    'row--image-' ~ position,
+  ] %}
+
+  {% set linkPrimary = {
+    url: content.field_main_cta[0]['#url'],
+    text: content.field_main_cta[0]['#title'],
+    target: content.field_main_cta[0]['#options']['attributes']['target'] == '_blank',
+    type: 'primary',
+  } %}
+
+  {% set linkSecondary = {
+    url: content.field_secondary_cta[0]['#url'],
+    text: content.field_secondary_cta[0]['#title'],
+    target: content.field_secondary_cta[0]['#options']['attributes']['target'] == '_blank',
+    type: 'secondary',
+    bg: 'light',
+  } %}
+
+  <div class="{{ rowClasses|join(' ') }}">
+    <div class="column paragraph-collage__image-wrapper">
+      <div class="paragraph-collage__image">
+        {% set responsiveImage = {
+          images: content.field_image[0].images,
+          description: true,
+          lazy: true,
+        } %}
+        {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+      </div>
+    </div>
+    <div class="column paragraph-collage__content-wrapper">
+      <div class="paragraph-collage__content">
+        <h2 class="paragraph-collage__headline">
+          {{ content.field_headline[0]['#context'].value }}
+        </h2>
+        <div class="paragraph-collage__text">
+          {{ content.field_text }}
+        </div>
+        {% if content.field_main_cta[0] or content.field_secondary_cta[0] %}
+          <div class="paragraph-collage__links">
+            {% if content.field_main_cta[0] %}
+              {% include '@ddbp/partials/link-button.html.twig' with { link: linkPrimary } %}
+            {% endif %}
+            {% if content.field_secondary_cta[0] %}
+              {% include '@ddbp/partials/link-button.html.twig' with { link: linkSecondary } %}
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+.faq-section {
+    @include spacing(padding, massive, top bottom);
+    background: $color-bg;
+}
+
+.faq-section__all {
+    @include spacing(margin, large, top);
+    display: flex;
+    justify-content: center;
+
+    @include bp(l) {
+        justify-content: flex-start;
+    }
+}

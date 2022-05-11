@@ -1,0 +1,34 @@
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'faq'
+] %}
+
+{% set link = {
+  url: path('view.faq.faq'),
+  text: 'Zur Übersicht' | t,
+  type: 'secondary',
+  bg: 'light',
+} %}
+
+<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <div class="container">
+    {# Breadcrumbs block #}
+    {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+  </div>
+
+  <div class="node__content">
+    <div class="container">
+      <div class="row-grid row-grid--fixed">
+        <div class="row-grid__title">
+          <h1>{{ label[0]['#context'].value }}</h4>
+        </div>
+        <div class="row-grid__content">
+          {{ content.field_answer }}
+
+          {% include '@ddbp/partials/link-button.html.twig' with link %}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

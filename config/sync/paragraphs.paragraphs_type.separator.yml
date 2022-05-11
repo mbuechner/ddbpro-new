@@ -1,0 +1,10 @@
+uuid: 58c92f3a-0407-48fe-b46e-4e7ab0761dc9
+langcode: de
+status: true
+dependencies: {  }
+id: separator
+label: Trenner
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

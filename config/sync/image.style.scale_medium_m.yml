@@ -1,0 +1,21 @@
+uuid: 334fc672-691d-43e7-99e3-ea22e966e37f
+langcode: de
+status: true
+dependencies: {  }
+name: scale_medium_m
+label: scale-medium-M
+effects:
+  7450004e-c535-4558-ba52-bb42ad7a92b5:
+    uuid: 7450004e-c535-4558-ba52-bb42ad7a92b5
+    id: image_scale
+    weight: 1
+    data:
+      width: 400
+      height: null
+      upscale: false
+  deb01ec9-209c-436e-811a-db0541d723c8:
+    uuid: deb01ec9-209c-436e-811a-db0541d723c8
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

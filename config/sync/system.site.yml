@@ -1,15 +1,14 @@
 _core:
   default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
 langcode: de
-uuid: 22764ec3-86c6-4180-89da-5f788e8dd0b3
+uuid: 5ea720b2-e716-45dd-bf3b-a3b29c6a0373
 name: DDBpro
-mail: drupal@ddbkultur.onmicrosoft.com
+mail: admin@example.com
 slogan: ''
 page:
-  403: ''
-  404: ''
-  front: /node
+  403: /node/1731
+  404: /node/1730
+  front: /frontpage
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: de
-mail_notification: ''

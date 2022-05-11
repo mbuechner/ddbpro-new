@@ -1,0 +1,11 @@
+uuid: 0f443215-b723-45ca-a195-0d703876ed65
+langcode: de
+status: true
+dependencies: {  }
+id: node__aggregator_portrait
+label: 'Content: Aggregatorenportrait'
+tags:
+  image_src: '[node:field_image:entity:field_media_image:entity:url]'
+  og_image_secure_url: '[node:field_image:entity:field_media_image:entity:url]'
+  og_image_url: '[node:field_image:entity:field_media_image:entity:url]'
+  twitter_cards_image: '[node:field_image:entity:field_media_image:entity:url]'

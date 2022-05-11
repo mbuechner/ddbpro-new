@@ -1,0 +1,86 @@
+<?php
+
+/**
+ * @file
+ * Contains ddbp_frontpage.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ddbp_frontpage_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ddbp_frontpage module.
+    case 'help.page.ddbp_frontpage':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides routes for pages created using the config_pages module.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Adds Gin node edit form libraries to front page.
+ *
+ * Implements hook_gin_content_form_routes().
+ */
+function ddbp_frontpage_gin_content_form_routes() {
+  return [
+    'config_pages.front_page',
+  ];
+}
+
+/**
+ * Adds sidebar (advanced form group) to front page edit form for better editor UX.
+ *
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function ddbp_frontpage_form_config_pages_front_page_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Add the advanced form group.
+  if (!isset($form['advanced'])) {
+    $form['advanced'] = [
+      '#type' => 'container',
+      '#accortion' => TRUE,
+      '#attributes' => [
+        'class' => [
+          'entity-meta',
+        ]
+      ],
+      '#weight' => 99,
+    ];
+  }
+ if (!isset($form['meta'])) {
+      $form['meta'] = [
+        '#type' => 'container',
+        '#group' => 'advanced',
+        '#weight' => -10,
+        '#title' => t('Status'),
+        '#attributes' => ['class' => ['entity-meta__header']],
+        '#tree' => TRUE,
+        '#access' => TRUE,
+      ];
+    }
+
+  // Add some authoring information.
+  $changed = $form_state->getFormObject()->getEntity()->getChangedTime();
+  $form['meta']['last_saved'] = [
+    '#type' => 'item',
+    '#title' => t('Last saved'),
+    '#markup' => $changed ? \Drupal::service('date.formatter')->format($changed, 'short') : t('Not saved yet'),
+    '#group' => 'meta',
+  ];
+  $form['field_meta_tags']['widget'][0]['#accordion_item'] = TRUE;
+  $form['field_meta_tags']['widget'][0]['#attributes']['class'][] = 'accordion__item';
+  // Changed must be sent to the client, for later overwrite error checking.
+  // Otherwise EntityChangedConstraint will be thrown.
+  $form['changed'] = [
+    '#type' => 'hidden',
+    '#default_value' => $changed,
+  ];
+
+  return $form;
+}

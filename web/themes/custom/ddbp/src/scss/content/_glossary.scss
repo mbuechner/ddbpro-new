@@ -1,0 +1,23 @@
+.glossary {
+    h1 {
+        @include spacing(margin, huge, bottom);
+    }
+}
+
+.field--name-field-alternatives {
+    .field__item {
+        display: inline-block;
+
+        &:after {
+            content: ',';
+            display: inline-block;
+            margin-right: 3px;
+        }
+
+        &:last-child {
+            &:after {
+                display: none;
+            }
+        }
+    }
+}

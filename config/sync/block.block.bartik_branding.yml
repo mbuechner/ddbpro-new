@@ -1,4 +1,4 @@
-uuid: 1c1399b8-52e8-444d-8024-a8c59cc77fbc
+uuid: 5c7a7c2b-19e8-48a1-8df9-635989ddb436
 langcode: de
 status: true
 dependencies:
@@ -16,7 +16,7 @@ provider: null
 plugin: system_branding_block
 settings:
   id: system_branding_block
-  label: 'Branding der Website'
+  label: 'Site branding'
   label_display: '0'
   provider: system
   use_site_logo: true

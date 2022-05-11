@@ -1,0 +1,166 @@
+.view-header {
+    @include spacing(padding, massive, bottom);
+    overflow: hidden;
+
+    .container {
+        @include spacing(padding, massive, top);
+        @include spacing(margin, medium, top);
+        position: relative;
+    }
+
+    .breadcrumbs-container {
+        @include spacing(position, medium, top, negative);
+        position: absolute;
+        right: 0;
+        left: 0;
+    }
+
+    .view-about-us &,
+    .view-provide-data &,
+    .view-use-data & {
+        position: relative;
+
+        // background logo
+        &:before {
+            @include spacing(position, massive, right, negative);
+            @include rsa(height, 300px, 400px);
+            @include rsa(width, 300px, 470px);
+            content: '';
+            position: absolute;
+            top: 0;
+            display: inline-block;
+            width: 100%;
+            background: url('../images/logo-signet-black.svg') no-repeat;
+            opacity: 0.07;
+            z-index: -1;
+
+            @include target-bps(l xl) {
+                @include spacing(position, small, top);
+                @include spacing(position, medium, right);
+            }
+        }
+    }
+}
+
+.view-header__header-wrapper {
+    @include rsa(max-width, 100%, 50%);
+    width: 100%;
+    margin-right: auto;
+
+    h1 {
+        @include spacing(margin, medium, bottom);
+    }
+
+    p {
+        color: $color-grey;
+    }
+
+    .view-about-us &,
+    .view-provide-data &,
+    .view-use-data & {
+        max-width: 100%;
+        text-align: center;
+
+        h1 {
+            display: inline-flex;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            @include bp(l) {
+                flex-direction: row;
+            }
+        }
+
+        p {
+            @include rsa(max-width, 100%, 50%);
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+
+    .view-faq & {
+        @include spacing(padding, massive, top);
+        position: relative;
+        max-width: 100%;
+    }
+}
+
+// link on use/provide data
+.view-header__link-wrapper {
+    @include rsa(height, 46px, 88px);
+
+    @include target-bps(l xl) {
+        @include spacing(margin, small, left);
+    }
+}
+
+.view-header__link {
+    position: relative;
+    display: inline-block;
+    border: 1px solid $color-darken;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: height $duration-medium $easing-default;
+
+    button,
+    a {
+        @include button-reset;
+        @include rsa(height, 46px, 88px);
+        @include spacing(padding, medium, right left);
+        display: inline-flex;
+        align-items: center;
+        background: $color-bg;
+        color: $color-grey-dark;
+        font-size: inherit;
+        font-weight: font-weight(semi-bold);
+        line-height: inherit;
+    }
+
+    button {
+        // arrow
+        @include faw-icon(\f078, after) {
+            @include spacing(margin, very-small, left);
+            @include rsa(font-size, 18px, 30px);
+            display: inline-block;
+            flex-shrink: 0;
+            color: $color-main;
+            font-weight: font-weight(bold);
+            transition: transform $duration-fast $easing-default;
+            transform: scaleY(1);
+            pointer-events: none;
+        }
+    }
+}
+
+.view-header__link--open {
+    @include rsa(border-radius, 30px, 50px);
+
+    button {
+        &:after {
+            transform: scaleY(-1);
+        }
+    }
+
+    a {
+        border-top: 1px solid $color-darken;
+    }
+}
+
+.view-header__link-select {
+    position: absolute;
+    right: 0;
+    left: 0;
+
+    a {
+        width: 100%;
+        color: $color-grey;
+        transition: color $duration-fast $easing-default;
+
+        @include bp(l) {
+            &:hover {
+                color: $color-grey-dark;
+            }
+        }
+    }
+}

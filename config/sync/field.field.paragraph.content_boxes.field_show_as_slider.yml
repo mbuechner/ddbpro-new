@@ -1,0 +1,23 @@
+uuid: 9004d238-1b50-4734-9d5a-d93d60d8940f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_as_slider
+    - paragraphs.paragraphs_type.content_boxes
+id: paragraph.content_boxes.field_show_as_slider
+field_name: field_show_as_slider
+entity_type: paragraph
+bundle: content_boxes
+label: 'Anzeigen als Slider'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

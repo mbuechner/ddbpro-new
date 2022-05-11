@@ -1,0 +1,46 @@
+uuid: 3db7207a-e9bc-46ff-9ae7-9f516d4bc05f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_boxes.field_content
+    - field.field.paragraph.content_boxes.field_headline
+    - field.field.paragraph.content_boxes.field_show_as_slider
+    - paragraphs.paragraphs_type.content_boxes
+  module:
+    - paragraphs
+id: paragraph.content_boxes.default
+targetEntityType: paragraph
+bundle: content_boxes
+mode: default
+content:
+  field_content:
+    type: entity_reference_paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Seitenabschnitt
+      title_plural: Seitenabschnitte
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  field_headline:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_show_as_slider:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,34 @@
+@mixin red-line($pseudo: after, $color: $color-main) {
+    &:#{$pseudo} {
+        @include rsa(width, 20px, 30px);
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: calc(100% - 10px);
+        display: inline-block;
+        height: 1px;
+        background: $color;
+        transform: translateY(-50%);
+        transition-duration: $duration-fast;
+        transition-property: right, width;
+        transition-timing-function: $easing-default;
+
+        @include bp(s) {
+            left: calc(100% - 11px);
+        }
+
+        @include bp(m) {
+            left: calc(100% - 13px);
+        }
+
+        @include bp(l) {
+            left: calc(100% - 13.5px);
+        }
+
+        @include bp(xl) {
+            left: calc(100% - 15px);
+        }
+
+        @content;
+    }
+}

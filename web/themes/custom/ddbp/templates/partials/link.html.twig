@@ -1,0 +1,17 @@
+{% set classes = [
+  'link-cta',
+  'link-cta--' ~ link.modifier,
+  link.target ? 'link-cta--external',
+] %}
+
+<a href="{{ link.url }}" class="{{ classes|join(' ') }}"
+  {% if link.target %}target="_blank"{% endif %}>
+  {% if link.text is defined %}
+    {{ link.text }}
+  {% else %}
+    {{ link.url }}
+  {% endif %}
+  {% if link.target %}
+    <i class="fac fac-right-top-main"></i>
+  {% endif %}
+</a>

@@ -1,0 +1,23 @@
+uuid: 05010724-6131-42e1-99d6-532de1ca3db4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta
+    - paragraphs.paragraphs_type.process_step
+  module:
+    - link
+id: paragraph.process_step.field_cta
+field_name: field_cta
+entity_type: paragraph
+bundle: process_step
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

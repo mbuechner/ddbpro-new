@@ -1,0 +1,33 @@
+# This migration will only ever be run once in early development phase.
+# After nodes & their IDs are imported from D7, the XML feed will be the only data source.
+id: ddbp_glossary_d7
+label: DDBP Glossary
+description: Migration of CT Glossar from D7.
+migration_tags:
+  - Content
+  - Drupal 7
+langcode: de
+# Source
+source:
+  plugin: d7_node
+  node_type: glossar
+# Process
+process:
+  nid: nid
+  title: title
+  status: status
+  body:
+    plugin: sub_process
+    source: body
+    process:
+      value: value
+      format:
+        plugin: default_value
+        default_value: full_html
+  field_uri: field_uri
+  field_alternatives: field_alternatives
+  field_last_modified: field_date
+# Destination
+destination:
+  plugin: 'entity:node'
+  default_bundle: glossary_term

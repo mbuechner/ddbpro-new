@@ -1,0 +1,50 @@
+.paragraph--poster {
+    .paragraph-inner {
+        @include rsa(min-height, 640px, 860px);
+        position: relative;
+        z-index: $sidebarIndex + 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .container {
+        position: relative;
+    }
+}
+
+.poster__background {
+    @include fit();
+
+    // overlay
+    &:after {
+        @include fit();
+        content: '';
+        background: $color-overlay;
+    }
+}
+
+.poster__content {
+    @include spacing(padding, very-large, top bottom);
+    width: 100%;
+    max-width: 100%;
+    color: $color-white;
+
+    @include bp(xl) {
+        max-width: $column-fixed-content;
+        padding-right: 6.3vw;
+    }
+}
+
+.poster__headline,
+.poster__text {
+    color: inherit;
+}
+
+.poster__headline {
+    @include spacing(margin, small, bottom);
+}
+
+.poster__text p {
+    color: inherit;
+    font-weight: font-weight(regular);
+}

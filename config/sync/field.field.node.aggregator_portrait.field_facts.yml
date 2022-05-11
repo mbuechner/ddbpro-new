@@ -1,0 +1,21 @@
+uuid: 143a238e-d5d8-4193-83a6-32acb9b26d0d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_facts
+    - node.type.aggregator_portrait
+  module:
+    - ddbp_tools
+id: node.aggregator_portrait.field_facts
+field_name: field_facts
+entity_type: node
+bundle: aggregator_portrait
+label: Facts
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: fact_item

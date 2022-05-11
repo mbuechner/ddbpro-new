@@ -1,0 +1,10 @@
+uuid: 09d66f99-ac5e-44bf-ae3a-a0400cb816b2
+langcode: de
+status: true
+dependencies: {  }
+id: content_boxes_item
+label: 'Content Boxen Item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

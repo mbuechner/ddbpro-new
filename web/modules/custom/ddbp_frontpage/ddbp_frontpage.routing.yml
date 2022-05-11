@@ -1,0 +1,7 @@
+ddbp_frontpage.home:
+  path: '/frontpage'
+  defaults:
+    _controller: '\Drupal\ddbp_frontpage\Controller\FrontpageController::render'
+    _title_callback: '\Drupal\ddbp_frontpage\Controller\FrontpageController::generateTitle'
+  requirements:
+    _permission: 'access content'

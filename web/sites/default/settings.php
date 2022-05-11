@@ -88,16 +88,7 @@
  * ];
  * @endcode
  */
-$databases['default']['default'] = array (
-  'database' => getenv('MYSQL_DATABASE'),
-  'username' => getenv('MYSQL_USER'),
-  'password' => getenv('MYSQL_PASSWORD'),
-  'prefix' => '',
-  'host' => getenv('MYSQL_HOSTNAME'),
-  'port' => getenv('MYSQL_PORT'),
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
+$databases = [];
 
 /**
  * Customizing database settings.
@@ -114,13 +105,15 @@ $databases['default']['default'] = array (
  * webserver.  For most other drivers, you must specify a
  * username, password, host, and database name.
  *
- * Transaction support is enabled by default for all drivers that support it,
- * including MySQL. To explicitly disable it, set the 'transactions' key to
- * FALSE.
- * Note that some configurations of MySQL, such as the MyISAM engine, don't
- * support it and will proceed silently even if enabled. If you experience
- * transaction related crashes with such configuration, set the 'transactions'
- * key to FALSE.
+ * Drupal core implements drivers for mysql, pgsql, and sqlite. Other drivers
+ * can be provided by contributed or custom modules. To use a contributed or
+ * custom driver, the "namespace" property must be set to the namespace of the
+ * driver. The code in this namespace must be autoloadable prior to connecting
+ * to the database, and therefore, prior to when module root namespaces are
+ * added to the autoloader. To add the driver's namespace to the autoloader,
+ * set the "autoload" property to the PSR-4 base directory of the driver's
+ * namespace. This is optional for projects managed with Composer if the
+ * driver's namespace is in Composer's autoloader.
  *
  * For each database, you may optionally specify multiple "target" databases.
  * A target database allows Drupal to try to send certain queries to a
@@ -233,34 +226,34 @@ $databases['default']['default'] = array (
  *     'database' => '/path/to/databasefilename',
  *   ];
  * @endcode
+ *
+ * Sample Database configuration format for a driver in a contributed module:
+ * @code
+ *   $databases['default']['default'] = [
+ *     'driver' => 'my_driver',
+ *     'namespace' => 'Drupal\my_module\Driver\Database\my_driver',
+ *     'autoload' => 'modules/my_module/src/Driver/Database/my_driver/',
+ *     'database' => 'databasename',
+ *     'username' => 'sqlusername',
+ *     'password' => 'sqlpassword',
+ *     'host' => 'localhost',
+ *     'prefix' => '',
+ *   ];
+ * @endcode
  */
 
 /**
  * Location of the site configuration files.
  *
- * The $config_directories array specifies the location of file system
- * directories used for configuration data. On install, the "sync" directory is
- * created. This is used for configuration imports. The "active" directory is
- * not created by default since the default storage for active configuration is
- * the database rather than the file system. (This can be changed. See "Active
- * configuration settings" below).
+ * The $settings['config_sync_directory'] specifies the location of file system
+ * directory used for syncing configuration data. On install, the directory is
+ * created. This is used for configuration imports.
  *
- * The default location for the "sync" directory is inside a randomly-named
- * directory in the public files path. The setting below allows you to override
- * the "sync" location.
- *
- * If you use files for the "active" configuration, you can tell the
- * Configuration system where this directory is located by adding an entry with
- * array key CONFIG_ACTIVE_DIRECTORY.
- *
- * Example:
- * @code
- *   $config_directories = [
- *     CONFIG_SYNC_DIRECTORY => '/directory/outside/webroot',
- *   ];
- * @endcode
+ * The default location for this directory is inside a randomly-named
+ * directory in the public files path. The setting below allows you to set
+ * its location.
  */
-$config_directories = [];
+$settings['config_sync_directory'] = '../config/sync';
 
 /**
  * Settings:
@@ -289,7 +282,7 @@ $config_directories = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = getenv('HASH_SALT');
+$settings['hash_salt'] = 'kKWRcCapG25QAoUqkkrXz7ileoQqhKM96uNPF8uhruDQvhuk226yXySvfO95Js_sybrp8ZyvWQ';
 
 /**
  * Deployment identifier.
@@ -312,7 +305,21 @@ $settings['hash_salt'] = getenv('HASH_SALT');
  * After finishing the upgrade, be sure to open this file again and change the
  * TRUE back to a FALSE!
  */
-$settings['update_free_access'] = (strtolower(getenv('UPDATE_FREE_ACCESS')) === 'true');
+$settings['update_free_access'] = FALSE;
+
+/**
+ * Fallback to HTTP for Update Manager.
+ *
+ * If your Drupal site fails to connect to updates.drupal.org using HTTPS to
+ * fetch Drupal core, module and theme update status, you may uncomment this
+ * setting and set it to TRUE to allow an insecure fallback to HTTP. Note that
+ * doing so will open your site up to a potential man-in-the-middle attack. You
+ * should instead attempt to resolve the issues before enabling this option.
+ * @see https://www.drupal.org/docs/system-requirements/php-requirements#openssl
+ * @see https://en.wikipedia.org/wiki/Man-in-the-middle_attack
+ * @see \Drupal\update\UpdateFetcher
+ */
+# $settings['update_fetch_with_http_fallback'] = TRUE;
 
 /**
  * External access proxy settings:
@@ -447,34 +454,12 @@ $settings['update_free_access'] = (strtolower(getenv('UPDATE_FREE_ACCESS')) === 
 /**
  * Class Loader.
  *
- * If the APC extension is detected, the Symfony APC class loader is used for
- * performance reasons. Detection can be prevented by setting
- * class_loader_auto_detect to false, as in the example below.
+ * If the APCu extension is detected, the classloader will be optimized to use
+ * it. Set to FALSE to disable this.
+ *
+ * @see https://getcomposer.org/doc/articles/autoloader-optimization.md
  */
 # $settings['class_loader_auto_detect'] = FALSE;
-
-/*
- * If the APC extension is not detected, either because APC is missing or
- * because auto-detection has been disabled, auto-loading falls back to
- * Composer's ClassLoader, which is good for development as it does not break
- * when code is moved in the file system. You can also decorate the base class
- * loader with another cached solution than the Symfony APC class loader, as
- * all production sites should have a cached class loader of some sort enabled.
- *
- * To do so, you may decorate and replace the local $class_loader variable. For
- * example, to use Symfony's APC class loader without automatic detection,
- * uncomment the code below.
- */
-/*
-if ($settings['hash_salt']) {
-  $prefix = 'drupal.' . hash('sha256', 'drupal.' . $settings['hash_salt']);
-  $apc_loader = new \Symfony\Component\ClassLoader\ApcClassLoader($prefix, $class_loader);
-  unset($prefix);
-  $class_loader->unregister();
-  $apc_loader->register();
-  $class_loader = $apc_loader;
-}
-*/
 
 /**
  * Authorized file system operations:
@@ -528,7 +513,7 @@ if ($settings['hash_salt']) {
  * must exist and be writable by Drupal. This directory must be relative to
  * the Drupal installation directory and be accessible over the web.
  */
-$settings['file_public_path'] = getenv('FILE_PUBLIC_PATH');
+# $settings['file_public_path'] = 'sites/default/files';
 
 /**
  * Private file path:
@@ -543,7 +528,20 @@ $settings['file_public_path'] = getenv('FILE_PUBLIC_PATH');
  * See https://www.drupal.org/documentation/modules/file for more information
  * about securing private files.
  */
-$settings['file_private_path'] = getenv('FILE_PRIVATE_PATH');
+# $settings['file_private_path'] = '';
+
+/**
+ * Temporary file path:
+ *
+ * A local file system path where temporary files will be stored. This directory
+ * must be absolute, outside of the Drupal installation directory and not
+ * accessible over the web.
+ *
+ * If this is not set, the default for the operating system will be used.
+ *
+ * @see \Drupal\Component\FileSystem\FileSystem::getOsTemporaryDirectory()
+ */
+# $settings['file_temp_path'] = '/tmp';
 
 /**
  * Session write interval:
@@ -606,25 +604,6 @@ $settings['file_private_path'] = getenv('FILE_PRIVATE_PATH');
 # ini_set('pcre.recursion_limit', 200000);
 
 /**
- * Active configuration settings.
- *
- * By default, the active configuration is stored in the database in the
- * {config} table. To use a different storage mechanism for the active
- * configuration, do the following prior to installing:
- * - Create an "active" directory and declare its path in $config_directories
- *   as explained under the 'Location of the site configuration files' section
- *   above in this file. To enhance security, you can declare a path that is
- *   outside your document root.
- * - Override the 'bootstrap_config_storage' setting here. It must be set to a
- *   callable that returns an object that implements
- *   \Drupal\Core\Config\StorageInterface.
- * - Override the service definition 'config.storage.active'. Put this
- *   override in a services.yml file in the same directory as settings.php
- *   (definitions in this file will override service definition defaults).
- */
-# $settings['bootstrap_config_storage'] = ['Drupal\Core\Config\BootstrapConfigStorageFactory', 'getFileStorage'];
-
-/**
  * Configuration overrides.
  *
  * To globally override specific configuration values for this site,
@@ -646,9 +625,7 @@ $settings['file_private_path'] = getenv('FILE_PRIVATE_PATH');
  * configuration values in settings.php will not fire any of the configuration
  * change events.
  */
-$settings['file_temp_path'] = getenv('TMP');
 # $config['system.site']['name'] = 'My Drupal site';
-# $config['system.theme']['default'] = 'stark';
 # $config['user.settings']['anonymous'] = 'Visitor';
 
 /**
@@ -727,7 +704,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  *
  * For example:
  * @code
- * getenv = [
+ * $settings['trusted_host_patterns'] = [
  *   '^example\.com$',
  *   '^.+\.example\.com$',
  *   '^example\.org$',
@@ -737,7 +714,10 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * will allow the site to run off of all variants of example.com and
  * example.org, with all subdomains included.
  */
-$settings['trusted_host_patterns'] = preg_split('/,[\s]*/', getenv('TRUSTED_HOST_PATTERNS'));
+$settings['trusted_host_patterns'] = [
+    '^ddb-pro.lndo.site',
+    '^ddbpro\.trio-preview\.de$',
+];
 
 /**
  * The default list of directories that will be ignored by Drupal's file API.
@@ -746,12 +726,12 @@ $settings['trusted_host_patterns'] = preg_split('/,[\s]*/', getenv('TRUSTED_HOST
  * with common frontend tools and recursive scanning of directories looking for
  * extensions.
  *
- * @see file_scan_directory()
+ * @see \Drupal\Core\File\FileSystemInterface::scanDirectory()
  * @see \Drupal\Core\Extension\ExtensionDiscovery::scanDirectory()
  */
 $settings['file_scan_ignore_directories'] = [
-  'node_modules',
-  'bower_components',
+    'node_modules',
+    'bower_components',
 ];
 
 /**
@@ -765,24 +745,41 @@ $settings['file_scan_ignore_directories'] = [
 $settings['entity_update_batch_size'] = 50;
 
 /**
+ * Entity update backup.
+ *
+ * This is used to inform the entity storage handler that the backup tables as
+ * well as the original entity type and field storage definitions should be
+ * retained after a successful entity update process.
+ */
+$settings['entity_update_backup'] = TRUE;
+
+/**
+ * Node migration type.
+ *
+ * This is used to force the migration system to use the classic node migrations
+ * instead of the default complete node migrations. The migration system will
+ * use the classic node migration only if there are existing migrate_map tables
+ * for the classic node migrations and they contain data. These tables may not
+ * exist if you are developing custom migrations and do not want to use the
+ * complete node migrations. Set this to TRUE to force the use of the classic
+ * node migrations.
+ */
+$settings['migrate_node_migrate_type_classic'] = FALSE;
+
+/**
  * Load local development override configuration, if available.
  *
- * Use settings.local.php to override variables on secondary (staging,
- * development, etc) installations of this site. Typically used to disable
- * caching, JavaScript/CSS compression, re-routing of outgoing emails, and
- * other things that should not happen on development and testing sites.
+ * Create a settings.local.php file to override variables on secondary (staging,
+ * development, etc.) installations of this site.
+ *
+ * Typical uses of settings.local.php include:
+ * - Disabling caching.
+ * - Disabling JavaScript/CSS compression.
+ * - Rerouting outgoing emails.
  *
  * Keep this code block at the end of this file to take full effect.
  */
+#
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
-}
-
-$settings['config_sync_directory'] = '../config/sync';
-
-/* Redis */
-if ((getenv('USE_REDIS') ?: 'no') == 'yes') {
-  $settings['redis.connection']['interface'] = 'PhpRedis';
-  $settings['redis.connection']['host'] = '127.0.0.1';
-  $settings['cache']['default'] = 'cache.backend.redis';
 }

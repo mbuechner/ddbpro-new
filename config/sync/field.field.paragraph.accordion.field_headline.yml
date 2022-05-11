@@ -1,0 +1,19 @@
+uuid: ee260cf6-eeb7-421e-9ebf-f00d6d481b54
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.accordion
+id: paragraph.accordion.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: accordion
+label: Überschrift
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

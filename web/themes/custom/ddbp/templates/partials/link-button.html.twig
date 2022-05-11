@@ -1,0 +1,65 @@
+{% set classes = [
+  'button',
+  'button--' ~ link.type,
+  link.bg ? 'button--' ~ link.bg,
+] %}
+
+{% if link.download %}
+  {# link download #}
+  <a href="{{ link.url }}"
+    class="{{ classes|join(' ') }}"
+    download
+    target="_blank">
+    {% if link.type == 'primary' %}
+      <i aria-hidden="true" class="fac fac-download-white"></i>
+    {% else %}
+      <i aria-hidden="true" class="fac fac-download-main"></i>
+    {% endif %}
+
+    <span>{{ link.text }}</span>
+  </a>
+
+{# link email #}
+{% elseif link.mail %}
+  <a href="{{ link.url }}"
+    class="{{ classes|join(' ') }}"
+    target="_blank">
+    <i aria-hidden="true" class="fa-regular fa-envelope"></i>
+
+    <span>{{ link.text }}</span>
+  </a>
+
+{# link participate #}
+{% elseif link.participate %}
+  <a href="{{ link.url }}"
+     aria-label="{{ link.aria_label }}"
+    class="{{ classes|join(' ') }}">
+    <i aria-hidden="true" class="fa-regular fa-calendar-plus"></i>
+
+    <span>{{ link.text }}</span>
+  </a>
+
+{# link external #}
+{% elseif link.target %}
+  <a href="{{ link.url }}"
+    class="{{ classes|join(' ') }}"
+    target="_blank">
+
+    <span>{{ link.text }}</span>
+
+    {% if link.type == 'primary' %}
+      <i aria-hidden="true" class="fac fac-right-top-white"></i>
+    {% else %}
+      <i aria-hidden="true" class="fac fac-right-top-main"></i>
+    {% endif %}
+  </a>
+
+{# link default #}
+{% else %}
+  <a href="{{ link.url }}"
+    class="{{ classes|join(' ') }}">
+
+    <span>{{ link.text }}</span>
+  </a>
+
+{% endif %}

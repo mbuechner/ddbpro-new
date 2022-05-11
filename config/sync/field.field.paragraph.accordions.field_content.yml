@@ -1,0 +1,76 @@
+uuid: e39b3421-d1dd-48eb-a2b1-3d58e8d20ceb
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content
+    - paragraphs.paragraphs_type.accordion
+    - paragraphs.paragraphs_type.accordions
+  module:
+    - entity_reference_revisions
+id: paragraph.accordions.field_content
+field_name: field_content
+entity_type: paragraph
+bundle: accordions
+label: Akkordeons
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      accordion: accordion
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 17
+        enabled: true
+      accordions:
+        weight: 18
+        enabled: false
+      block_reference:
+        weight: 19
+        enabled: false
+      collage:
+        weight: 20
+        enabled: false
+      content_boxes:
+        weight: 21
+        enabled: false
+      content_boxes_item:
+        weight: 22
+        enabled: false
+      document:
+        weight: 23
+        enabled: false
+      fact:
+        weight: 24
+        enabled: false
+      facts_figures:
+        weight: 25
+        enabled: false
+      image:
+        weight: 26
+        enabled: false
+      link:
+        weight: 27
+        enabled: false
+      poster:
+        weight: 28
+        enabled: false
+      process:
+        weight: 29
+        enabled: false
+      process_step:
+        weight: 30
+        enabled: false
+      separator:
+        weight: 31
+        enabled: false
+      text:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

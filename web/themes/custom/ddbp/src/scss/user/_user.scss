@@ -1,0 +1,60 @@
+.user {
+    .row-grid__title {
+        @include spacing(margin, very-large, bottom);
+    }
+}
+
+.user__name {
+    @include spacing(margin, small, bottom);
+}
+
+.user__job-title {
+    color: $color-grey;
+}
+
+.user__image {
+    @include spacing(margin, medium, left);
+    display: flex;
+
+    @include bp(l) {
+        margin-left: 0;
+        justify-content: flex-end;
+    }
+
+    img {
+        @include rsa(height, 115px, 310px);
+        @include rsa(width, 90px, 240px);
+    }
+}
+
+.user__info-institution,
+.user__info-phone {
+    @include text(p1);
+    color: $color-grey;
+}
+
+.user__info-institution {
+    font-weight: font-weight(semi-bold);
+}
+
+.user__info-phone {
+    @include text(p1);
+
+    a {
+        color: $color-main;
+
+        @include bp(l) {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.user__links {
+    @include spacing(margin, medium, top);
+
+    a {
+        white-space: nowrap;
+    }
+}

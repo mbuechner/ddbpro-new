@@ -1,0 +1,29 @@
+uuid: c6b3d638-e69b-4376-aae4-9824c96142e0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cultural_sector
+    - node.type.aggregator_portrait
+    - taxonomy.vocabulary.cultural_sector
+id: node.aggregator_portrait.field_cultural_sector
+field_name: field_cultural_sector
+entity_type: node
+bundle: aggregator_portrait
+label: 'Kulturelle Einrichtung'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      cultural_sector: cultural_sector
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

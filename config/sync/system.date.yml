@@ -1,12 +1,12 @@
 _core:
   default_config_hash: t7clj3mzmOGrXX0HuCH5usf0vEqRtnMTBFVBIEmZ5pc
 langcode: de
-first_day: 1
+first_day: 0
 country:
-  default: DE
+  default: ''
 timezone:
   default: Europe/Berlin
   user:
-    configurable: false
+    configurable: true
     default: 0
     warn: false

@@ -1,0 +1,97 @@
+.text-formatted {
+    max-width: 100%;
+
+    h2,
+    h3,
+    h4,
+    p,
+    ol,
+    ul {
+        @include spacing(margin, medium, bottom);
+    }
+
+    h5,
+    h6 {
+        @include spacing(margin, small, bottom);
+    }
+
+    ol,
+    ul {
+        @include text(p1);
+        counter-reset: step-counter;
+
+        li {
+            @include spacing(margin, tiny, bottom);
+            @include spacing(margin, very-small, left);
+            position: relative;
+            display: block;
+            color: $color-grey;
+
+            &:before {
+                @include spacing(position, very-small, left, negative);
+                position: absolute;
+                display: inline-block;
+            }
+        }
+    }
+
+    ol {
+        li {
+            @include spacing(margin, very-small, left);
+            @include rsa(padding-left, 13px, 16px); // number (1-9) size
+            counter-increment: step-counter;
+
+            &:before {
+                @include text(p1);
+                content: counters(step-counter, '.');
+                top: 0;
+                font-weight: font-weight(semi-bold);
+                color: $color-main;
+            }
+        }
+    }
+
+    ul {
+        li {
+            @include rsa(padding-left, 13px, 15px); // icon width
+            position: relative;
+
+            &:before {
+                @include rsa(top, 12px, 15px);
+                @include rsa(width, 13px, 15px);
+                content: '';
+                display: inline-block;
+                height: 5px;
+                background-image: url('../images/icons/dash-solid-main.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+        }
+    }
+
+    a:not([class]) {
+        position: relative;
+        display: inline;
+        color: $color-main;
+        box-shadow: 0 0 0 $color-main inset;
+        transition: color $duration-fast $easing-default;
+
+        @include focus;
+
+        @include bp(l) {
+            &:hover {
+                color: $color-main-dark;
+                box-shadow: 0 -1px 0 $color-main inset;
+            }
+        }
+    }
+
+    a[target='_blank'] {
+        margin-right: 3px;
+
+        @include fac-icon('arrow-up-right-solid-main') {
+            @include rsa(height width, 8px, 10px);
+            @include rsa(margin-left, 4px, 7px);
+        }
+    }
+}

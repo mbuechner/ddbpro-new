@@ -1,0 +1,216 @@
+// teaser on Departments overview
+.department-teaser {
+    width: 100%;
+    overflow: hidden;
+
+    a {
+        @include rsa(height, 200px, 400px);
+        @include rsa(margin-left, 20px, 30px); // icon size / 2
+
+        @include bp(l) {
+            &:hover {
+                .department-teaser__image {
+                    &:after {
+                        right: 0;
+                    }
+                }
+
+                .department-teaser__icon {
+                    &:after {
+                        // increase width + 10px
+                        width: 37px;
+                    }
+                }
+
+                h2 {
+                    padding-left: 20px;
+                }
+            }
+        }
+
+        @include bp(xl) {
+            &:hover {
+                .department-teaser__icon {
+                    &:after {
+                        // increase width + 10px
+                        width: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.department-teaser__image {
+    // red hover line
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 100%;
+        left: 0;
+        display: block;
+        height: 5px;
+        background: $color-main;
+        transition: right $duration-medium $easing-default;
+    }
+
+    // gradient overlay
+    &:before {
+        background: linear-gradient(
+            90deg,
+            $color-overlay 0%,
+            rgba($color-black, 0) 100%
+        );
+    }
+}
+
+.department-teaser__content-wrapper {
+    @include border-radius();
+    height: inherit;
+    border: 1px solid $color-darken;
+    overflow: hidden;
+}
+
+.department-teaser__title {
+    @include rsa(margin-left, 20px, 30px); // icon size / 2
+    @include spacing(padding, medium);
+    align-self: end;
+    grid-row: 2;
+
+    h2 {
+        padding-left: 0;
+        margin-bottom: 2px;
+        transition: padding-left $duration-medium $easing-default;
+
+        @include bp(l) {
+            margin-bottom: 3px;
+        }
+    }
+}
+
+.department-teaser__icon {
+    @include spacing(position, medium, bottom);
+    position: absolute;
+    left: 0;
+    transform: translateX(-50%);
+
+    // decorative line
+    @include red-line;
+
+    .responsive-image {
+        @include rsa(height width, 40px, 60px);
+        @include border-radius();
+        display: block;
+        border: 1px solid $color-darken;
+        overflow: hidden;
+    }
+}
+
+// teaser mini on the front page
+.department-teaser-mini {
+    &:first-child {
+        a {
+            border-top: 1px solid $color-darken;
+        }
+    }
+
+    a {
+        @include spacing(padding, small, top bottom);
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $color-darken;
+    }
+
+    .department-teaser-mini--show {
+        .department-teaser-mini__title {
+            @include bp(l) {
+                color: $color-grey-dark;
+
+                &:after {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        }
+    }
+
+    .department-teaser-mini--show {
+        .department-teaser-mini__icon {
+            @include target-bps(l xl) {
+                @include shadow(box-hover);
+            }
+        }
+    }
+}
+
+.department-teaser-mini__icon {
+    @include rsa(height width, 50px, 60px);
+    @include spacing(margin, small, right);
+    @include border-radius();
+    position: relative;
+    flex-shrink: 0;
+    border: 1px solid $color-darken;
+    transition: box-shadow $duration-fast $easing-default;
+
+    // decorative line
+    @include red-line(after, $color-grey-light);
+}
+
+.department-teaser-mini__title {
+    @include spacing(margin, tiny, left);
+    @include text(h3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: $color-grey-dark;
+    font-weight: font-weight(semi-bold);
+    transition: color $duration-fast $easing-default;
+
+    @include bp(l) {
+        color: $color-grey;
+    }
+
+    // arrow to the right
+    @include faw-icon(\f061, after) {
+        @include spacing(margin, tiny, left);
+        @include rsa(font-size, 11px, 12px);
+        color: $color-main;
+        font-weight: font-weight(bold);
+        transition-duration: $duration-fast;
+        transition-property: opacity, transform;
+        transition-timing-function: $easing-default;
+
+        @include bp(l) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+    }
+}
+
+// only for images in the image column
+.departments__images {
+    @include bp(l) {
+        position: sticky;
+    }
+
+    @include target-bps(l xl) {
+        @include spacing(position, large, top);
+    }
+
+    .department-teaser-mini__image {
+        @include rsa(height, 500px, 860px);
+        display: block;
+        grid-column: 1;
+        grid-row: 1;
+        opacity: 0;
+        transition: opacity $duration-medium $easing-default;
+        z-index: 0;
+    }
+
+    .department-teaser-mini--show {
+        opacity: 1;
+        z-index: 1;
+    }
+}

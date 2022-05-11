@@ -1,0 +1,9 @@
+.faq {
+    h1 {
+        @include spacing(margin, huge, bottom);
+    }
+
+    .button {
+        @include spacing(margin, very-large, top);
+    }
+}

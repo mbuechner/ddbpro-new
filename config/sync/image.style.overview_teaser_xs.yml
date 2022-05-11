@@ -1,0 +1,23 @@
+uuid: 9f4eb767-9aa6-43c4-983c-460464d7026b
+langcode: de
+status: true
+dependencies:
+  module:
+    - focal_point
+name: overview_teaser_xs
+label: overview-teaser-XS
+effects:
+  9582c164-bca6-4f25-8939-4367566f0d23:
+    uuid: 9582c164-bca6-4f25-8939-4367566f0d23
+    id: image_convert
+    weight: -9
+    data:
+      extension: webp
+  b9a391ea-2429-4ffc-8823-91482db1f2e9:
+    uuid: b9a391ea-2429-4ffc-8823-91482db1f2e9
+    id: focal_point_scale_and_crop
+    weight: -10
+    data:
+      width: 360
+      height: 290
+      crop_type: focal_point

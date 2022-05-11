@@ -1,0 +1,27 @@
+.footer-menu__items {
+    @include rsa(column-gap, 30px, 60px);
+    display: grid;
+
+    @include bp(m) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.footer-menu__item {
+    width: 100%;
+}
+
+.footer-menu__link {
+    @include spacing(padding, tiny, top bottom);
+    @include text(p1);
+    width: 100%;
+    color: $color-lighten-heavy;
+    font-weight: font-weight(medium);
+    transition: color $duration-fast $easing-default;
+
+    @include bp(l) {
+        &:hover {
+            color: $color-white;
+        }
+    }
+}

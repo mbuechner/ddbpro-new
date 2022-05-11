@@ -1,0 +1,125 @@
+.event-teaser__ical,
+.event-teaser-big__ical {
+    @include translate(x y, very-small);
+    flex-shrink: 0;
+
+    @include bp(l) {
+        transform: translateY(0);
+    }
+
+    a {
+        @include spacing(padding, very-small);
+        cursor: pointer;
+    }
+
+    i {
+        @include rsa(font-size, 14px, 20px);
+        color: $color-main;
+    }
+}
+
+// latest upcoming on the front page
+.event-teaser {
+    @include rsa(min-height, 160px, 280px);
+    @include spacing(padding, small, top bottom);
+    @include spacing(padding, medium, right left);
+    @include spacing(margin, medium, bottom);
+    @include border-radius();
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    width: 100%;
+    border: 1px solid $color-darken;
+    transition: box-shadow $duration-fast $easing-default;
+
+    @include bp(l) {
+        margin-bottom: 0;
+    }
+
+    @include target-bps(l xl) {
+        &:hover {
+            @include shadow(box-hover);
+        }
+    }
+
+    h3 {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    a {
+        color: inherit;
+    }
+}
+
+.event-teaser__ical {
+    @include spacing(margin, small, left);
+    grid-column: 2;
+    grid-row: 1 / -1;
+}
+
+.event-teaser__date {
+    @include spacing(margin, small, top);
+    @include text(p1);
+    align-self: end;
+    grid-column: 1;
+    grid-row: 2;
+    color: $color-grey-light;
+    font-weight: font-weight(medium);
+}
+
+// events views
+.event-teaser-big {
+    @include spacing(padding, small);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: $color-white;
+    transition: background $duration-fast $easing-default;
+
+    @include bp(l) {
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &:hover {
+            background: $color-bg;
+        }
+    }
+
+    a {
+        width: 100%;
+    }
+
+    h3 {
+        color: $color-grey-dark;
+    }
+}
+
+.event-teaser-big__ical {
+    margin-left: auto;
+
+    @include target-bps(l xl) {
+        @include spacing(margin, very-small, left);
+    }
+}
+
+.event-teaser-big__date {
+    @include text(p1);
+    color: $color-main;
+    font-weight: font-weight(semi-bold);
+
+    + .event-teaser-big__description {
+        @include spacing(margin, tiny, top);
+    }
+}
+
+.event-teaser-big__text {
+    color: $color-grey-light;
+
+    p {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{% set classes = [
+  'media',
+  'media--type-' ~ media.bundle()|clean_class,
+  not media.isPublished() ? 'media--unpublished',
+  view_mode ? 'media--view-mode-' ~ view_mode|clean_class,
+  'document-teaser',
+] %}
+
+{% set hasLink = content.field_link[0] %}
+{% set document = content.field_media_document[0]['#markup'] %}
+{% set detailUrl = hasLink ? content.field_link[0]['#url'] : file_url(document) %}
+{% set download = hasLink ? false : true %}
+{% set aria = hasLink ? 'Visit link' | t : 'Download' | t %}
+{% set mid = _context.media.mid[0].value %}
+{% set url = path('entity.media.canonical', { 'media': mid }) %}
+
+{% set iconClass = hasLink ? 'fac-right-top-main' : 'fac-download-main' %}
+{% set linkClasses = [
+  'document-teaser__download-link',
+  hasLink ? 'document-teaser__download--external',
+  not hasLink ? 'document-teaser__download--download',
+] %}
+
+<article{{ attributes.addClass(classes) }}>
+  {% if content %}
+    <div class="document-teaser__content">
+      <a href="{{ detailUrl }}"
+        {% if download %}download{% endif %}
+        class="document-teaser__name">
+        {{ content.name[0]['#context'].value }}
+      </a>
+      {% if content.field_description[0] %}
+        <p class="document-teaser__description">
+          {{ content.field_description[0]['#context'].value }}
+        </p>
+      {% endif %}
+      <div class="document-teaser__link">
+        <a href="{{ url }}">
+          {{ 'Weitere Informationen' | t }}
+        </a>
+      </div>
+    </div>
+    <div class="document-teaser__download">
+      <a href="{{ detailUrl }}"
+        {% if download %}download{% endif %}
+        target="_blank"
+        class="{{ linkClasses|join(' ') }}"
+        aria-label="{{ aria }}">
+        <i class="fac {{ iconClass }}"></i>
+      </a>
+    </div>
+  {% endif %}
+</article>

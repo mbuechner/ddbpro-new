@@ -1,0 +1,136 @@
+.accordion {
+    border-bottom: 1px solid $color-darken;
+}
+
+// styling reset
+.accordion__header,
+.accordion__open-all {
+    @include button-reset;
+}
+
+.accordion__header {
+    @include rsa(min-height, 80px, 120px);
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @include focus;
+
+    // arrow
+    @include faw-icon(\f078, after) {
+        @include rsa(font-size, 16px, 20px);
+        display: inline-block;
+        flex-shrink: 0;
+        margin-left: auto;
+        color: $color-main;
+        font-weight: font-weight(bold);
+        transition: transform $duration-fast $easing-default;
+        transform: scaleY(1);
+        pointer-events: none;
+    }
+
+    h4 {
+        @include spacing(padding, very-small, top bottom);
+        @include spacing(margin, medium, right);
+        @include hyphens;
+        text-align: left;
+    }
+}
+
+.accordion__header-image {
+    @include rsa(height width, 40px, 60px);
+    @include spacing(margin, medium, right);
+    position: relative;
+    display: none;
+    flex-shrink: 0;
+
+    @include bp(l) {
+        display: block;
+    }
+
+    // decorative line
+    @include red-line;
+
+    img {
+        @include border-radius();
+        height: auto;
+        border: 1px solid $color-darken;
+        object-fit: contain;
+        overflow: hidden;
+    }
+}
+
+.accordion__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $duration-medium $easing-default;
+}
+
+.accordion__content-wrapper {
+    @include spacing(margin, small, bottom);
+}
+
+.accordion--open {
+    .accordion__header {
+        &:after {
+            transform: scaleY(-1);
+        }
+    }
+}
+
+.accordion__top {
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid $color-darken;
+
+    h2 ~ & {
+        .accordion__open-all {
+            @include translate(y, very-small, negative);
+        }
+    }
+}
+
+.accordion__open-all {
+    @include focus;
+
+    @include bp(l) {
+        &:hover {
+            span {
+                color: $color-grey-dark;
+            }
+        }
+    }
+
+    span {
+        @include spacing(padding, very-small, top bottom);
+        @include text(p2);
+        display: inline-block;
+        color: $color-grey;
+        text-decoration: underline;
+        transition: color $duration-fast $easing-default;
+        pointer-events: none;
+    }
+
+    .close {
+        display: none;
+    }
+
+    &.accordion__open-all--open {
+        .close {
+            display: inline-block;
+        }
+
+        .open {
+            display: none;
+        }
+    }
+
+    .paragraph--accordions &,
+    .faq-section & {
+        @include spacing(margin, tiny, bottom);
+    }
+
+    .view & {
+        @include spacing(margin, small, left);
+    }
+}

@@ -1,0 +1,147 @@
+// Project: DDBpro
+// Version: 0.0.0
+// Created: 2022-03-28
+
+$enable-general: (
+    reset: true,
+    base: true,
+    responsive-image: true,
+);
+
+// Enable default Drupal tab styling
+$enable-drupal: (
+    user-tabs: true,
+);
+
+// Breakpoints
+$breakpoints: (
+    xs: (dir: min, size: 0px),
+    s: (dir: min, size: 421px),
+    m: (dir: min, size: 701px),
+    l: (dir: min, size: 1181px),
+    xl: (dir: min, size: 1481px),
+);
+
+// Colors
+$color-main: #de1738;
+$color-main-dark: #ce1534;
+$color-black: #000000;
+$color-grey-dark: #181f25;
+$color-grey: #565a5d;
+$color-grey-light: #70777c;
+$color-bg: #f7f7f8;
+$color-white: #ffffff;
+$color-darken: rgba(#000000, 0.10);
+$color-overlay: rgba(#000000, 0.60);
+$color-lighten: rgba(#ffffff, 0.20);
+$color-lighten-heavy: rgba(#ffffff, 0.80);
+
+$color-error: #c60021;
+$color-success: #36a900;
+
+$color-focus: #00BFFF;
+
+// Gutters
+$gutters: (
+    default: 5.50vw 6.00vw 6.00vw 3.40vw 3.15vw,
+);
+
+// Container
+$widths: (
+    default: 83.30vw 81.00vw 76.00vw 74.00vw 72.60vw,
+);
+
+// Spacings
+$spacings: (
+    tiny: 7.00px 7.00px 8.00px 9.00px 10.00px,
+    very-small: 10.00px 12.00px 14.00px 16.00px 20.00px,
+    small: 15.00px 20.00px 24.00px 26.00px 30.00px,
+    medium: 20.00px 24.00px 30.00px 34.00px 40.00px,
+    large: 30.00px 35.00px 45.00px 50.00px 60.00px,
+    very-large: 40.00px 46.00px 60.00px 70.00px 80.00px,
+    huge: 55.00px 60.00px 75.00px 85.00px 100.00px,
+    massive: 80.00px 90.00px 110.00px 120.00px 140.00px,
+);
+
+// Fonts
+$font-family-main: 'Inter', sans-serif;
+
+$fonts: (
+    h1: (
+        size:  25.00px 32.00px 43.00px 47.00px 56.00px,
+        height:  38.00px 44.00px 55.00px 59.00px 68.00px,
+        family: $font-family-main,
+        letterspacing: 0.00em,
+    ),
+    h2: (
+        size:  21.00px 24.00px 30.00px 32.00px 36.00px,
+        height:  34.00px 38.00px 44.00px 47.00px 52.00px,
+        family: $font-family-main,
+        letterspacing: 0.00em,
+    ),
+    h3: (
+        size:  17.00px 19.00px 22.00px 23.00px 26.00px,
+        height:  30.00px 33.00px 38.00px 40.00px 44.00px,
+        family: $font-family-main,
+        letterspacing: 0.00em,
+    ),
+    h4: (
+        size:  16.00px 17.00px 18.00px 19.00px 20.00px,
+        height:  32.00px 34.00px 37.00px 38.00px 40.00px,
+        family: $font-family-main,
+        letterspacing: 0.00em,
+    ),
+    a1: (
+        size:  11.00px 11.00px 12.00px 12.00px 13.00px,
+        height:  18.00px 18.00px 19.00px 19.00px 20.00px,
+        family: $font-family-main,
+        letterspacing: 0.06em,
+    ),
+    p1: (
+        size:  14.00px 15.00px 16.00px 16.00px 17.00px,
+        height:  28.00px 29.00px 31.00px 32.00px 34.00px,
+        family: $font-family-main,
+        letterspacing: 0.00em,
+    ),
+    p2: (
+        size:  10.00px 10.00px 11.00px 11.00px 12.00px,
+        height:  16.00px 17.00px 18.00px 19.00px 20.00px,
+        family: $font-family-main,
+        letterspacing: 0.00em,
+    ),
+);
+
+// Border Radii
+$border-radii: (
+    default: 3.00px 3.00px 3.00px 3.00px 3.00px,
+);
+
+// Box Shadows
+$box-shadows: (
+    box-hover: (
+        size: 1.00px 1.00px 1.00px 1.00px 1.00px,
+        offsetY: 1.00px 1.00px 1.00px 1.00px 1.00px,
+        color: #000000,
+        opacity: 0.10,
+    ),
+);
+
+// Eaising
+$easing-default: cubic-bezier(0.33, 1, 0.68, 1);
+
+// Durations
+$duration-fast: 0.20s;
+// $duration-fast: 1s;
+$duration-medium: 0.40s;
+$duration-slow: 0.80s;
+
+// Container
+$container-max-width: 1580px;
+
+// Columns
+$column-fixed-content: 78%;
+$column-fixed-sidebar: 22%;
+
+// Other
+$headerZIndex: 100;
+$sidebarIndex: 90;

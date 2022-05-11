@@ -1,0 +1,5 @@
+.basic-page {
+    h1 {
+        @include spacing(margin, small, bottom);
+    }
+}

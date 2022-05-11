@@ -1,0 +1,19 @@
+uuid: eec1296f-358e-4ead-ac63-0af24e621b4d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_author
+    - media.type.image
+id: media.image.field_author
+field_name: field_author
+entity_type: media
+bundle: image
+label: Autor
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

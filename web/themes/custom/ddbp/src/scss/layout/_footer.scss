@@ -1,0 +1,205 @@
+.footer__top {
+    @include spacing(padding, huge, top bottom);
+    position: relative;
+    background: $color-main;
+    overflow: hidden;
+
+    // background logo
+    &:before {
+        @include spacing(position, large, top);
+        @include rsa(height, 300px, 400px);
+        @include rsa(width, 300px, 470px);
+        content: '';
+        position: absolute;
+        right: -30px; // custom value was requested
+        display: inline-block;
+        width: 100%;
+        background: url('../images/logo-signet-black.svg') no-repeat;
+        opacity: 0.07;
+
+        @include target-bps(l xl) {
+            @include spacing(position, large, right left);
+        }
+    }
+
+    .container {
+        position: relative;
+    }
+
+    .row {
+        @include bp(l) {
+            flex-direction: row-reverse;
+        }
+    }
+}
+
+.footer__menu,
+.footer__info {
+    @include columns(1);
+    display: block;
+
+    @include bp(l) {
+        @include columns(2);
+        display: block;
+    }
+}
+
+.footer__info {
+    @include spacing(margin, large, top);
+
+    @include bp(l) {
+        margin-top: 0;
+    }
+
+    span {
+        @include rsa(max-width, 100%, 63%);
+        @include spacing(margin, very-small, bottom);
+        display: block;
+        color: $color-white;
+        font-weight: font-weight(medium);
+    }
+}
+
+.footer__socials {
+    p {
+        @include spacing(margin, very-small, bottom);
+        color: $color-white;
+        font-weight: font-weight(medium);
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+    }
+
+    li + li {
+        @include spacing(margin, very-small, left);
+    }
+
+    a {
+        @include rsa(height width, 50px, 60px);
+        position: relative;
+        display: grid;
+        place-items: center;
+        border: 1px solid $color-darken;
+        border-radius: 50%;
+        background: $color-main;
+        color: $color-white;
+
+        @include bp(l) {
+            &:hover {
+                &:before {
+                    transform: scale(1);
+                }
+            }
+        }
+
+        &:focus {
+            box-shadow: none;
+            border-color: $color-white;
+        }
+
+        // background for hover
+        &:before {
+            @include fit();
+            @include rsa(height width, 50px, 60px);
+            content: '';
+            display: block;
+            border-radius: inherit;
+            margin: auto;
+            transform: scale(0);
+            background: $color-main-dark;
+            transform-origin: center;
+            transition: transform $duration-fast $easing-default;
+        }
+
+        i {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+.footer__bottom {
+    @include spacing(padding, large, top bottom);
+    background: $color-bg;
+}
+
+.footer__logos {
+    display: flex;
+    flex-direction: column;
+
+    @include bp(l) {
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}
+
+.footer__logo {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+
+    & + & {
+        @include spacing(margin, small, top);
+
+        @include bp(l) {
+            margin-top: 0;
+        }
+
+        @include target-bps(l xl) {
+            @include spacing(margin, tiny, left);
+        }
+    }
+
+    a {
+        @include bp(l) {
+            width: 100%;
+        }
+    }
+
+    img {
+        height: 40px;
+        max-width: 100%;
+        width: auto;
+
+        @include bp(l) {
+            height: auto;
+            max-width: 190px;
+            width: 100%;
+        }
+    }
+}
+
+// images get blurry on Chrome 🤷
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    .footer__logo img {
+        image-rendering: -webkit-optimize-contrast !important;
+    }
+}
+
+// Unset for Safari 11+
+@media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+        .footer__logo img {
+            image-rendering: unset !important;
+        }
+    }
+}
+
+.footer_copyright-section-item {
+    display: none !important; // <- remove when start styling
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    > .responsive-image__copyright-thumbnail {
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}

@@ -1,0 +1,21 @@
+uuid: bbd4e2d0-92b2-4755-be0f-a4c9578a5974
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.front_page
+    - field.storage.config_pages.field_participation_description
+  module:
+    - text
+id: config_pages.front_page.field_participation_description
+field_name: field_participation_description
+entity_type: config_pages
+bundle: front_page
+label: Beschreibungstext
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

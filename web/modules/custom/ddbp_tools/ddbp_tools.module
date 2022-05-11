@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Contains ddbp_tools.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function ddbp_tools_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ddbp_tools module.
+    case 'help.page.ddbp_tools':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A helper module for various tweaks and useful extensions.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Adds a new hreflang="x-default" tag for the default language (de).
+ * This isn't in core and is not supported by the metatag module.
+ *
+ * Implements hook_page_attachments_alter().
+ *
+ * @param array $page
+ */
+function ddbp_tools_page_attachments_alter(array &$page) {
+  $page['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'link',
+      '#attributes' => [
+        'rel' => 'alternate',
+        'hreflang' => 'x-default',
+        'href' => Url::fromRoute('<current>', [], ['absolute' => 'true'])->setOption('language', \Drupal::languageManager()->getLanguage('de'))->toString(),
+      ],
+    ],
+    'hreflang-x-default'
+  ];
+}
+
+/**
+ * Adds JS to CT Event edit form for populating end date value based on start date.
+ *
+ * Implements hook_form_alter().
+ */
+function ddbp_tools_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, ['node_event_edit_form', 'node_event_form'])) {
+    $form['#attached']['library'][] = 'ddbp_tools/ddbp-js';
+  }
+}
+
+/**
+ * FAQ questions are already grouped, for these groups we collect
+ * the titles to use in the sidebar (sticky in-page nav).
+ *
+ * @param array $variables
+ */
+function ddbp_tools_preprocess_views_view__faq(array &$variables) {
+  $categories = [];
+
+  foreach ($variables['rows'] as $row) {
+    $categories[] = $row['#title'];
+  }
+
+  $variables['attachment_after'] = $categories;
+}

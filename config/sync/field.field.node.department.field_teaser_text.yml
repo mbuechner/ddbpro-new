@@ -1,0 +1,19 @@
+uuid: 510bbfc0-12f8-4320-ac29-6e128085d610
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser_text
+    - node.type.department
+id: node.department.field_teaser_text
+field_name: field_teaser_text
+entity_type: node
+bundle: department
+label: 'Teaser Text'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

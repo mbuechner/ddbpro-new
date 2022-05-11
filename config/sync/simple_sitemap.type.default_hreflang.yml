@@ -1,0 +1,15 @@
+uuid: 2c7437f0-fc43-465e-9824-9f9e22177717
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: mI3bIHB-uxtiARopaCSX9SMn7y6sS8WMnI4i1L8Pny8
+id: default_hreflang
+label: Standard-hreflang
+description: 'Der Standard-hreflang-Sitemaptyp.'
+sitemap_generator: default
+url_generators:
+  - custom
+  - entity
+  - entity_menu_link_content
+  - arbitrary

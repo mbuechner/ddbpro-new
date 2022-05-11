@@ -1,0 +1,19 @@
+id: ddbp_taxonomy_event_type
+label: D7 TX Termine to D9 TX Event type
+migration_tags:
+  - Drupal 7
+  - Content
+source:
+  plugin: d7_taxonomy_term
+  bundle: termine
+process:
+  tid: tid
+  vid:
+    plugin: default_value
+    default_value: event_type
+  name: name
+  weight: weight
+  parent: parent
+  langcode: de
+destination:
+  plugin: entity:taxonomy_term

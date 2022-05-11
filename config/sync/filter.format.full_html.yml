@@ -1,4 +1,4 @@
-uuid: 1cb87651-c6e9-4bce-9d84-76cc4c1b12ec
+uuid: 7c6299bf-d7c0-4a3c-afd3-3949aa337352
 langcode: de
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - editor
 _core:
   default_config_hash: WNeK5FbcY8pXgEpbD_KgRzlF1-5PL3BJXwqaBctPTqw
-name: 'Vollständiges HTML'
+name: 'Full HTML'
 format: full_html
 weight: 2
 filters:
@@ -34,3 +34,12 @@ filters:
     status: true
     weight: 11
     settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<a href hreflang title target data-tooltip> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <s> <sup> <sub> <img src alt data-entity-type data-entity-uuid data-align data-caption> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <hr> <p> <h1> <pre>'
+      filter_html_help: true
+      filter_html_nofollow: false

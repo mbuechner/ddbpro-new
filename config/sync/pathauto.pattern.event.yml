@@ -1,0 +1,33 @@
+uuid: 5103b546-80c7-41c7-89b4-d3feca69f369
+langcode: de
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: event
+label: Veranstaltung
+type: 'canonical_entities:node'
+pattern: 'termine-veranstaltungen/[node:title]'
+selection_criteria:
+  d12861f0-cb73-4acd-a09b-8449fbe47808:
+    id: node_type
+    negate: false
+    uuid: d12861f0-cb73-4acd-a09b-8449fbe47808
+    context_mapping:
+      node: node
+    bundles:
+      event: event
+  b47b1bd8-2335-49d7-8a8c-1d662c7daeeb:
+    id: language
+    negate: false
+    uuid: b47b1bd8-2335-49d7-8a8c-1d662c7daeeb
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      de: de
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

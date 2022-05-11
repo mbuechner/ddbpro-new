@@ -1,0 +1,10 @@
+uuid: 8cc3896a-64a0-43f3-95e6-0616e91474cd
+langcode: de
+status: true
+dependencies: {  }
+id: node__event
+label: 'Content: Veranstaltung'
+tags:
+  description: '[node:field_description]'
+  og_description: '[node:field_description]'
+  twitter_cards_description: '[node:field_description]'

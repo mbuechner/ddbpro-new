@@ -1,0 +1,19 @@
+uuid: 1789c67a-3688-4f5e-b81f-d8cfb9013f9a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.poster
+id: paragraph.poster.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: poster
+label: Beschreibung
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

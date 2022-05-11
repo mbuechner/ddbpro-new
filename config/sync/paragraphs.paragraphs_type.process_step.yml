@@ -1,0 +1,10 @@
+uuid: f79575e8-f97f-41ce-b61b-9850e04f1220
+langcode: de
+status: true
+dependencies: {  }
+id: process_step
+label: 'Prozess Schritt'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

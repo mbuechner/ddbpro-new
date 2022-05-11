@@ -1,0 +1,25 @@
+uuid: c1ecf2f8-463e-4779-8de0-8afe72e938af
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ddbp
+_core:
+  default_config_hash: d-0emr1mEq7sFKDu5RHUJckvNk62hvIZdRwPEfnJyGg
+id: ddbp_branding
+theme: ddbp
+region: sidebar_left
+weight: -4
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Branding der Website'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

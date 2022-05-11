@@ -1,0 +1,11 @@
+uuid: 34c52768-0880-4709-9e96-b120db36b5ed
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.division
+id: taxonomy_term.division
+target_entity_type_id: taxonomy_term
+target_bundle: division
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,36 @@
+.aggregator {
+    h1 {
+        @include spacing(margin, large, top);
+        @include spacing(margin, small, bottom);
+    }
+}
+
+.aggregator__teasers {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(
+            90deg,
+            rgba($color-white, 0) 80%,
+            rgba($color-white, 1) 100%
+        );
+        pointer-events: none;
+    }
+}
+
+.aggregator__text-teaser {
+    @include spacing(margin, very-large, bottom);
+    color: $color-grey;
+}
+
+.aggregator__text {
+    @include spacing(margin, small, bottom);
+}

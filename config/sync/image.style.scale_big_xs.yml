@@ -1,0 +1,21 @@
+uuid: 1b21e38b-5af0-4d6d-838e-8672e0bb034b
+langcode: de
+status: true
+dependencies: {  }
+name: scale_big_xs
+label: scale-big-XS
+effects:
+  0246a04d-2bc4-4c2c-93bd-7835874cc0e1:
+    uuid: 0246a04d-2bc4-4c2c-93bd-7835874cc0e1
+    id: image_scale
+    weight: 1
+    data:
+      width: 360
+      height: null
+      upscale: false
+  13b26c43-60dc-44cc-99c9-64b5bb009c66:
+    uuid: 13b26c43-60dc-44cc-99c9-64b5bb009c66
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

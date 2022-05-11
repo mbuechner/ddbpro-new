@@ -1,0 +1,10 @@
+name: DDBP Front page
+description: Provides route & controller for the front page.
+package: Custom
+
+type: module
+core_version_requirement: ^9
+
+dependencies:
+  - block
+  - config_pages

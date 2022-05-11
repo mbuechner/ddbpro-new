@@ -1,0 +1,19 @@
+uuid: 4ec456eb-0c9d-4ee2-a649-de9b1623eda6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_uri
+    - node.type.glossary_term
+id: node.glossary_term.field_uri
+field_name: field_uri
+entity_type: node
+bundle: glossary_term
+label: 'Uniform Resource Identifier'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

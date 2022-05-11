@@ -1,9 +1,9 @@
-uuid: 4d56b7ee-1151-4735-9e9d-f134df8f3e05
+uuid: ce9aa9c0-a0a0-44a7-a55d-13537da1ccfd
 langcode: de
 status: true
 dependencies: {  }
 id: de
 label: German
 direction: ltr
-weight: 0
+weight: 1
 locked: false

@@ -1,0 +1,16 @@
+uuid: eaee7153-440a-498b-8b5b-8b28be3a735f
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: _D9q3XSnP6ik9we9UuoTvZsQKPuYNp_G9PfwVtWzgnQ
+id: document
+label: Dokument
+description: 'Eine hochgeladene Datei oder ein hochgeladenes Dokument, z.B. eine PDF.'
+source: file
+queue_thumbnail_downloads: false
+new_revision: true
+source_configuration:
+  source_field: field_media_document
+field_map:
+  name: name

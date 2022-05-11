@@ -1,0 +1,20 @@
+{% set display = content.field_display[0]['#markup']|clean_class %}
+
+{% set classes = [
+  'paragraph',
+  'paragraph--' ~ paragraph.bundle|clean_class,
+  'paragraph--' ~ paragraph.bundle|clean_class ~ '-' ~ display,
+] %}
+
+{% block paragraph %}
+  <div{{ attributes.addClass(classes, nestedParagraphClasses) }}>
+    <div class="paragraph-inner">
+      {% set responsiveImage = {
+        images: content.field_image[0].images,
+        description: true,
+        lazy: true,
+      } %}
+      {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+    </div>
+  </div>
+{% endblock %}

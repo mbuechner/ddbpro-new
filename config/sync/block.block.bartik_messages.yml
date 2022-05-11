@@ -1,4 +1,4 @@
-uuid: 27db0fe6-7023-4356-86f5-de95f4227b7a
+uuid: 75605f7a-515c-49aa-97eb-32b4af2398cc
 langcode: de
 status: true
 dependencies:
@@ -16,7 +16,7 @@ provider: null
 plugin: system_messages_block
 settings:
   id: system_messages_block
-  label: Status-Nachrichten
+  label: 'Status messages'
   label_display: '0'
   provider: system
 visibility: {  }

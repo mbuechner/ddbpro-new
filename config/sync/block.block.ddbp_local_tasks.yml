@@ -1,0 +1,22 @@
+uuid: a9a11c27-1f20-4b81-bb2e-f57adb67704e
+langcode: de
+status: true
+dependencies:
+  theme:
+    - ddbp
+_core:
+  default_config_hash: Qf2BoIzd9py5AYXZj8fJzCYDyVk1-AWXcu-AqQeDZKA
+id: ddbp_local_tasks
+theme: ddbp
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

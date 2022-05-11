@@ -1,0 +1,13 @@
+// used next to headlines
+.tiny-label {
+    @include spacing(margin, tiny, top);
+    @include spacing(margin, very-small, bottom);
+    @include text(a1);
+    color: $color-main;
+    font-weight: font-weight(bold);
+    text-transform: uppercase;
+
+    .ddb-studio & {
+        color: $color-white;
+    }
+}

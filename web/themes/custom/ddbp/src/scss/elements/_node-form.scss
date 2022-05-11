@@ -1,0 +1,32 @@
+// form on CT Article & CT Department
+.node-form {
+    @include spacing(margin, massive, bottom);
+}
+
+.node-form__form {
+    @include bp(l) {
+        flex-basis: 60%;
+        max-width: 60%;
+    }
+}
+
+.node-form__people {
+    @include spacing(margin, large, top);
+
+    @include bp(l) {
+        flex-basis: 40%;
+        max-width: 40%;
+        margin-top: 0;
+    }
+
+    h4 {
+        @include spacing(margin, small, bottom);
+        color: $color-main;
+    }
+
+    .field__item {
+        + .field__item {
+            @include spacing(margin, small, top);
+        }
+    }
+}

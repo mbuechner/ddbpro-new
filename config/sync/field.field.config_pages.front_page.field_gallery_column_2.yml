@@ -1,0 +1,29 @@
+uuid: 15bee268-da92-438b-a783-fc735e2c9fc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.front_page
+    - field.storage.config_pages.field_gallery_column_2
+    - media.type.image
+id: config_pages.front_page.field_gallery_column_2
+field_name: field_gallery_column_2
+entity_type: config_pages
+bundle: front_page
+label: 'Bildgalerie (Column #2)'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

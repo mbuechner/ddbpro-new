@@ -1,0 +1,86 @@
+{% set classes = [
+  'node',
+  'node--' ~ node.bundle|clean_class,
+  'node--' ~ node.bundle|clean_class ~ '-full',
+  'glossary',
+] %}
+
+{% set linkSecondary = {
+  url: path('view.ddb_glossary.ddb_glossary'),
+  text: 'Zur Übersicht' | t,
+  type: 'secondary',
+  bg: 'light',
+} %}
+
+<article{{ attributes.addClass(classes) }}>
+  <div class="container">
+    {# Breadcrumbs block #}
+    {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+  </div>
+
+  <div class="node__content">
+    <div class="container">
+      <div class="row-grid row-grid--fixed">
+        <div class="row-grid__title">
+          <h1>{{ label[0]['#context'].value }}</h1>
+        </div>
+        <div class="row-grid__content">
+          <div class="glossary__items node-table__items">
+
+            {# definition #}
+            {% if content.body %}
+              <div class="node-table__item-label">
+                {{ 'Begriffsdefinition:' | t }}
+              </div>
+              <div class="node-table__item-value">
+                {{ content.body }}
+              </div>
+            {% endif %}
+
+            {# alternative terms #}
+            {% if content.field_alternatives[0] %}
+              <div class="node-table__item-label">
+                {{ 'Alternative Begriffe:' | t }}
+              </div>
+              <div class="node-table__item-value">
+                {{ content.field_alternatives }}
+              </div>
+            {% endif %}
+
+            {# additional information #}
+            {% if content.field_uri[0] %}
+              {% set link = {
+                modifier: 'node-table',
+                url: content.field_uri[0]['#context'].value,
+                target: true,
+              } %}
+              <div class="node-table__item-label">
+                {{ 'Weitere Informationen:' | t }}
+              </div>
+              <div class="node-table__item-value">
+                <span>{{ 'Uniform Resource Identifier:' | t }}</span>
+                {# text link #}
+                {% include '@ddbp/partials/link.html.twig' with link %}
+              </div>
+            {% endif %}
+
+            {# last modified #}
+            {% if content.field_last_modified[0] %}
+              <div class="node-table__item-label">
+                {{ 'Letzte Aktualisierung:' | t }}
+              </div>
+              <div class="node-table__item-value">
+                {{ content.field_last_modified[0]['#context'].value|date('d.m.Y', false) }}
+              </div>
+            {% endif %}
+
+          </div>
+
+          <div class="document__links links-siblings">
+            {% include '@ddbp/partials/link-button.html.twig' with { link: linkSecondary } %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

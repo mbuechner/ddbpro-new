@@ -1,0 +1,18 @@
+.paragraph--document {
+    .field__item {
+        + .field__item {
+            @include spacing(margin, small, top);
+        }
+    }
+
+    // reset if in accordion
+    .document-teaser__download {
+        a[target='_blank'] {
+            margin-right: 0;
+
+            &:after {
+                display: none;
+            }
+        }
+    }
+}

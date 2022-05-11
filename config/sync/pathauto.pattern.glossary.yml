@@ -1,0 +1,33 @@
+uuid: 196896a3-bff7-437c-9415-7f6eac4c8af2
+langcode: de
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: glossary
+label: Glossar
+type: 'canonical_entities:node'
+pattern: 'glossar/[node:title]'
+selection_criteria:
+  11a6d3c7-889a-43f3-be56-98a6b81a2582:
+    id: node_type
+    negate: false
+    uuid: 11a6d3c7-889a-43f3-be56-98a6b81a2582
+    context_mapping:
+      node: node
+    bundles:
+      glossary_term: glossary_term
+  2cc03d6e-c70e-46d2-95e3-b2756d3416b4:
+    id: language
+    negate: false
+    uuid: 2cc03d6e-c70e-46d2-95e3-b2756d3416b4
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      de: de
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

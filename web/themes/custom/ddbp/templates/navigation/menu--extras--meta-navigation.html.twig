@@ -1,0 +1,18 @@
+<ul class="menu--meta-navigation__items" aria-label="{{ 'Meta Navigation' | t }}">
+  {% for link in items %}
+    <li class="menu--meta-navigation__item">
+      <a href="{{ link.url }}" class="menu--meta-navigation__item-link">
+
+        {% if link.content.field_icon[0] %}
+          {% set responsiveImage = { images: link.content.field_icon[0].images } %}
+          <div class="menu--meta-navigation__item-icon">
+            {% include '@ddbp/partials/responsive-image.html.twig' with responsiveImage %}
+          </div>
+        {% endif %}
+
+        {{ link.title }}
+
+      </a>
+    </li>
+  {% endfor %}
+</ul>

@@ -1,4 +1,4 @@
-uuid: abda19f2-3e07-4282-a1ff-1a61c2dba046
+uuid: 93ef67f9-8c24-4731-9209-9ba16417b11f
 langcode: de
 status: true
 dependencies:
@@ -18,7 +18,7 @@ provider: null
 plugin: 'system_menu_block:footer'
 settings:
   id: 'system_menu_block:footer'
-  label: Fußzeilenmenü
+  label: 'Footer menu'
   label_display: '0'
   provider: system
   level: 1

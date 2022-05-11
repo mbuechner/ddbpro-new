@@ -1,0 +1,20 @@
+uuid: 4e64d25c-7c0b-4e80-9cf9-eb3321e57707
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+    - taxonomy
+id: media.field_document_license
+field_name: field_document_license
+entity_type: media
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

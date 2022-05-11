@@ -1,0 +1,19 @@
+uuid: 4921347d-41bf-4576-bac0-243f0526c2c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.front_page
+    - field.storage.config_pages.field_studio_description
+id: config_pages.front_page.field_studio_description
+field_name: field_studio_description
+entity_type: config_pages
+bundle: front_page
+label: Beschreibungstext
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

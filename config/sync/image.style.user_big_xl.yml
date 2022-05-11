@@ -1,0 +1,23 @@
+uuid: 43c2e563-bed1-45a9-b5b6-28a982aef0b9
+langcode: de
+status: true
+dependencies:
+  module:
+    - focal_point
+name: user_big_xl
+label: user-big-XL
+effects:
+  5279da0b-d49b-4664-89e4-4f1796c8802a:
+    uuid: 5279da0b-d49b-4664-89e4-4f1796c8802a
+    id: image_convert
+    weight: -9
+    data:
+      extension: webp
+  a3559c7e-e08f-4fa7-88a9-abfb12bfb0d9:
+    uuid: a3559c7e-e08f-4fa7-88a9-abfb12bfb0d9
+    id: focal_point_scale_and_crop
+    weight: -10
+    data:
+      width: 250
+      height: 320
+      crop_type: focal_point

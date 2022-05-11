@@ -1,0 +1,255 @@
+// Hero
+.hero {
+    @include spacing(margin, massive, bottom);
+    position: relative;
+
+    .container {
+        position: relative;
+    }
+}
+
+.hero__gallery {
+    @include spacing(margin, large, right left);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.gallery__row {
+    @include rsa(grid-gap, 10px, 60px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include bp(m) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include bp(xl) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.gallery__column {
+    &:nth-child(1),
+    &:nth-child(2) {
+        .grid__column-image {
+            &:nth-last-child(2) {
+                opacity: 1;
+
+                @include bp(l) {
+                    opacity: 0.1;
+                }
+            }
+
+            &:last-child {
+                @include bp(l) {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &:nth-child(2) {
+        display: none;
+
+        @include bp(xl) {
+            display: block;
+        }
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
+        .grid__column-image {
+            @include bp(l) {
+                opacity: 1;
+            }
+
+            &:nth-last-child(2) {
+                opacity: 1;
+            }
+
+            &:last-child {
+                @include bp(l) {
+                    opacity: 0.1;
+                }
+            }
+        }
+    }
+
+    &:nth-child(4) {
+        display: none;
+
+        @include bp(m) {
+            display: block;
+        }
+    }
+}
+
+.grid__column-image {
+    @include spacing(margin, medium, bottom);
+    opacity: 0.1;
+
+    img {
+        height: auto;
+    }
+}
+
+.hero__content-top {
+    @include spacing(padding, massive, top);
+    @include rsa(margin-bottom, 340px, 660px);
+
+    h1,
+    p {
+        @include spacing(margin, medium, bottom);
+    }
+
+    h1 {
+        position: relative;
+
+        // main logo
+        &:before {
+            @include spacing(position, tiny, top);
+            @include rsa(height, 40px, 60px);
+            @include rsa(width, 44px, 64px);
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background: url('../images/logo-signet-main.svg') no-repeat;
+            transform: translate(-100%, -100%);
+
+            @include bp(l) {
+                content: '';
+            }
+        }
+    }
+
+    p {
+        color: $color-grey-light;
+        font-weight: font-weight(medium);
+    }
+}
+
+// participation
+.hero__content-bottom {
+    .row {
+        @include bp(l) {
+            justify-content: flex-end;
+        }
+    }
+}
+
+.participation {
+    h2 {
+        @include spacing(margin, very-small, bottom);
+    }
+}
+
+.participation__step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+
+    & + & {
+        @include spacing(margin, very-small, top);
+    }
+}
+
+.participation__step-icon {
+    @include rsa(height width, 50px, 60px);
+    @include spacing(margin, small, right);
+    @include border-radius();
+    position: relative;
+    display: grid;
+    place-items: center;
+    border: 1px solid $color-darken;
+    color: $color-main;
+
+    // decorative line
+    @include red-line;
+}
+
+// DDB Studio
+.ddb-studio {
+    @include rsa(min-height, 680px, 1060px);
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.ddb-studio__background-image {
+    @include fit();
+
+    // overflow
+    &:after {
+        @include fit();
+        content: '';
+        background: $color-overlay;
+    }
+}
+
+.ddb-studio__content {
+    @include rsa(max-width, 100%, 46%);
+    width: 100%;
+    color: $color-white;
+
+    h2 {
+        @include spacing(margin, medium, bottom);
+        color: inherit;
+    }
+
+    p {
+        color: inherit;
+        font-weight: font-weight(regular);
+    }
+}
+
+// departments
+.departments {
+    @include spacing(padding, massive, top bottom);
+
+    h2 {
+        @include spacing(margin, medium, top);
+        @include spacing(margin, very-small, bottom);
+    }
+
+    p {
+        @include spacing(margin, medium, bottom);
+        color: $color-grey-light;
+        font-weight: font-weight(regular);
+    }
+
+    .column--image {
+        display: none;
+
+        @include bp(l) {
+            display: block;
+        }
+    }
+}
+
+.departments__departments {
+    @include spacing(margin, medium, bottom);
+
+    .department-teaser-mini {
+        display: block;
+    }
+
+    .department-teaser-mini__image {
+        display: none;
+    }
+}
+
+.departments__images {
+    display: grid;
+    grid-template: 100% / 100%;
+
+    .department-teaser-mini {
+        display: none;
+    }
+}

@@ -1,0 +1,126 @@
+{% set classes = [
+  'media',
+  'media--type-' ~ media.bundle()|clean_class,
+  not media.isPublished() ? 'media--unpublished',
+  view_mode ? 'media--view-mode-' ~ view_mode|clean_class,
+  'document'
+] %}
+
+{% set file = content.field_media_document[0]['#file'] %}
+{% set hasLink = content.field_link[0] %}
+
+{% set linkPrimary = {
+  url: hasLink ? content.field_link[0]['#url'] : file_url(file.uri.value),
+  text: 'Herunterladen' | t,
+  target: true,
+  download: hasLink ? false : true,
+  type: 'primary',
+} %}
+
+{% set linkSecondary = {
+  url: path('view.documents.documents'),
+  text: 'Zur Übersicht' | t,
+  type: 'secondary',
+  bg: 'light',
+} %}
+
+{% set linkClasses = [
+  'document__link-link',
+  hasLink ? 'document__link-link--external' : 'document__link-link--download',
+] %}
+
+<article{{ attributes.addClass(classes) }}>
+  <div class="container">
+    {# Breadcrumbs block #}
+    {{ drupal_block('system_breadcrumb_block', wrapper=false) }}
+  </div>
+
+  <div class="node__content">
+    <div class="container">
+      <div class="row-grid row-grid--fixed">
+        <div class="row-grid__title">
+          <div class="row-grid__title-content">
+            <h1>{{ name }}</h1>
+          </div>
+        </div>
+        <div class="row-grid__content">
+          <div class="row-grid__content-content">
+            <div class="document__items node-table__items">
+
+              {# name #}
+              {% if file %}
+                <div class="node-table__item-label">
+                  {{ 'Dateiname:' | t }}
+                </div>
+                <div class="node-table__item-value">
+                  {{ file.filename.value }}
+                </div>
+              {% endif %}
+
+              {# description #}
+              {% if content.field_description[0] %}
+                <div class="node-table__item-label">
+                  {{ 'Beschreibung:' | t }}
+                </div>
+                <div class="node-table__item-value">
+                  {{ content.field_description[0]['#context'].value }}
+                </div>
+              {% endif %}
+
+              {# size #}
+              {% if file %}
+                <div class="node-table__item-label">
+                  {{ 'Dateigröße:' | t }}
+                </div>
+                <div class="node-table__item-value">
+                  {{ file.filesize.value|format_bytes }}
+                </div>
+              {% endif %}
+
+              {# type #}
+              <div class="node-table__item-label">
+                {{ 'Dokumententyp:' | t }}
+              </div>
+              <div class="node-table__item-value {% if not hasLink %}node-table__item-value--doc-type{% endif %}">
+                {{ hasLink ? 'extern' | t : file.filemime.value|split('/')[1] }}
+              </div>
+
+              {# last update #}
+              {% if file %}
+                <div class="node-table__item-label">
+                  {{ 'Letzte Aktualisierung:' | t }}
+                </div>
+                <div class="node-table__item-value">
+                  {{ file.getCreatedTime|date('d.m.Y') }}
+                </div>
+              {% endif %}
+
+              {# licence #}
+              <div class="node-table__item-label">
+                {{ 'Lizenz:' | t }}
+              </div>
+              <div class="node-table__item-value">
+                {{ content.field_document_license[0]['#plain_text'] }}
+              </div>
+
+              {# author #}
+              {% if content.field_author[0] %}
+                <div class="node-table__item-label">
+                  {{ 'Autor:' | t }}
+                </div>
+                <div class="node-table__item-value">
+                  {{ content.field_author[0]['#context'].value }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="document__links links-siblings">
+              {% include '@ddbp/partials/link-button.html.twig' with { link: linkPrimary } %}
+              {% include '@ddbp/partials/link-button.html.twig' with { link: linkSecondary } %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

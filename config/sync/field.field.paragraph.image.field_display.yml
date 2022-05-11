@@ -1,0 +1,23 @@
+uuid: 2d347aec-b20e-4a70-97ea-6c8433a00664
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display
+    - paragraphs.paragraphs_type.image
+  module:
+    - options
+id: paragraph.image.field_display
+field_name: field_display
+entity_type: paragraph
+bundle: image
+label: Ansicht
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: Container-Breite
+default_value_callback: ''
+settings: {  }
+field_type: list_string

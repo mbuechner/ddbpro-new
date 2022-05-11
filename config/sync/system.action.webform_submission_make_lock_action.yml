@@ -1,0 +1,13 @@
+uuid: c1b77add-8e06-4b42-8099-0feac697fecb
+langcode: de
+status: true
+dependencies:
+  module:
+    - webform
+_core:
+  default_config_hash: MKmZlPRk3OJKNcYdYxSeZGQUh7LMah6MRShfkzch4bk
+id: webform_submission_make_lock_action
+label: 'Eingabe sperren'
+type: webform_submission
+plugin: webform_submission_make_lock_action
+configuration: {  }

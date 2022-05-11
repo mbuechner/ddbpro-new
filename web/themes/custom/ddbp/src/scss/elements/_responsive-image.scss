@@ -1,0 +1,15 @@
+// always hide copyright info in responsive images
+.responsive-image__copyright {
+    display: none;
+}
+
+.responsive-image__desc {
+    &.text-formatted p {
+        @include text(p2);
+        color: $color-grey-light;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

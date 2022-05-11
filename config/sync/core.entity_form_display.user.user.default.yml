@@ -1,13 +1,130 @@
-uuid: ba920f93-3fc5-4846-a216-3bbb82d2fa3b
+uuid: 5bda6ee3-1aca-4d47-9a37-d39174a677ee
 langcode: de
 status: true
 dependencies:
   config:
-    - field.field.user.user.user_picture
-    - image.style.thumbnail
+    - field.field.user.user.field_academic_degree
+    - field.field.user.user.field_address
+    - field.field.user.user.field_division
+    - field.field.user.user.field_dont_show_in_overview
+    - field.field.user.user.field_firstname
+    - field.field.user.user.field_institution
+    - field.field.user.user.field_job_title
+    - field.field.user.user.field_lastname
+    - field.field.user.user.field_name_suffix
+    - field.field.user.user.field_phone
+    - field.field.user.user.field_user_image
   module:
-    - image
+    - address
+    - field_group
+    - media_library
+    - path
     - user
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_basic_info
+        - group_regional
+        - group_department
+        - group_media
+        - group_other
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_basic_info:
+      children:
+        - field_academic_degree
+        - field_firstname
+        - field_lastname
+        - field_name_suffix
+        - field_job_title
+        - field_phone
+        - field_dont_show_in_overview
+      label: 'Basic info'
+      region: content
+      parent_name: group_tabs
+      weight: 16
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_regional:
+      children:
+        - field_institution
+        - field_address
+        - language
+        - timezone
+      label: Regional
+      region: content
+      parent_name: group_tabs
+      weight: 17
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_media:
+      children:
+        - field_user_image
+      label: Media
+      region: content
+      parent_name: group_tabs
+      weight: 19
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_other:
+      children:
+        - account
+        - path
+      label: Other
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_department:
+      children:
+        - field_division
+      label: Department
+      region: content
+      parent_name: group_tabs
+      weight: 18
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
 _core:
   default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
 id: user.user.default
@@ -16,24 +133,110 @@ bundle: user
 mode: default
 content:
   account:
-    weight: -10
+    weight: 14
     region: content
+    settings: {  }
+    third_party_settings: {  }
   contact:
     weight: 5
     region: content
-  language:
-    weight: 0
-    region: content
-  timezone:
-    weight: 6
-    region: content
-  user_picture:
-    type: image_image
-    weight: -1
+  field_academic_degree:
+    type: string_textfield
+    weight: 5
     region: content
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_address:
+    type: address_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_division:
+    type: options_buttons
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dont_show_in_overview:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_firstname:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_institution:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_job_title:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_lastname:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_name_suffix:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_image:
+    type: media_library_widget
+    weight: 9
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  language:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 8
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   langcode: true

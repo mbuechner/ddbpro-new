@@ -1,0 +1,12 @@
+uuid: 3be92a59-a65e-48e2-9ef4-16e8aa34f283
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: rpwvgyEURXLz_JjgMCrkS1rUv-0k3L79BpO-ReN7fDI
+id: node
+label: Content
+tags:
+  description: '[node:field_teaser_text]'
+  og_description: '[node:field_teaser_text]'
+  twitter_cards_description: '[node:field_teaser_text]'

@@ -1,0 +1,90 @@
+uuid: 68cf1fda-9753-44a1-a157-64078106d9b2
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.overview_teaser.field_image
+    - field.field.node.overview_teaser.field_link
+    - field.field.node.overview_teaser.field_show_on_about_us
+    - field.field.node.overview_teaser.field_show_on_provide_data
+    - field.field.node.overview_teaser.field_show_on_use_data
+    - field.field.node.overview_teaser.field_teaser_text
+    - field.field.node.overview_teaser.field_weight
+    - node.type.overview_teaser
+  module:
+    - link
+    - user
+id: node.overview_teaser.default
+targetEntityType: node
+bundle: overview_teaser
+mode: default
+content:
+  field_image:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_show_on_about_us:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_show_on_provide_data:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_show_on_use_data:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_teaser_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_weight:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true
+  links: true

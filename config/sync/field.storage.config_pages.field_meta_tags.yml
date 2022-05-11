@@ -1,0 +1,19 @@
+uuid: 62f6b053-d558-4efc-861b-04aca89a1014
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - metatag
+id: config_pages.field_meta_tags
+field_name: field_meta_tags
+entity_type: config_pages
+type: metatag
+settings: {  }
+module: metatag
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

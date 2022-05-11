@@ -1,0 +1,31 @@
+services:
+  ddbp_tools.event_subscriber:
+    class: Drupal\ddbp_tools\EventSubscriber\RedirectAnonymous
+    arguments:
+      - '@current_route_match'
+      - '@current_user'
+    tags:
+      - { name: event_subscriber }
+  ddbp_tools.twig_extension:
+    class: Drupal\ddbp_tools\TwigExtension
+    tags:
+      - { name: twig.extension }
+  ddbp_tools.http_middleware:
+    class: Drupal\ddbp_tools\RedirectMiddleware
+    tags:
+      - { name: http_middleware }
+  ddbp_tools.redirect_anonymous:
+    class: Drupal\ddbp_tools\EventSubscriber\RedirectAnonymous
+    arguments:
+      - '@current_route_match'
+      - '@current_user'
+      - '@language_manager'
+      - '@ddbp_tools.http_middleware'
+    tags:
+      - { name: event_subscriber }
+  ddbp_tools.calendar_link_twig_extension_override:
+    class: Drupal\ddbp_tools\CalendarLinkTwigExtensionOverride
+    decorates: calendar_link.twig_extension
+    public: false
+    arguments:
+      - '@ddbp_tools.calendar_link_twig_extension_override.inner'

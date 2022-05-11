@@ -1,0 +1,33 @@
+uuid: 2d0cb7d9-43f6-4cf0-b912-e05b66537234
+langcode: de
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: department
+label: Fachstelle
+type: 'canonical_entities:node'
+pattern: 'daten-liefern/fachstellen/[node:title]'
+selection_criteria:
+  88f6df66-f455-4a8f-a470-facc29f7988f:
+    id: node_type
+    negate: false
+    uuid: 88f6df66-f455-4a8f-a470-facc29f7988f
+    context_mapping:
+      node: node
+    bundles:
+      department: department
+  fe1c9513-6319-467d-9d4d-40439ec16547:
+    id: language
+    negate: false
+    uuid: fe1c9513-6319-467d-9d4d-40439ec16547
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      de: de
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

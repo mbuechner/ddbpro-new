@@ -1,0 +1,6 @@
+ddbp_migrations.import_glossary:
+  title: 'Import DDB glossary'
+  route_name: ddbp_migrations.import_glossary
+  menu_name: admin
+  parent: system.admin_content
+  weight: 10

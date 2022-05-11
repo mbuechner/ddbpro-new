@@ -1,0 +1,43 @@
+{% set classes = [
+  'view',
+  'view-' ~ id|clean_class,
+  'view-id-' ~ id,
+  'view-display-id-' ~ display_id,
+  dom_id ? 'js-view-dom-id-' ~ dom_id,
+] %}
+
+{% set viewHeader = {
+  title: 'Ich möchte Daten' | t,
+  text: 'Finden Sie hier alle wichtigen Informationen, die Sie benötigen um Ihre Daten an die Deutsche Digitale Bibliothek zu liefern.' | t,
+  linkText: 'liefern' | t,
+  linkUrlText: 'nutzen' | t,
+  linkUrl: '/daten-nutzen'
+} %}
+
+<div{{ attributes.addClass(classes) }}>
+
+  {# view header #}
+  {% include '@ddbp/partials/view-header.html.twig' with viewHeader %}
+
+  {% if exposed %}
+    <div class="view-filters">
+      {{ exposed }}
+    </div>
+  {% endif %}
+
+  {% if rows %}
+    <div class="container">
+      <div class="view-content">
+        {{ rows }}
+      </div>
+    </div>
+  {% elseif empty %}
+    <div class="view-empty">
+      {{ empty }}
+    </div>
+  {% endif %}
+
+  {% if pager %}
+    {{ pager }}
+  {% endif %}
+</div>

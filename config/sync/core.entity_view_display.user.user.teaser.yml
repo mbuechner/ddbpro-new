@@ -1,0 +1,102 @@
+uuid: 31a06e24-b0ec-41c2-98af-a31eb5a35ea3
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.teaser
+    - field.field.user.user.field_academic_degree
+    - field.field.user.user.field_address
+    - field.field.user.user.field_division
+    - field.field.user.user.field_dont_show_in_overview
+    - field.field.user.user.field_firstname
+    - field.field.user.user.field_institution
+    - field.field.user.user.field_job_title
+    - field.field.user.user.field_lastname
+    - field.field.user.user.field_name_suffix
+    - field.field.user.user.field_phone
+    - field.field.user.user.field_user_image
+  module:
+    - ddbp_responsive_image
+    - user
+_core:
+  default_config_hash: E1qmUI2SlozLlJ308jfMMFKT67l1p6PywE2LTRbeYS4
+id: user.user.teaser
+targetEntityType: user
+bundle: user
+mode: teaser
+content:
+  field_academic_degree:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_division:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_firstname:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_job_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_lastname:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_name_suffix:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_phone:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_user_image:
+    type: image_responsive_meta
+    label: hidden
+    settings:
+      image_style_0px: scale_medium_xs
+      image_style_421px: scale_medium_m
+      image_style_701px: scale_medium_m
+      image_style_1181px: scale_medium_xl
+      image_style_1481px: scale_medium_xl
+    third_party_settings: {  }
+    weight: 7
+    region: content
+hidden:
+  field_address: true
+  field_dont_show_in_overview: true
+  field_institution: true
+  langcode: true
+  masquerade: true
+  member_for: true

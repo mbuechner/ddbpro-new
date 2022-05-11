@@ -1,0 +1,25 @@
+uuid: 72e495be-d007-4666-8f81-83b8be8d28a1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weight
+    - node.type.overview_teaser
+id: node.overview_teaser.field_weight
+field_name: field_weight
+entity_type: node
+bundle: overview_teaser
+label: Gewichtung
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

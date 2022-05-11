@@ -1,0 +1,10 @@
+uuid: 21522737-c3df-417f-9dff-2553be6b2c64
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.teaser_big
+label: 'Teaser big'
+targetEntityType: node
+cache: true
