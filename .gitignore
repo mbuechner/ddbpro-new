@@ -7,7 +7,7 @@
 /web/profiles/contrib/
 
 # Ignore environment information
-/web/sites/*/settings.local.php
+# /web/sites/*/settings.local.php
 /web/sites/*/lando-settings.local.php
 
 # Ignore Drupal's file directory
